@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { signupFields } from "../constants/FormFields"
 import FormAction from "./FormAction";
 import Input from "./Input";
-
+import CardProfile from './ProfilePictureUpload';
 const fields=signupFields;
 let fieldsState={};
 
@@ -26,8 +26,9 @@ export default function Signup(){
 
     return(
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-        <div className="">
+        <div className="w-96 mt-0 pt-0">
         {
+          
                 fields.map(field=>
                         <Input
                             key={field.id}
@@ -40,9 +41,11 @@ export default function Signup(){
                             type={field.type}
                             isRequired={field.isRequired}
                             placeholder={field.placeholder}
+                            
                     />
                 
                 )
+                
             }
           <FormAction handleSubmit={handleSubmit} text="Signup" />
         </div>

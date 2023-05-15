@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import Signup from "../components/Signup";
+import CardProfile from "../components/ProfilePictureUpload";
 
 export default function SignupPage(){
     return(
@@ -10,6 +11,7 @@ export default function SignupPage(){
               linkName="Login"
               linkUrl="/"
             />
+            <CardProfile></CardProfile>
             <Signup/>
         </>
     )
