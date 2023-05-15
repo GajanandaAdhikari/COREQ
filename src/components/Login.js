@@ -26,8 +26,8 @@ export default function Login(){
     }
 
     return(
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-        <div className="-space-y-px">
+        <form className="mt-8 space-y-7 " onSubmit={handleSubmit}>
+        <div className="w-96">
             {
                 fields.map(field=>
                         <Input
@@ -48,7 +48,7 @@ export default function Login(){
         </div>
 
         <FormExtra/>
-        <FormAction handleSubmit={handleSubmit} text="Login"/>
+        <FormAction handleSubmit={handleSubmit} text="Login" />
 
       </form>
     )
