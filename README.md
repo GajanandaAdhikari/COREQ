@@ -63,4 +63,4 @@ We would like to acknowledge the following individuals for their contributions a
 
 ## Contact Information
 
-For any questions or inquiries, please contact us at [your_email@example.com](mailto:your_email@example.com).
+For any questions or inquiries, please contact us at [cosmicgz11@gmail.com](mailto:cosmicgz11@gmail.com).
