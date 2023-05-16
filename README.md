@@ -1,6 +1,6 @@
 # COREQ - COMMUNITY FOR REPRISING QUALITATIVE RESEARCH
 
-[![Build Status](https://img.shields.io/travis/your_username/your_repository.svg)](https://travis-ci.org/your_username/your_repository)
+[![Build Status](https://img.shields.io/badge/build-building-blue.svg)](https://travis-ci.org/your_username/your_repository)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Abstract
