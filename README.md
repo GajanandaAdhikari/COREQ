@@ -28,7 +28,7 @@ This proposal outlines the creation of COREQ (Community for Reprising Qualitativ
 1. Clone the repository: `git clone https://github.com/your_username/your_repository.git`
 2. Install dependencies: `npm install`
 3. Configure the database connection in `config.js`
-4. Start the development server: `npm start`
+4. Start the development server: `npm run start`
 
 ## Usage
 
