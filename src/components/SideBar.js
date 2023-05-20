@@ -5,6 +5,7 @@ import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Login from './Login';
+import UserName from './UserName';
 
 function Side({title,Icon,page}){
     return(
@@ -38,6 +39,7 @@ function SideBar(){
                 page={nav.page}
                 ></Side>)
         }
+        <UserName></UserName>
         </>
     )
 }
