@@ -8,6 +8,7 @@ import SignupPage from './pages/Signup';
 import LoginPage from './pages/Login';
 import CardProfile from './components/ProfilePictureUpload';
 import LandingPage from './pages/Landing';
+import Landing from './pages/Landing';
 
 function App() {
   return (
@@ -16,10 +17,11 @@ function App() {
       {/* <CardProfile></CardProfile> */}
      <BrowserRouter>
         <Routes>
-            <Route path="/" element={<LoginPage/>} />
-            <Route path="/signup" element={<SignupPage/>} />
+            {/* <Route path="/" element={<LoginPage/>} />
+            <Route path="/signup" element={<SignupPage/>} /> */}
            
         </Routes>
+        {/* <Landing></Landing> */}
         
       </BrowserRouter>
     

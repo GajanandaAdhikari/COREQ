@@ -13,6 +13,7 @@ root.render(
     {/* <App /> */}
    <Landing></Landing>
    
+   
   </React.StrictMode>
 );
 
