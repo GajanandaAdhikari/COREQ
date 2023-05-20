@@ -7,6 +7,7 @@ import {
 import SignupPage from './pages/Signup';
 import LoginPage from './pages/Login';
 import CardProfile from './components/ProfilePictureUpload';
+import LandingPage from './pages/Landing';
 
 function App() {
   return (
@@ -17,8 +18,11 @@ function App() {
         <Routes>
             <Route path="/" element={<LoginPage/>} />
             <Route path="/signup" element={<SignupPage/>} />
+           
         </Routes>
+        
       </BrowserRouter>
+    
     </div>
   </div>
   );
