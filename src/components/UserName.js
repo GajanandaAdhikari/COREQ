@@ -14,7 +14,7 @@ function UserName({name,userName,userImage}){
 
        
 
-  <div class="max-w-md rounded-3xl p-px mt-40">
+  <div class="max-w-md rounded-3xl pt-40 mt-40">
     <div class="rounded-[calc(1.5rem-1px)] pl-5">
 
       <div class="mt-8 flex gap-4 items-center">

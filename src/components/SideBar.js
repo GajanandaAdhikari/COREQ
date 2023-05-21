@@ -9,7 +9,7 @@ import UserName from './UserName';
 
 function Side({title,Icon,page}){
     return(
-        <div className=' mt-12 pl-5 '>
+        <div className=' mt-12 pl-5 pr-2 '>
            <a href='src/pages/Login.js'> <h1 className='text-xl font-semibold hover:text-sky-700'><Icon className="mr-6" sx={{fontSize:40}} ></Icon>{title}</h1></a>
         </div>
     )
@@ -39,7 +39,9 @@ function SideBar(){
                 page={nav.page}
                 ></Side>)
         }
-        <UserName></UserName>
+        <div className=''>
+         <UserName></UserName>
+        </div>
         </>
     )
 }
