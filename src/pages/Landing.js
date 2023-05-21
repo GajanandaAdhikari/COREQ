@@ -7,7 +7,7 @@ function Landing(){
         <div className="flex divide-x divide-solid w-full">
         <div className="mt- ">
          
-        <div className="mt-40  pl-6 ">
+        <div className="mt-30  pl-6 ">
             <SideBar></SideBar>
             
             

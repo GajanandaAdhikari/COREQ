@@ -9,8 +9,8 @@ import UserName from './UserName';
 
 function Side({title,Icon,page}){
     return(
-        <div className=' mt-12 pl-5 pr-2 '>
-           <a href='src/pages/Login.js'> <h1 className='text-xl font-semibold hover:text-sky-700'><Icon className="mr-6" sx={{fontSize:40}} ></Icon>{title}</h1></a>
+        <div className=' mt-20 ml-20 pl-20 mr-20 '>
+           <a href='src/pages/Login.js'> <h1 className=' font-semibold hover:text-sky-700'><Icon className="mr-6" sx={{fontSize:40}} ></Icon><span className='hidden md:inline-flex '>{title}</span></h1></a>
         </div>
     )
    
