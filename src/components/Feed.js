@@ -1,5 +1,5 @@
 import PostBox from "./PostBox";
-import ShowPost from "./Vote";
+import ShowPostUser from "./ShowPostUser";
 import FriendSuggestion from "./FriendSuggestion";
 import TopProjects from "./TopProjects";
 import TopResearchArticles from "./TopResearchArticles";
@@ -9,25 +9,28 @@ function Feed(){
     return(
         <>
   
-    <div className="flex grid grid-cols-3 col-span-6  gap-x-60 ">
-    <div className="mt-30  pl-20 ml-20 ">
+    <div className="block grid-container grid sm:grid-flow-col auto-cols-max  lg:grid-cols-8  box-decoration-clone bg-gradient-to-r from-blue-50 to-gray-50 from-gray-50 to-blue-50 object-fill">
+    <div className="mt-30 w-fit sm:grid-flow-col auto-cols-max  lg:col-span-2  ">
             <SideBar></SideBar>
             
             
         </div>
     
-    <div className="mt-20 ml-0 pl-10 ">
+    <div className="sm:grid-flow-col auto-cols-max lg:col-span-4 mt-20 w-full ml-0 pl-0  box-decoration-clone bg-gradient-to-r from-black-300 to-red-100 object-fill">
         <PostBox></PostBox>
-        <ShowPost></ShowPost>
+        <div className=" mt-20 overflow-y-scroll  h-[700px] ">
+        <ShowPostUser></ShowPostUser>
         </div>
-        <div className="pl-20 divide-x divide-solid w-full  ">
-        <div className="flex justify-left gap-60 ml-20 lg:mt-20 truncate">
+        </div>
+        
+        <div className="sm:col-span-1 lg:col-span-2 overflow-y-scroll  h-[1100px]   ">
+        <div className="block justify-left   lg:mt-20 ">
         <FriendSuggestion/>
         </div>
-        <div className="flex justify-left gap-60 ml-20 lg:mt-5">
+        <div className="flex justify-left  lg:mt-5">
         <TopProjects/>
         </div>
-        <div className="flex justify-left gap-60 ml-20 lg:mt-5">
+        <div className="flex justify-left   lg:mt-5">
         <TopResearchArticles/>
         </div>
     </div>

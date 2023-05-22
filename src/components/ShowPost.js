@@ -5,8 +5,7 @@ function ShowPost(){
     return(
         <>
             <div className="flex mt-20 ">
-                <Vote></Vote>
-                <ShowPostUser/>
+         
             </div>
         </>
     )
