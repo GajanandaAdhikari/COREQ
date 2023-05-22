@@ -15,7 +15,7 @@ function PostBox(){
     };
   
     return (
-      <div className="flex pl-10">
+      <div className="flex w-fit pl-10 ">
         <Avatar src="https://avatars.githubusercontent.com/u/92971596?s=120&v=4" className="flex "></Avatar>
         <form>
         <div className="">
@@ -23,9 +23,9 @@ function PostBox(){
           value={title}
           onChange={HandleChange}
           rows={1} // Specify the number of visible rows
-          cols={44} // Specify the number of visible columns
-          className="border-4  shadow-lg shadow-inner ml-4 hover:bg-blend-darken font-medium text-lg"
-          style={{border:"none",outline:"none"}}
+          cols={62} // Specify the number of visible columns
+          className=" w-fit  bg-gray-100 border-4   shadow-inner ml-4 hover:bg-blend-darken font-medium text-lg"
+          style={{border:"none",outline:"none",display: "grid"}}
           placeholder="Title"
         />
         </div>
@@ -33,12 +33,12 @@ function PostBox(){
           value={text}
           onChange={handleChange}
           rows={6} // Specify the number of visible rows
-          cols={50} // Specify the number of visible columns
-          className="border-4 shadow-lg shadow-inner ml-4 hover:bg-blend-darken"
+          cols={71} // Specify the number of visible columns
+          className="bg-gray-50 border-4   shadow-lg shadow-inner ml-4 hover:bg-blend-darken"
           style={{border:"none",outline:"none"}}
           placeholder="What's yout thought?"
         />
-        <div className="mt-4 ">
+        <div className="block mt-4 w-fit ">
         <Stack spacing={2} direction="row">
        <Button variant="outlined">Post</Button>
        <Button variant="outlined">Research Articles</Button>
