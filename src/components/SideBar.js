@@ -9,8 +9,8 @@ import UserName from './UserName';
 
 function Side({title,Icon,page}){
     return(
-        <div className=' mt-20 ml-20 pl-20 '>
-           <a href='src/pages/Login.js'> <h1 className=' font-semibold hover:text-sky-700'><Icon className="mr-6" sx={{fontSize:40}} ></Icon><span className='hidden md:inline-flex '>{title}</span></h1></a>
+        <div className=' mt-10  ml-20 pl-20 '>
+           <a href='src/pages/Login.js ' className=''> <h1 className='text-sm font-semibold hover:text-sky-700'><Icon className=" mr-6  " sx={{fontSize:40}} ></Icon><span className='hidden  sm:inline-flex '>{title}</span></h1></a>
         </div>
     )
    
@@ -19,11 +19,11 @@ function Side({title,Icon,page}){
 
 
 const side = [
-    {Icon:Home, title:"Home",page:"src/pages/Login.js"},
-    {Icon:PostAddIcon,title:"Post",page:"../pages/home"},
-    {Icon:MenuBookIcon ,title:"Research Articles",page:"../pages/home"},
-    {Icon:PsychologyIcon ,title:"Projects",page:"../pages/home"},
-    {Icon:QuestionAnswerIcon ,title:"QnA",page:"../pages/home"},
+    {Icon:Home, title:"Home",page:""},
+    {Icon:PostAddIcon,title:"Post",page:""},
+    {Icon:MenuBookIcon ,title:"Articles",page:""},
+    {Icon:PsychologyIcon ,title:"Projects",page:""},
+    {Icon:QuestionAnswerIcon ,title:"Queries",page:""},
     {Icon:AccountCircleIcon,title:"Profile"}
     
 

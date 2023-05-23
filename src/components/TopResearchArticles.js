@@ -46,8 +46,8 @@ function SuggestedResearchArticles({name,userName,userImage,projTitle}){
                         <img className="w-8 h-8 rounded-full" src={userImage}/>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <h1 className='antialiased font-semibold hover:text-purple-700 text-lg'>{projTitle}</h1>
-                        <p className="text-sm sm:font-medium md:font-xl  truncate hover:text-sky-700">
+                        <h1 className='antialiased font-semibold hover:text-purple-700 text-md sm:text-[16px]'>{projTitle}</h1>
+                        <p className="text-sm sm:text-small md:text-medium truncate hover:text-sky-700">
                             {name} <span className="text-sm text-gray-700 truncate dark:text-gray-700">@{userName}</span>
                         </p>
                         {/* <p className="text-sm text-gray-700 truncate dark:text-gray-700">

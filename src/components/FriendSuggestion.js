@@ -42,7 +42,7 @@ function SuggestedFriend({name,userName,userImage}){
                         <img className="w-8 h-8 rounded-full" src={userImage}/>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p className="text-lg sm:font-medium md:font-xl hover:text-sky-700 truncate ">
+                        <p className="text-medium sm:font-small md:font-medium hover:text-sky-700 truncate ">
                             {name}
                         </p>
                         <p className="text-sm text-gray-700 truncate dark:text-gray-700">
