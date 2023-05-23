@@ -32,17 +32,6 @@ const users=[
 
 
 
-
-// function Vote(){
-//     return(
-//         <div className="flex-none">
-//             <button ><ArrowDropUpIcon sx={{fontSize:80}}/></button>
-//             <h1 className='ml-6 font-bold'>{vote}</h1>
-//            <button ><ArrowDropDownIcon sx={{fontSize:80}}/></button>
-//         </div>
-//     )
-// }
-
 function PostUser(){
     return(
         <div>
@@ -69,14 +58,14 @@ function CurrentUser({userName,userAvatar,title,description,vote}){
             <Avatar src={userAvatar} sx={{width:30,height:30}}/>
             <span className="font-semibold pl-4"><h1>{userName}</h1></span>
         </div>
-       <div className="flex ">
+       <div className="flex  sm:w-[100px] ">
        <div className="flex-none">
             <button ><ArrowDropUpIcon sx={{fontSize:80}}/></button>
             <h1 className='ml-6 font-bold'>{vote}</h1>
            <button ><ArrowDropDownIcon sx={{fontSize:80}}/></button>
         </div>
        <p>
-        <div className="bg-red-890 object-fill box-border h-[300px]  w-fit  p-4 border-0 bg-gray-0 shadow-lg shadow-indigo-200/100 ">
+        <div className="bg-red-890 object-fill box-border h-[300px] sm:w-[100px] md:w-[400px] lg:w-[700px]  p-4 border-0 bg-gray-0 shadow-lg shadow-indigo-200/100 ">
         <span className="font-bold text-base font-serif lg:text-xl"><h1>{title}</h1></span>
         <br></br>
         <span className="mt-10 font-mono"><p>{description}</p></span>

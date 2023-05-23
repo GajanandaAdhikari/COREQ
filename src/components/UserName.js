@@ -14,13 +14,13 @@ function UserName({name,userName,userImage}){
 
        
 
-  <div class="max-w-md rounded-3xl pt-40 mt-30 pl-20 ml-10">
+  <div class="max-w-md rounded-3xl pt-0 md:mt-40  pl-20 ml-14">
     <div class="rounded-[calc(1.5rem-1px)] pl-5">
 
       <div class="mt-8 flex gap-4 items-center">
-        <img class="h-12 w-12 rounded-full" src={userImage} alt="" />
+        <img class="h-10 w-10 rounded-full" src={userImage} alt="" />
         <div>
-          <h3 class="text-lg font-medium ">{name}</h3>
+          <h3 class="sm:text-sm text-md ">{name}</h3>
           <span class="text-sm tracking-wide text-gray-600">@{userName}</span>
         </div>
       </div>
