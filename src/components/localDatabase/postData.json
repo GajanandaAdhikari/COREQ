@@ -1,0 +1,37 @@
+[
+    {
+        "name":"Ujjwal Dhakal",
+        "userName":"ujjwalnp",
+        "userImage":"https://avatars.githubusercontent.com/u/68050149?s=120&v=4",
+        "title":"Twitter 2.0 using Blockchain Technology",
+        "description":"A block chain is one of the simplest ways to control your Twitter experience, but it's also the least discerning. When you initiate a block chain for a specific account, you block every person following that account.",
+        "vote":200,
+        "tag":"Query",
+        "postDate":"Saturday, 10 Jun"
+    },
+    {
+        "name":"Gazananda Mani Adhikari",
+        "userName":"cosmicGZ",
+        "userImage":"https://avatars.githubusercontent.com/u/90420230?s=120&v=4",
+        "title":"Advance Searching Algorithm",
+        "description":"The binary search algorithm works on the principle of divide and conquer and it is considered the best searching algorithm because it's faster to run.",
+        "vote":499,
+        "tag":"Query",
+        "postDate":"Monday, 12 March"
+
+    },
+
+    {
+        "name":"Nischal Khanal", 
+        "userName":"Hunter420",
+        "userImage":"https://avatars.githubusercontent.com/u/92971596?s=120&v=4",
+        "title":"Learn React in 100 days",
+        "description":"Learning React in 100 days is an ambitious goal, but with dedication and a structured approach, it is definitely achievable.",
+        "vote":150,
+        "tag":"Query",
+        "postDate":"Tuesday, 23 May"
+    }
+
+]
+
+
