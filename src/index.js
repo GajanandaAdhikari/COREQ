@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Landing from './pages/Landing';
+// import Landing from './pages/Landing';
 import SideBar from './components/SideBar';
 import UserName from './components/UserName';
+import Landing from './components/testing/Landing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
