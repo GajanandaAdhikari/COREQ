@@ -1,6 +1,6 @@
-import Header from "../components/Header";
-import Signup from "../components/Signup";
-import CardProfile from "../components/ProfilePictureUpload";
+import Header from "../Components/Header";
+import Signup from "../Components/Signup";
+import CardProfile from "../Components/ProfilePictureUpload";
 
 export default function SignupPage(){
     return(

@@ -4,11 +4,14 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Login from './Login';
+import UserName from './UserName';
 
 function Side({title,Icon,page}){
     return(
-        <div className='pt-9 2xl:pt-20 max-sm:ml-4 '>
-           <a href='src/pages/Login.js ' className=''> <h1 className='md:text-md lg:text-lg 2xl:text-3xl font-semibold hover:text-sky-700'><Icon className=" mr-6  " sx={{fontSize:30}} ></Icon><span className='hidden  sm:inline-flex '>{title}</span></h1></a>
+        
+        <div className=' mt-10  ml-20 pl-20 '>
+           <a href='src/pages/Login.js ' className=''> <h1 className='text-sm font-semibold hover:text-sky-700'><Icon className=" mr-6  " sx={{fontSize:40}} ></Icon><span className='hidden  sm:inline-flex '>{title}</span></h1></a>
         </div>
     )
    
@@ -18,12 +21,11 @@ function Side({title,Icon,page}){
 
 const side = [
     {Icon:Home, title:"Home",page:""},
+    {Icon:PostAddIcon,title:"Post",page:""},
     {Icon:MenuBookIcon ,title:"Articles",page:""},
     {Icon:PsychologyIcon ,title:"Projects",page:""},
     {Icon:QuestionAnswerIcon ,title:"Queries",page:""},
-    {Icon:PostAddIcon,title:"Archive",page:""},
-
-    // {Icon:AccountCircleIcon,title:"Profile"}
+    {Icon:AccountCircleIcon,title:"Profile"}
     
 
 ];
@@ -38,6 +40,9 @@ function SideBar(){
                 page={nav.page}
                 ></Side>)
         }
+        <div className=''>
+         <UserName></UserName>
+        </div>
         </>
     )
 }

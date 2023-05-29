@@ -6,73 +6,75 @@ const users=[
         name:"Nischal Khanal", 
         userName:"Hunter420",
         userImage:"https://avatars.githubusercontent.com/u/92971596?s=120&v=4",
-        title:"Health Risk Analysis"
+        title:"Store one human gene information to another human"
     },
     {
         name:"Ujjwal Dhakal",
         userName:"ujjwalnp",
         userImage:"https://avatars.githubusercontent.com/u/68050149?s=120&v=4",
-        title:"Twitter 2.0 using Blockchain Technology"
+        title:"Self driving motorcycle"
     },
     {
-        name:"Gazananda Adhikari",
+        name:"Gazananda Mani Adhikari",
         userName:"cosmicGZ",
         userImage:"https://avatars.githubusercontent.com/u/90420230?s=120&v=4",
-        title:"Advance Searching Algorithm"
+        title:"Quantum Computing and it's benifits"
     }
 ];
 
-function TopProjectList(){
+function TopResearchArticlesList(){
     return(
         <div>
             {
-                users.map(user=><SuggestedProject
+                users.map(user=><SuggestedResearchArticles
                     name={user.name}
                     userName={user.userName}
                     userImage={user.userImage}
                     projTitle={user.title}
-                    ></SuggestedProject>)
+                    ></SuggestedResearchArticles>)
             }
         </div>
     )
 }
 
-function SuggestedProject({name,userName,userImage,projTitle}){
+function SuggestedResearchArticles({name,userName,userImage,projTitle}){
     return(
         <>
-        <li className="py-2">
+        <li className="py-3 sm:py-4 ">
                 <div className="flex items-center space-x-4">
                     <div class="flex-shrink-0">
                         <img className="w-8 h-8 rounded-full" src={userImage}/>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <h1 className='antialiased  hover:text-purple-700 md:text-[20px] 2xl:text-[25px]'><a href=''>{projTitle}</a></h1>
-                        <p className="text-[16px]    hover:text-sky-700">
-                            {name} <span className="text-[14px] text-gray-700  dark:text-gray-700">@{userName}</span>
+                        <h1 className='antialiased font-semibold hover:text-purple-700 text-md sm:text-[16px]'>{projTitle}</h1>
+                        <p className="text-sm sm:text-small md:text-medium truncate hover:text-sky-700">
+                            {name} <span className="text-sm text-gray-700 truncate dark:text-gray-700">@{userName}</span>
                         </p>
                         {/* <p className="text-sm text-gray-700 truncate dark:text-gray-700">
                             @{userName}
                         </p> */}
                     </div>
-                    
+                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    <Button variant="text">Visit</Button>
+                    </div>
                 </div>
             </li>
         </>
     )
 }
 
-function TopProjects(){
+function TopResearchArticles(){
     return(
         <>
         <div className="flex">
 
-<div class="max-sm:w-[175px] md:w-[180px] lg:w-[240px]  2xl:w-[376px] p-1  border border-gray-200 rounded-lg shadow  ">
+<div class="w-full max-w-md  p-4  border border-gray-200 rounded-lg shadow sm:p-8 ">
     <div class="flex items-center justify-between mb-4">
-        <h5 class="md:text-md lg:text-lg 2xl:text-3xl font-bold leading-none  ">Top Projects</h5>
+        <h5 class="text-xl font-bold leading-none  ">Top Research Articles</h5>
    </div>
    <div class="flow-root">
         <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-            <TopProjectList/>
+            <TopResearchArticlesList/>
                     </ul>
    </div>
 </div>
@@ -81,4 +83,4 @@ function TopProjects(){
     )
 }
 
-export default TopProjects;
+export default TopResearchArticles;

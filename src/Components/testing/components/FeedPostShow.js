@@ -1,6 +1,14 @@
-import PostData from '../../localDatabase/postData.json';
+import FeedData from '../../../localDatabase/feedData.json';
 import upvote from '../img/upvote.png';
 import downvote from '../img/downvote.png';
+
+function CommentShow(){
+    return(
+        <>
+
+        </>
+    )
+}
 
 
 function PostShow({name,profileImage,description,vote,tag,postDate}){
@@ -12,7 +20,7 @@ function PostShow({name,profileImage,description,vote,tag,postDate}){
                     <div className='flex col-span-4'>
                         <img className='h-9 w-9 2xl:h-12 2xl:w-12 rounded-full mr-5 max-sm:mr-4  max-sm:h-9 max-sm:w-9' src={profileImage}></img>
                         <div className=''>
-                        <a href='' className='2xl:text-[30px]'>{name}</a>
+                        <a href='' className='2xl:text-[25px]'>{name}</a>
                         <p className='font-k2d 2xl:text-[20px]'>{tag}</p>
                         </div>
                     </div>
@@ -20,7 +28,7 @@ function PostShow({name,profileImage,description,vote,tag,postDate}){
                         <h1 className='font-k2d text-sm 2xl:text-[20px] '>{postDate}</h1>
                     </div>
                 </div>
-                <div className='row-span-5 flex-grow border-b border-gray-300 2xl:text-[25px] pb-7'>
+                <div className='row-span-5 flex-grow border-b border-gray-300 2xl:text-[20px] pb-7'>
                    <p>{description}</p>
                 </div>
                 <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
@@ -28,8 +36,8 @@ function PostShow({name,profileImage,description,vote,tag,postDate}){
                         <h1>{vote}</h1>
                     </div>
                     <div className='col-span-1 flex pr-4 '>
-                        <button><img src={upvote} className='w-10 '></img></button>
-                        <button><img src={downvote} className='w-10 pl-0'></img></button>
+                        <button><img src={upvote} className='w-7 h-7 mr-4 '></img></button>
+                        <button><img src={downvote} className='w-7 h-7 ml-3'></img></button>
                     </div>
                 </div>
                 <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
@@ -49,7 +57,7 @@ function QueryPostShow(){
     return(
         <>
          {
-                PostData.map(user=><PostShow
+                FeedData.map(user=><PostShow
                     name={user.name}
                     userName={user.userName}
                     profileImage={user.userImage}
