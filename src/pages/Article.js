@@ -1,14 +1,14 @@
-import Gretting from "../../components/Gretting";
-import Search from "../../components/Search";
-import SideBar from "../../components/SideBar";
-import FriendSuggestion from "../../components/FriendSuggestion";
-import TopProjects from "../../components/TopProjects";
-import TopResearchArticles from "../../components/TopResearchArticles";
-import CirculateQueries from "../../components/CirculateQueries";
-import QueryPostShow from "../../components/QueryPostShow";
-import Coreq from "./img/coreq.png";
+import Gretting from "../components/Gretting";
+import Search from "../components/Search";
+import SideBar from "../components/SideBar";
+import FriendSuggestion from "../components/FriendSuggestion";
+import TopProjects from "../components/TopProjects";
+import TopResearchArticles from "../components/TopResearchArticles";
+import CirculateArticle from "../components/CirculateArticle";
+import ArticlePostShow from "../components/ArticlePost";
+import Coreq from "../img/coreq.png";
 
-function QueriesPage() {
+function Article() {
   return (
     <>
       <div className="font-sans bg-back-color overflow-hidden h-screen p-5 ">
@@ -18,7 +18,7 @@ function QueriesPage() {
               {/* gretting  */}
               <Gretting />
             </div>
-            <div className="md:col-span-3 sm:col-span-4 text-center font-mono  font-bold max-sm:hidden md:text-[40px] lg:text-[50px]">{/* section name or icon on the top  */}<h1>Queries</h1></div>
+            <div className="md:col-span-3 sm:col-span-4 text-center font-mono  font-bold max-sm:hidden md:text-[40px] lg:text-[50px]">{/* section name or icon on the top  */}<h1>Articles</h1></div>
             <div className="max-sm:col-start-4">{/* search  */}
             <Search/>
             </div>
@@ -44,10 +44,10 @@ function QueriesPage() {
             {/* <h1>feed</h1>    */}
             
             <div className="2xl:pl-20">
-            <CirculateQueries/>
+            <CirculateArticle/>
             </div>
             <div className="2xl:pl-20">{/* show post  */}
-            <QueryPostShow/>
+            <ArticlePostShow/>
             </div>
           </div>
             
@@ -68,4 +68,4 @@ function QueriesPage() {
   );
 }
 
-export default QueriesPage;
+export default Article;

@@ -4,18 +4,17 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import SignupPage from './pages/Signup';
-import LoginPage from './pages/Login';
-import CardProfile from './Components/ProfilePictureUpload';
-import LandingPage from './pages/Landing';
-// import Landing from './pages/Landing';
-import Landing from './Components/testing/Landing';
-import QueryPostShow from "./components/QueryPostShow";
-import QueriesPage from "./Components/testing/QueriesPage";
-import Feed from "./Components/testing/Feed";
-import Article from "./Components/testing/Article";
-import Project from "./Components/testing/Project";
-import Archive from "./Components/testing/Archive";
+// import SignupPage from './pages/Signup';
+// import LoginPage from './pages/Login';
+// import CardProfile from './Components/ProfilePictureUpload';
+
+
+
+import QueriesPage from "./pages/QueriesPage";
+import Feed from "./pages/Feed";
+import Article from "./pages/Article";
+import Project from "./pages/Project";
+import Archive from "./pages/Archive";
 
 // function App() {
 //   return (

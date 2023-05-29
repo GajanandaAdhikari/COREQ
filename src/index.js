@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import Landing from './pages/Landing';
-import SideBar from './Components/SideBar';
-import UserName from './Components/UserName';
-import Landing from './Components/testing/Landing';
-import PopUp from './components/Pop'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

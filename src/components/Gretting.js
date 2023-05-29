@@ -1,4 +1,4 @@
-import CurrentUserData from '../../localDatabase/CurrentUserData.json';
+import CurrentUserData from '../localDatabase/CurrentUserData.json';
 
 function UserName({name,userName,userImage}){
    

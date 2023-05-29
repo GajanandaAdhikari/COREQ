@@ -1,4 +1,4 @@
-import PostData from '../Components/localDatabase/postData.json';
+import PostData from '../localDatabase/postData.json';
 import upvote from '../img/upvote.png';
 import downvote from '../img/downvote.png';
 
