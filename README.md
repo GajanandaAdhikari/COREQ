@@ -11,6 +11,7 @@ This proposal outlines the creation of COREQ (Community for Reprising Qualitativ
 
 - React
 - Node.js
+- Express.js
 - MongoDB
 
 ## Features
