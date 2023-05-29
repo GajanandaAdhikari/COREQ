@@ -4,8 +4,8 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import PsychologyIcon from '@mui/icons-material/Psychology';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import QueriesPage from '../Components/testing/QueriesPage.js'
+
+
 
 
 function Side({title,Icon,page}){

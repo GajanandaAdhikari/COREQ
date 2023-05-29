@@ -1,4 +1,4 @@
-import FeedData from '../Components/localDatabase/articleData.json';
+import FeedData from '../localDatabase/articleData.json';
 import upvote from '../img/upvote.png';
 import downvote from '../img/downvote.png';
 

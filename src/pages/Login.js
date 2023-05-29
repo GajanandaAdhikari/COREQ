@@ -1,6 +1,6 @@
 
-import Header from "../Components/Header"
-import Login from "../Components/Login"
+import Header from "../components/Header"
+import Login from "../components/Login"
 function LoginPage(){
     return(
         <>
