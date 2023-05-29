@@ -1,14 +1,14 @@
-import Gretting from "./components/Gretting";
-import Search from "./components/Search";
-import SideBar from "./components/SideBar";
-import FriendSuggestion from "./components/FriendSuggestion";
-import TopProjects from "./components/TopProjects";
-import TopResearchArticles from "./components/TopResearchArticles";
-import CirculatePost from "./components/CirculatePost";
-import QueryPostShow from "./components/QueryPostShow";
+import Gretting from "../../components/Gretting";
+import Search from "../../components/Search";
+import SideBar from "../../components/SideBar";
+import FriendSuggestion from "../../components/FriendSuggestion";
+import TopProjects from "../../components/TopProjects";
+import TopResearchArticles from "../../components/TopResearchArticles";
+import CirculatePost from "../../components/CirculatePost";
+import FeedPostShow from "../../components/FeedPostShow";
 import Coreq from "./img/coreq.png";
 
-function Landing() {
+function Feed() {
   return (
     <>
       <div className="font-sans bg-back-color overflow-hidden h-screen p-5 ">
@@ -18,7 +18,7 @@ function Landing() {
               {/* gretting  */}
               <Gretting />
             </div>
-            <div className="md:col-span-3 sm:col-span-4">{/* section name or icon on the top  */}</div>
+            <div className="md:col-span-3 sm:col-span-4 text-center font-mono  font-bold max-sm:hidden md:text-[40px] lg:text-[50px]">{/* section name or icon on the top  */}<h1>Feed</h1></div>
             <div className="max-sm:col-start-4">{/* search  */}
             <Search/>
             </div>
@@ -39,19 +39,19 @@ function Landing() {
             </div>
           </div>
 
-          <div className="md:col-span-3 max-sm:col-span-5 max-sm:col-start-1 max-sm:overflow-scroll max-sm:h-[600px] md:overflow-y-scroll md:h-[540px] 2xl:h-[900px]  ">
+          <div className="md:col-span-3 max-sm:col-span-5 max-sm:col-start-1 max-sm:overflow-scroll max-sm:h-[600px] md:overflow-y-scroll md:h-[540px] 2xl:h-[760px]  ">
             {/* feed section */}
             {/* <h1>feed</h1>    */}
             
-            <div className="2xl:pl-20">{/* circulate  */}
+            <div className="2xl:pl-20">
             <CirculatePost/>
             </div>
             <div className="2xl:pl-20">{/* show post  */}
-            <QueryPostShow/>
+            <FeedPostShow/>
             </div>
           </div>
             
-          <div className="max-sm:hidden grid  overflow-y-scroll md:h-[540px] 2xl:h-[910px] ">
+          <div className="max-sm:hidden grid  overflow-y-scroll md:h-[540px] 2xl:h-[760px] ">
             {/* show top results  */}
             {/* <h1>top result</h1> */}
             
@@ -68,4 +68,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default Feed;

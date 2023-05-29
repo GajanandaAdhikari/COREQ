@@ -1,7 +1,7 @@
 
-import SideBar from "../components/SideBar";
-import UserName from "../components/UserName";
-import Feed from "../components/Feed";
+import SideBar from "../Components/SideBar";
+import UserName from "../Components/UserName";
+import Feed from "../Components/Feed";
 function Landing(){
     return(
         <div className=" block divide-x divide-solid w-full ">

@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         'regal-blue': '#243c5a',
         'back-color':'#F7FBEE',
+        'boderColor':'#D9D9D9',
       },
       screens: {
         'sm': '430px',
