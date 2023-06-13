@@ -1,0 +1,20 @@
+.navbar a{
+    color: green;
+    text-decoration: none;
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: 17px;
+    display: inline;
+}
+
+#tableHead th{
+    color: green;
+}
+
+#monika td{
+    color: red;
+}
+
+label{
+    color: green;
+}
