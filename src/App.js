@@ -15,6 +15,7 @@ import Feed from "./pages/Feed";
 import Article from "./pages/Article";
 import Project from "./pages/Project";
 import Archive from "./pages/Archive";
+import StartPage from "./pages/StartPage";
 
 // function App() {
 //   return (
@@ -47,14 +48,16 @@ function App() {
         <Routes>
             {/* <Route path="/" element={<LoginPage/>} />
             <Route path="/signup" element={<SignupPage/>} /> */}
-            <Route path="/" exact element={<Feed/>} />
+            {/* <Route path="/" exact element={<Feed/>} />
             <Route path="/query" exact element={<QueriesPage/>} />
             <Route path="/articles" exact element={<Article/>} />
             <Route path="/projects" exact element={<Project/>} />
-            <Route path="/archive" exact element={<Archive/>} />
+            <Route path="/archive" exact element={<Archive/>} /> */}
            
         </Routes>
         {/* <Landing></Landing> */}
+        <StartPage></StartPage>
+        
         
       </BrowserRouter>
     

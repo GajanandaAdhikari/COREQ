@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=K2D:wght@100&family=Paytone+One&display=swap');
 .explore{
     /* EXPLORE YOUR COMMUNITY DIGITALLY */
-position: absolute;
 width: 1055px;
 height: 830px;
-left: 108px;
+margin-left: 108px;
 top: 115px;
 
 font-family: 'Paytone One';
@@ -16,6 +15,7 @@ align-items: center;
 
 /* light text */
 color: #0F0F0F;
+
 /* avatar_ujjwal 1 */
 
 }
