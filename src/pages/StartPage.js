@@ -27,7 +27,7 @@ function StartPage(){
                 </div>
             </div>
             <div className="row-span-9 grid grid-cols-2">
-                <div className="col-span-1 mt-20 explore">
+                <div className="col-span-1 mt-20 explore max-md:text-[100px]">
                 <h1>EXPLORE</h1>
                 <h1>YOUR</h1>
                 <h1>COMMUNITY</h1>
