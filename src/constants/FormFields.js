@@ -2,7 +2,7 @@ const loginFields=[
     {
         labelText:"Email address",
         labelFor:"email-address",
-        id:"email-address",
+        id:"email",
         name:"email",
         type:"email",
         autoComplete:"email",
@@ -24,11 +24,11 @@ const loginFields=[
 const signupFields=[
     {
         labelText:"Name",
-        labelFor:"name",
-        id:"name",
-        name:"name",
+        labelFor:"full_name",
+        id:"full_name",
+        name:"full_name",
         type:"text",
-        autoComplete:"name",
+        autoComplete:"full_name",
         isRequired:true,
         placeholder:"Name"   
     },
@@ -46,7 +46,7 @@ const signupFields=[
     {
         labelText:"Userfaculty",
         labelFor:"userfaculty",
-        id:"userfaculty",
+        id:"faculty",
         name:"userfaculty",
         type:"text",
         autoComplete:"userfaculty",
@@ -56,7 +56,7 @@ const signupFields=[
     {
         labelText:"Usersemester",
         labelFor:"usersemester",
-        id:"usersemester",
+        id:"semester",
         name:"usersemester",
         type:"number",
         autoComplete:"usersemester",
@@ -66,7 +66,7 @@ const signupFields=[
     {
         labelText:"Email address",
         labelFor:"email-address",
-        id:"email-address",
+        id:"email",
         name:"email",
         type:"email",
         autoComplete:"email",
