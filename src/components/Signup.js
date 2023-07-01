@@ -3,6 +3,8 @@ import { signupFields } from "../constants/FormFields"
 import FormAction from "./FormAction";
 import Input from "./Input";
 import CardProfile from './ProfilePictureUpload';
+import axios from 'axios';
+
 const fields=signupFields;
 let fieldsState={};
 
@@ -20,9 +22,16 @@ export default function Signup(){
   }
 
   //handle Signup API Integration here
-  const createAccount=()=>{
-
-  }
+  const createAccount = async () => {
+    try {
+      const response = await axios.post('http://localhost:8080/api/signup', signupState);
+      console.log(response.data);
+      // Handle the response or perform any necessary actions
+    } catch (error) {
+      console.error(error);
+      // Handle any error that occurred during the API request
+    }
+  };
 
     return(
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>

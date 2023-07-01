@@ -3,6 +3,7 @@ import { loginFields } from "../constants/FormFields";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
+import axios from 'axios';
 
 const fields=loginFields;
 let fieldsState = {};
@@ -21,8 +22,15 @@ export default function Login(){
     }
 
     //Handle Login API Integration here
-    const authenticateUser = () =>{
-
+    const authenticateUser = async() =>{
+        try {
+            const response = await axios.post('http://localhost:8080/api/login', loginState);
+            console.log(response.data);
+            // Handle successful login or perform any necessary actions
+          } catch (error) {
+            console.error(error);
+            // Handle login error or display error message
+          }
     }
 
     return(
