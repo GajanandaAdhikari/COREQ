@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { signupFields } from "../constants/FormFields"
 import FormAction from "./FormAction";
 import Input from "./Input";
-import CardProfile from './ProfilePictureUpload';
 import axios from 'axios';
 
 const fields=signupFields;
