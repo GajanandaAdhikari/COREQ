@@ -9,7 +9,7 @@ export default function SignupPage(){
               heading="Signup to create an account"
               paragraph="Already have an account? "
               linkName="Login"
-              linkUrl="/"
+              linkUrl="/login"
             />
             <CardProfile></CardProfile>
             <Signup/>
