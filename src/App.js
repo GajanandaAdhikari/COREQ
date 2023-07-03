@@ -10,6 +10,7 @@ import StartPage from "./pages/StartPage";
 import ProfileDetails from "./pages/ProfileDetails";
 import CommentPage from "./pages/CommentPage";
 
+
 function App() {
   return (
     <div className="">
@@ -26,6 +27,7 @@ function App() {
             <Route path="/startpage" exact element={<StartPage />} />
             <Route path="/profile" exact element={<ProfileDetails />} />
             <Route path="/comment" exact element={<CommentPage />} />
+
           </Routes>
         </BrowserRouter>
       </div>
