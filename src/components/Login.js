@@ -4,6 +4,8 @@ import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const fields=loginFields;
 let fieldsState = {};
@@ -11,6 +13,7 @@ fields.forEach(field=>fieldsState[field.id]='');
 
 export default function Login(){
     const [loginState,setLoginState]=useState(fieldsState);
+    const navigate = useNavigate();
 
     const handleChange=(e)=>{
         setLoginState({...loginState,[e.target.id]:e.target.value})
@@ -24,9 +27,15 @@ export default function Login(){
     //Handle Login API Integration here
     const authenticateUser = async() =>{
         try {
-            const response = await axios.post('http://localhost:8080/api/login', loginState);
+            const response = await axios.post('http://localhost:8000/auth/login', loginState);
             console.log(response.data);
+            const token = response.data.token;
+            const userId = response.data.userId;
+            Cookies.set('token', token);
+            Cookies.set('userId', userId);
+
             // Handle successful login or perform any necessary actions
+            navigate('/')
           } catch (error) {
             console.error(error);
             // Handle login error or display error message
