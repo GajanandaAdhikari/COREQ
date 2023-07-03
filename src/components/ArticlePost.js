@@ -1,6 +1,9 @@
 import FeedData from '../localDatabase/articleData.json';
 import upvote from '../img/upvote.png';
 import downvote from '../img/downvote.png';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 function CommentShow(){
     return(
@@ -67,28 +70,86 @@ function PostShow({name,profileImage,title,description,vote,tag,postDate,author,
     )
 }
 
+// GET ALL ARTICLES API INTEGRATION
+// const GetAllArticles = async() => {
+//     try {
+//         const response = await axios.get("http://localhost:8000/article", {
+//             headers: {
+//                 Authorization: `Bearer ${token}`,
+//               }
+//         });
+//     }
+//     catch(error) {
+//         console.log(error)
+//     }
+// }
 
-function ArticlePostShow(){
-    return(
-        <>
-         {
-                FeedData.map(user=><PostShow
-                    name={user.name}
-                    userName={user.userName}
-                    profileImage={user.userImage}
-                    title={user.title}
-                    description={user.description}
-                    vote={user.vote}
-                    tag={user.tag}
-                    postDate={user.postDate}
-                    author={user.author}
-                    publicationYear={user.publicationYear}
-                    publicationHouse={user.publicationHouse}
-                    keywords={user.keywords}
-                    ></PostShow>)
+function ArticlePostShow() {
+    const [articles, setArticles] = useState([]);
+
+    const token = Cookies.get('token');
+  
+    useEffect(() => {
+      const fetchArticles = async () => {
+        try {
+          const response = await axios.get("http://localhost:8000/article", {
+            headers: {
+                Authorization: `Bearer ${token}`,
             }
-        </>
-    )
-}
+          });
+          setArticles(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      console.log(fetchArticles());
+    }, []);
+  
+    return (
+      <>
+        {articles.map((article) => (
+          <PostShow
+            key={article.id}
+            name={article.userFullName}
+            profileImage={article.profileImage}
+            title={article.title}
+            description={article.description}
+            vote={article.vote}
+            tag={"article"}
+            postDate={article.createdAt.slice(0, 10).trimRight()}
+            author={article.authors}
+            publicationYear={article.publicationYear}
+            publicationHouse={article.publicationHouse}
+            keywords={article.keywords}
+
+          />
+        ))}
+      </>
+    );
+  }
+
+// function ArticlePostShow(){
+//     return(
+//         <>
+//          {
+//                 FeedData.map(user=><PostShow
+//                     name={user.name}
+//                     userName={user.userName}
+//                     profileImage={user.userImage}
+//                     title={user.title}
+//                     description={user.description}
+//                     vote={user.vote}
+//                     tag={user.tag}
+//                     postDate={user.postDate}
+//                     author={user.author}
+//                     publicationYear={user.publicationYear}
+//                     publicationHouse={user.publicationHouse}
+//                     keywords={user.keywords}
+//                     ></PostShow>)
+//             }
+//         </>
+//     )
+// }
 
 export default ArticlePostShow;
