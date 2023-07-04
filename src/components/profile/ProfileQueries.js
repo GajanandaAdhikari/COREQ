@@ -2,6 +2,9 @@ import PostData from '../../localDatabase/postData.json';
 import upvote from '../../img/upvote.png';
 import downvote from '../../img/downvote.png';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 function CommentShow(){
     return(
@@ -12,7 +15,7 @@ function CommentShow(){
 }
 
 
-function PostShow({name,profileImage,description,vote,tag,postDate}){
+function PostShow({name, title, profileImage,description,vote,tag,postDate}){
     return(
         <>
             <div className=' fit  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -30,6 +33,7 @@ function PostShow({name,profileImage,description,vote,tag,postDate}){
                     </div>
                 </div>
                 <div className='row-span-5 flex-grow border-b border-gray-300 2xl:text-[20px] pb-7'>
+                   <h4 className=' text-xl'>{title}</h4>
                    <p>{description}</p>
                 </div>
                 <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
@@ -55,20 +59,40 @@ function PostShow({name,profileImage,description,vote,tag,postDate}){
 
 
 function ProfileQueries(){
+    const [queries, setQueries] = useState([]);
+    const token = Cookies.get('token');
+  
+    useEffect(() => {
+      const fetchQueries = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8000/query/${Cookies.get('userId')}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+          });
+          setQueries(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      console.log(fetchQueries());
+    }, []);
+
     return(
         <>
-         {
-                PostData.map(user=><PostShow
-                    name={user.name}
-                    userName={user.userName}
-                    profileImage={user.userImage}
-                    title={user.title}
-                    description={user.description}
-                    vote={user.vote}
-                    tag={user.tag}
-                    postDate={user.postDate}
-                    ></PostShow>)
-            }
+         {queries.map((queries) => (
+          <PostShow
+            key={queries.id}
+            name={queries.userFullName}
+            profileImage={queries.profileImage}
+            title={queries.title}
+            description={queries.description}
+            vote={queries.vote}
+            tag={"queries"}
+            postDate={queries.createdAt.slice(0, 10).trimRight()}
+          />
+        ))}
         </>
     )
 }

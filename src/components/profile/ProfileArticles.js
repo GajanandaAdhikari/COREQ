@@ -92,7 +92,7 @@ function ProfileArticles() {
     useEffect(() => {
       const fetchArticles = async () => {
         try {
-          const response = await axios.get("http://localhost:8000/article", {
+          const response = await axios.get(`http://localhost:8000/article/${Cookies.get('userId')}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
