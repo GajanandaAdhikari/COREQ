@@ -1,6 +1,8 @@
 // import Button from '@mui/material-next/Button';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import FollowButton from './FollowButton'
+import '../css/FollowButton.css'
 
 const users=[
     {
@@ -14,7 +16,7 @@ const users=[
         userImage:"https://avatars.githubusercontent.com/u/68050149?s=120&v=4"
     },
     {
-        name:"Gazananda Mani Adhikari",
+        name:"GZ Adhikari",
         userName:"cosmicGZ",
         userImage:"https://avatars.githubusercontent.com/u/90420230?s=120&v=4"
     }
@@ -53,9 +55,11 @@ function SuggestedFriend({userFullName,userName,userImage}){
                         
                     </div>
                     <div className="inline-flex md:text-2xl font-semibold text-gray-900 dark:text-white">
-                    <Button variant="text"  size="large">Follow</Button>
+                    <FollowButton></FollowButton>
                     </div>
+                    
                 </div>
+                
             </li>
         </>
     )
