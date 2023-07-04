@@ -1,10 +1,13 @@
 .coverimg{
-    height: 40vh;
+    height: 50vh;
     width: 100%;
+    background: transparent;
+    border-radius: 20px;
 
 }
 .profile{
     margin: 10px;
+    background-color: #F7FBEE;
 }
 .profileimg{
     width: 12.5rem;
