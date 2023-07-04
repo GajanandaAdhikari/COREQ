@@ -1,4 +1,28 @@
-.coverpic{
-    height: 60%;
-    width: screen;
+.coverimg{
+    height: 40vh;
+    width: 100%;
+
 }
+.profile{
+    margin: 10px;
+}
+.profileimg{
+    width: 12.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
+}
+.follow_button {
+    color: #3399FF;
+    font-family: "Helvetica";
+    font-size: 10pt;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #3399FF;
+    border-radius: 3px;
+    width: 85px;
+    height: 30px;
+    position: absolute;	 
+    top: 50px;
+    left: 50px;	
+    cursor: hand;		    
+  }

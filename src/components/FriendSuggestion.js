@@ -1,5 +1,6 @@
 // import Button from '@mui/material-next/Button';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const users=[
     {
@@ -25,7 +26,7 @@ function FriendSuggestionList(){
         <div>
             {
                 users.map(user=><SuggestedFriend
-                    name={user.name}
+                    userFullName={user.name}
                     userName={user.userName}
                     userImage={user.userImage}
                     ></SuggestedFriend>)
@@ -34,7 +35,7 @@ function FriendSuggestionList(){
     )
 }
 
-function SuggestedFriend({name,userName,userImage}){
+function SuggestedFriend({userFullName,userName,userImage}){
     return(
         <>
         <li className="py-2 ">
@@ -44,7 +45,7 @@ function SuggestedFriend({name,userName,userImage}){
                     </div>
                     <div class="flex-1 min-w-0">
                         <p className=" md:text-[20px] 2xl:text-[20px]  hover:text-sky-700  ">
-                        <a href=''> {name} </a>
+                        <Link to="/profile"> <span className="">{userFullName}</span></Link>
                         </p>
                         <p className="text-[16px] text-gray-700 dark:text-gray-700">
                             @{userName}
