@@ -7,7 +7,7 @@ import FollowButton from '../components/FollowButton';
 import UserPostDetails from '../components/profile/UserPostDetails';
 
 
-const cover = ["https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y292ZXIlMjBwaG90b3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"]
+const cover = ["https://covermyfb.files.wordpress.com/2012/06/smile1.jpg"]
 const profile = ["https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais"]
 const bio = "Aurora Vega is a captivating enigma, a multifaceted soul roaming the tapestry of life with a boundless curiosity and an insatiable thirst for adventure. Born under the celestial symphony of stars, she embodies the essence of a wandering dreamer, forever seeking new experiences and connections."
 function Profile({userFullName,userBio,userFollowers,userFollowing,userProjects,userArticles}) {
