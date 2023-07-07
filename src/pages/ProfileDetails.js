@@ -5,6 +5,9 @@ import SocialFollow from '../components/profile/SocialFollow';
 import '../css/ProfileDetails.css'
 import FollowButton from '../components/FollowButton';
 import UserPostDetails from '../components/profile/UserPostDetails';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 
 const cover = ["https://covermyfb.files.wordpress.com/2012/06/smile1.jpg"]
@@ -55,12 +58,34 @@ function Profile({userFullName,userBio,userFollowers,userFollowing,userProjects,
 }
 
 function ProfileDetails() {
+  const [userDetails, setUserDetails] = useState([]);
+  const token = Cookies.get("token");
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/user/get/${Cookies.get("userId")}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setUserDetails(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserDetails();
+  }, []);
   return (
     <Profile 
-    userFullName={'Nischal Khanal'}
+    userFullName={userDetails.fullName}
     userBio={bio}
-    userFollowers={100}
-    userFollowing={100}
+    userFollowers={userDetails.following}
+    userFollowing={userDetails.followers}
     userProjects={50}
     userArticles={30}
     ></Profile>
