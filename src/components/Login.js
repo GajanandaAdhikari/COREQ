@@ -31,8 +31,8 @@ export default function Login(){
             console.log(response.data);
             const token = response.data.token;
             const userId = response.data.userId;
-            Cookies.set('token', token);
-            Cookies.set('userId', userId);
+            Cookies.set('token', token, { expires: 7 });
+            Cookies.set('userId', userId, { expires: 7 });
 
             // Handle successful login or perform any necessary actions
             navigate('/')
