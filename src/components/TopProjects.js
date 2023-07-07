@@ -1,3 +1,7 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+
 // import Button from '@mui/material-next/Button';
 import Button from '@mui/material/Button';
 
@@ -23,13 +27,37 @@ const users=[
 ];
 
 function TopProjectList(){
+    const [recommendedProjects, setRecommendedProjects] = useState([]);
+  const token = Cookies.get("token");
+
+  useEffect(() => {
+    const fetchRecommendedProjects = async () => {
+      try {
+        console.log(Cookies.get('userId'))
+        const response = await axios.get(
+          'http://localhost:8000/feed/recommendedProjects',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log(response.data)
+        setRecommendedProjects(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchRecommendedProjects();
+  }, []);
     return(
         <div>
             {
-                users.map(user=><SuggestedProject
-                    name={user.name}
-                    userName={user.userName}
-                    userImage={user.userImage}
+                recommendedProjects.map(user=><SuggestedProject
+                    name={user.userFullName}
+                    userName={user.username}
+                    userImage={user.profilePic}
                     projTitle={user.title}
                     ></SuggestedProject>)
             }

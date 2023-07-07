@@ -1,3 +1,7 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+
 import FeedData from '../localDatabase/feedData.json';
 import upvote from '../img/upvote.png';
 import downvote from '../img/downvote.png';
@@ -53,23 +57,51 @@ function PostShow({name,profileImage,description,vote,tag,postDate}){
 }
 
 
-function QueryPostShow(){
+function FeedPostShow(){
+    const [feedPosts, setfeedPosts] = useState([]);
+
+    const token = Cookies.get('token');
+  
+    useEffect(() => {
+      const fetchFeedPosts = async () => {
+        try {
+          const response = await axios.get("http://localhost:8000/feed/getFeed", {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+          });
+          const feedPostsData = response.data;
+          const formattedFeedPosts = feedPostsData.map(feedPosts => {
+            return {
+              ...feedPosts,
+              createdAt: new Date(feedPosts.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
+            };
+          });
+          setfeedPosts(formattedFeedPosts);
+      
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      fetchFeedPosts();
+    }, []);
     return(
         <>
          {
-                FeedData.map(user=><PostShow
-                    name={user.name}
+                feedPosts.map(user=><PostShow
+                    name={user.userFullName}
                     userName={user.userName}
-                    profileImage={user.userImage}
+                    profileImage={user.profilePic}
                     title={user.title}
                     description={user.description}
                     vote={user.vote}
                     tag={user.tag}
-                    postDate={user.postDate}
+                    postDate={user.createdAt}
                     ></PostShow>)
             }
         </>
     )
 }
 
-export default QueryPostShow;
+export default FeedPostShow;
