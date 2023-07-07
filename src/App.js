@@ -9,6 +9,11 @@ import Archive from "./pages/Archive";
 import StartPage from "./pages/StartPage";
 import ProfileDetails from "./pages/ProfileDetails";
 import CommentPage from "./pages/CommentPage";
+import EditInformation from "./pages/EditInformation";
+import EditProfile from "./components/profile/EditProfile"
+import SocialLink from "./components/profile/SocialLink"
+import Security from "./components/profile/Security"
+
 
 
 function App() {
@@ -27,6 +32,11 @@ function App() {
             <Route path="/startpage" exact element={<StartPage />} />
             <Route path="/profile" exact element={<ProfileDetails />} />
             <Route path="/comment" exact element={<CommentPage />} />
+            <Route path="/edit" exact element={<EditInformation />} />
+            <Route path="/editprofile" exact element={<EditProfile />} />
+            <Route path="/sociallink" exact element={<SocialLink />} />
+            <Route path="/security" exact element={<Security />} />
+           
 
           </Routes>
         </BrowserRouter>
