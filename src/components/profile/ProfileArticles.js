@@ -17,7 +17,7 @@ function CommentShow(){
 function PostShow({name,profileImage,title,description,vote,tag,postDate,author,publicationYear,publicationHouse,keywords}){
     return(
         <>
-            <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
+            <div className='w-full p-4 border border-gray-300 rounded-lg mt-5'>
             <div className='grid grid-rows-13 gap-4 '>
                 <div className='row-span-2 grid grid-cols-5 '>
                     <div className='flex col-span-4'>
@@ -124,7 +124,7 @@ function ProfileArticles() {
             description={article.description}
             vote={article.vote}
             tag={"article"}
-            postDate={article.createdAt.slice(0, 10).trimRight()}
+            postDate={article.createdAt}
             author={article.authors}
             publicationYear={article.publicationYear}
             publicationHouse={article.publicationHouse}

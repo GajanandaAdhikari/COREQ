@@ -97,7 +97,7 @@ function ProfileQueries(){
             description={queries.description}
             vote={queries.vote}
             tag={"queries"}
-            postDate={queries.createdAt.slice(0, 10).trimRight()}
+            postDate={queries.createdAt}
           />
         ))}
         </>
