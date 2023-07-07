@@ -42,7 +42,6 @@ function TopProjectList(){
             },
           }
         );
-        console.log(response.data)
         setRecommendedProjects(response.data);
       } catch (error) {
         console.log(error);
