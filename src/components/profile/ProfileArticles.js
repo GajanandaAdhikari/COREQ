@@ -97,7 +97,14 @@ function ProfileArticles() {
                 Authorization: `Bearer ${token}`,
             }
           });
-          setArticles(response.data);
+          const articlesData = response.data;
+          const formattedArticles = articlesData.map(article => {
+            return {
+              ...article,
+              createdAt: new Date(article.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
+            };
+          });
+          setArticles(formattedArticles);
         } catch (error) {
           console.log(error);
         }

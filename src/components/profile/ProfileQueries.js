@@ -70,7 +70,14 @@ function ProfileQueries(){
                 Authorization: `Bearer ${token}`,
             }
           });
-          setQueries(response.data);
+          const queryData = response.data;
+          const formattedQueries = queryData.map(query => {
+            return {
+              ...query,
+              createdAt: new Date(query.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
+            };
+          });
+          setQueries(formattedQueries);
         } catch (error) {
           console.log(error);
         }
