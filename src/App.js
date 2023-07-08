@@ -13,12 +13,14 @@ import EditInformation from "./pages/EditInformation";
 import EditProfile from "./components/profile/EditProfile"
 import SocialLink from "./components/profile/SocialLink"
 import Security from "./components/profile/Security"
+import ProfileEditSideBar from "./components/profile/ProfileEditSideBar"
+import Help from "./components/profile/Help"
 
 
 
 function App() {
   return (
-    <div className="">
+    <div className="bg-back-color">
       <div className="">
         <BrowserRouter>
           <Routes>
@@ -33,10 +35,10 @@ function App() {
             <Route path="/profile" exact element={<ProfileDetails />} />
             <Route path="/comment" exact element={<CommentPage />} />
             <Route path="/edit" exact element={<EditInformation />} />
-            <Route path="/editprofile" exact element={<EditProfile />} />
-            <Route path="/sociallink" exact element={<SocialLink />} />
-            <Route path="/security" exact element={<Security />} />
-           
+            <Route path="/edit" exact element={<EditProfile />} />
+            <Route path="/sociallink"  element={<div className="grid grid-cols-10"> <span className="md:col-span-4 xl:col-span-3"><ProfileEditSideBar/> </span><span className="max-md:col-span-6 xl:col-span-7"><SocialLink /></span></div>} />
+            <Route path="/security" exact element={<div className="grid grid-cols-10"> <span className="md:col-span-4 xl:col-span-3"><ProfileEditSideBar/> </span><span className="max-md:col-span-6 xl:col-span-7"><Security /></span></div>} />
+            <Route path="/help" exact element={<div className="grid grid-cols-10"> <span className="md:col-span-4 xl:col-span-3"><ProfileEditSideBar/> </span><span className="max-md:col-span-6 xl:col-span-7"><Help /></span></div>} />
 
           </Routes>
         </BrowserRouter>
