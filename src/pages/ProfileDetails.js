@@ -86,7 +86,7 @@ function ProfileDetails() {
   return (
     <Profile 
     userFullName={userDetails.fullName}
-    userBio={bio}
+    userBio={userDetails.bio}
     userFollowers={userDetails.following}
     userFollowing={userDetails.followers}
     userProjects={50}

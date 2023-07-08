@@ -1,3 +1,7 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+
 // import Button from '@mui/material-next/Button';
 import Button from '@mui/material/Button';
 
@@ -23,13 +27,36 @@ const users=[
 ];
 
 function TopResearchArticlesList(){
+    const [recommendedArticles, setRecommendedArticles] = useState([]);
+    const token = Cookies.get("token");
+  
+    useEffect(() => {
+      const fetchRecommendedArticles = async () => {
+        try {
+          console.log(Cookies.get('userId'))
+          const response = await axios.get(
+            'http://localhost:8000/feed/recommendedArticles',
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          setRecommendedArticles(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      fetchRecommendedArticles();
+    }, []);
     return(
         <div>
             {
-                users.map(user=><SuggestedResearchArticles
-                    name={user.name}
-                    userName={user.userName}
-                    userImage={user.userImage}
+                recommendedArticles.map(user=><SuggestedResearchArticles
+                    name={user.fullName}
+                    userName={user.username}
+                    userImage={user.profilePic}
                     projTitle={user.title}
                     ></SuggestedResearchArticles>)
             }
