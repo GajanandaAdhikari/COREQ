@@ -1,6 +1,7 @@
 import { Avatar } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import SettingsIcon from '@mui/icons-material/Settings';
 import SocialFollow from '../components/profile/SocialFollow';
 import '../css/ProfileDetails.css'
 import FollowButton from '../components/FollowButton';
@@ -8,6 +9,7 @@ import UserPostDetails from '../components/profile/UserPostDetails';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import {Link} from "react-router-dom";
 
 
 const cover = ["https://covermyfb.files.wordpress.com/2012/06/smile1.jpg"]
@@ -31,9 +33,10 @@ function Profile({userFullName,userBio,userFollowers,userFollowing,userProjects,
       <p className='ml-5'><span className='font-bold text-green-600'>{userProjects}</span> Projects</p>
       <p className='ml-5'><span className='font-bold text-yellow-400'>{userArticles}</span> Articles</p>
 
-      <div className='ml-10 '><FollowButton></FollowButton></div>   
+      <div className='ml-10 '><FollowButton></FollowButton></div>  
+      <span className='flex ml-20'><Link to={"/edit"}> <SettingsIcon sx={{ fontSize: 40 }}></SettingsIcon></Link></span>  
       </div>
-      
+
       <div className='profilebio grid  grid-cols-10'>
       <div className='col-span-7  mt-5 pr-30'><p className='mr-40'>{userBio}</p></div>
       <div className='col-span-3 '>

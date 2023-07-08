@@ -10,6 +10,8 @@ module.exports = {
         'regal-blue': '#243c5a',
         'back-color':'#F7FBEE',
         'boderColor':'#D9D9D9',
+        'bcolor':'#858585',
+        'pbcolor':'#FF7008',
       },
       screens: {
         'sm': '430px',
