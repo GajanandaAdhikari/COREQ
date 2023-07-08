@@ -26,7 +26,7 @@ class FollowButton extends React.Component {
       color: '#fff',
       background: isFollowing ? 'green' : '#1DA1F2',
       cursor: 'pointer',
-   
+
     };
 
     return (

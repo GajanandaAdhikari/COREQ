@@ -1,29 +1,9 @@
-// import Button from '@mui/material-next/Button';
-import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import FollowButton from "./FollowButton";
-import "../css/FollowButton.css";
+import FollowButton from "../static/FollowButton";
+import "../../css/FollowButton.css";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
-
-const users = [
-  {
-    name: "Nischal Khanal",
-    userName: "Hunter420",
-    userImage: "https://avatars.githubusercontent.com/u/92971596?s=120&v=4",
-  },
-  {
-    name: "Ujjwal Dhakal",
-    userName: "ujjwalnp",
-    userImage: "https://avatars.githubusercontent.com/u/68050149?s=120&v=4",
-  },
-  {
-    name: "GZ Adhikari",
-    userName: "cosmicGZ",
-    userImage: "https://avatars.githubusercontent.com/u/90420230?s=120&v=4",
-  },
-];
 
 function FriendSuggestionList() {
   const [suggestedFriends, setSuggestedFriends] = useState([]);

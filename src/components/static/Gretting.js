@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import CurrentUserData from "../localDatabase/CurrentUserData.json";
 import { Link } from "react-router-dom";
 
 function UserName({ name, userName, userImage }) {
@@ -52,11 +51,11 @@ function Gretting() {
   }, []);
   return (
     <div>
-        <UserName
-          name={userDetails.fullName}
-          userName={userDetails.username}
-          userImage={userDetails.profilePic}
-        />
+      <UserName
+        name={userDetails.fullName}
+        userName={userDetails.username}
+        userImage={userDetails.profilePic}
+      />
     </div>
   );
 }

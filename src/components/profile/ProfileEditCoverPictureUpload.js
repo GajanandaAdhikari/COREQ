@@ -1,10 +1,4 @@
 import React, { useState } from 'react';
-// import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Textarea from '@mui/joy/Textarea';
-import { TextFields } from '@mui/icons-material';
-
 
 const CoverPictureUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -74,7 +68,7 @@ const CoverPictureUpload = () => {
       </button> */}
 
 
-      
+
     </div>
   );
 };

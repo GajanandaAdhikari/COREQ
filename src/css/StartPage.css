@@ -1,22 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=K2D:wght@100&family=Paytone+One&display=swap');
-.explore{
-    /* EXPLORE YOUR COMMUNITY DIGITALLY */
-width: 1055px;
-height: 830px;
-margin-left: 108px;
-top: 115px;
+@import url("https://fonts.googleapis.com/css2?family=K2D:wght@100&family=Paytone+One&display=swap");
+.explore {
+  /* EXPLORE YOUR COMMUNITY DIGITALLY */
+  width: 1055px;
+  height: 830px;
+  margin-left: 108px;
+  top: 115px;
 
-font-family: 'Paytone One';
-font-style: normal;
-font-weight: 400;
-font-size: 7.9rem;
-line-height: 179px;
-align-items: center;
+  font-family: "Paytone One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 7.9rem;
+  line-height: 179px;
+  align-items: center;
 
-/* light text */
-color: #0F0F0F;
+  /* light text */
+  color: #0f0f0f;
 
-/* avatar_ujjwal 1 */
-
+  /* avatar_ujjwal 1 */
 }
-

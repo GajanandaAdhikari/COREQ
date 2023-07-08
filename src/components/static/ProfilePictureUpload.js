@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import '../../css/ProfilePictureUpload.css';
+import '../css/ProfilePictureUpload.css';
 
 const ImgUpload = ({
   onChange,

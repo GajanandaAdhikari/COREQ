@@ -1,4 +1,3 @@
-
 import upvote from '../../img/upvote.png';
 import downvote from '../../img/downvote.png';
 import axios from 'axios';
@@ -17,7 +16,7 @@ function CommentShow() {
 function PostShow({ name, profileImage, title, description, vote, tag, postDate, author, publicationYear, publicationHouse, keywords }) {
   return (
     <>
-      <div className='w-full p-4 border border-gray-300 rounded-lg mt-5'>
+      <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
         <div className='grid grid-rows-13 gap-4 '>
           <div className='row-span-2 grid grid-cols-5 '>
             <div className='flex col-span-4'>
@@ -70,9 +69,7 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
   )
 }
 
-
-
-function ProfileArticles() {
+function ArticlePostShow() {
   const [articles, setArticles] = useState([]);
 
   const token = Cookies.get('token');
@@ -80,7 +77,7 @@ function ProfileArticles() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/article/user/${Cookies.get('userId')}`, {
+        const response = await axios.get("http://localhost:8000/article", {
           headers: {
             Authorization: `Bearer ${token}`,
           }
@@ -93,12 +90,13 @@ function ProfileArticles() {
           };
         });
         setArticles(formattedArticles);
+
       } catch (error) {
         console.log(error);
       }
     };
 
-    console.log(fetchArticles());
+    fetchArticles();
   }, []);
 
   return (
@@ -125,4 +123,5 @@ function ProfileArticles() {
 }
 
 
-export default ProfileArticles;
+
+export default ArticlePostShow;

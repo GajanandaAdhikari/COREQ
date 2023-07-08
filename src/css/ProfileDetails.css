@@ -1,31 +1,30 @@
-.coverimg{
-    height: 50vh;
-    width: 100%;
-    background: transparent;
-    border-radius: 20px;
-
+.coverimg {
+  height: 50vh;
+  width: 100%;
+  background: transparent;
+  border-radius: 20px;
 }
-.profile{
-    margin: 10px;
-    background-color: #F7FBEE;
+.profile {
+  margin: 10px;
+  background-color: #f7fbee;
 }
-.profileimg{
-    width: 12.5rem;
-    height: 6.5rem;
-    border-radius: 50%;
+.profileimg {
+  width: 12.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
 }
 .follow_button {
-    color: #3399FF;
-    font-family: "Helvetica";
-    font-size: 10pt;
-    background-color: #ffffff;
-    border: 1px solid;
-    border-color: #3399FF;
-    border-radius: 3px;
-    width: 85px;
-    height: 30px;
-    position: absolute;	 
-    top: 50px;
-    left: 50px;	
-    cursor: hand;		    
-  }
+  color: #3399ff;
+  font-family: "Helvetica";
+  font-size: 10pt;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #3399ff;
+  border-radius: 3px;
+  width: 85px;
+  height: 30px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  cursor: hand;
+}
