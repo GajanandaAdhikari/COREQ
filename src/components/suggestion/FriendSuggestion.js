@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import FollowButton from "../static/FollowButton";
+import FollowButton from "../Static/FollowButton";
 import "../../css/FollowButton.css";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";

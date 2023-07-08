@@ -1,5 +1,5 @@
 import Header from "../constants/Header"
-import Login from "../components/static/Login"
+import Login from "../components/Static/Login"
 function LoginPage() {
     return (
         <>
