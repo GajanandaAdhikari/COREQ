@@ -1,79 +1,75 @@
 .social-container {
+  background: transparent;
+  text-align: left;
+}
+a.social {
+  /* margin: 0 1rem; */
+  transition: transform 250ms;
+  display: block;
+  text-align: none;
+  margin-top: 5px;
+}
+a.social:hover {
+  transform: translateY(-2px);
+}
+a.youtube {
+  color: #eb3223;
+}
+
+a.facebook {
+  color: #4968ad;
+}
+
+a.twitter {
+  color: #49a1eb;
+}
+a.linkedin {
+  color: #07487e;
+}
+a.instagram {
+  color: black;
+}
+
+/* for mobile view */
+@media only screen and (max-width: 400px) {
+  .social-container {
     background: transparent;
-    text-align: left;
-   
+    text-align: center;
   }
   a.social {
     /* margin: 0 1rem; */
     transition: transform 250ms;
-    display: block;
-    text-align: none;
+    display: inline-flex;
+    text-align: center;
     margin-top: 5px;
-
   }
   a.social:hover {
     transform: translateY(-2px);
   }
   a.youtube {
     color: #eb3223;
+    margin-right: 7px;
   }
-  
+
   a.facebook {
     color: #4968ad;
+    margin-right: 8px;
   }
-  
+
   a.twitter {
     color: #49a1eb;
+    margin-right: 8px;
   }
   a.linkedin {
     color: #07487e;
+    margin-right: 8px;
   }
   a.instagram {
     color: black;
+    margin-right: 8px;
   }
-
-  /* for mobile view */
-  @media only screen and (max-width: 400px) {
-    .social-container {
-      background: transparent;
-      text-align: center;
-     
-    }
-    a.social {
-      /* margin: 0 1rem; */
-      transition: transform 250ms;
-      display: inline-flex;
-      text-align: center;
-      margin-top: 5px;
-  
-    }
-    a.social:hover {
-      transform: translateY(-2px);
-    }
-    a.youtube {
-      color: #eb3223;
-      margin-right: 7px;
-    }
-    
-    a.facebook {
-      color: #4968ad;
-      margin-right: 8px;
-    }
-    
-    a.twitter {
-      color: #49a1eb;
-      margin-right: 8px;
-    }
-    a.linkedin {
-      color: #07487e;
-      margin-right: 8px;
-    }
-    a.instagram {
-      color: black;
-      margin-right: 8px;
-    }
-    a.github{
-      color: black;
-      margin-right: 8px;
-    }
+  a.github {
+    color: black;
+    margin-right: 8px;
   }
+}

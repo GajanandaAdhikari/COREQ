@@ -34,7 +34,7 @@ export default function UserPostDetails() {
       value: "queries",
       desc: <ProfileQueries></ProfileQueries>,
     },
- 
+
   ];
   return (
     <Tabs value={activeTab}>

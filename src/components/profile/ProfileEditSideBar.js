@@ -1,6 +1,3 @@
-import EditProfile from "./EditProfile";
-import SocialLink from "./SocialLink";
-import Security from "./Security";
 import CreateIcon from '@mui/icons-material/Create';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import SecurityIcon from '@mui/icons-material/Security';

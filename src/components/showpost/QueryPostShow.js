@@ -1,6 +1,5 @@
-import PostData from "../localDatabase/postData.json";
-import upvote from "../img/upvote.png";
-import downvote from "../img/downvote.png";
+import upvote from "../../img/upvote.png";
+import downvote from "../../img/downvote.png";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -69,34 +68,34 @@ function PostShow({ name, profileImage, description, vote, tag, postDate }) {
 }
 
 function QueryPostShow() {
-    const [queries, setQueries] = useState([]);
+  const [queries, setQueries] = useState([]);
 
-    const token = Cookies.get('token');
-  
-    useEffect(() => {
-      const fetchQueries = async () => {
-        try {
-          const response = await axios.get("http://localhost:8000/query", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-          });
-          const queriesData = response.data;
-          const formattedQueries = queriesData.map(query => {
-            return {
-              ...query,
-              createdAt: new Date(query.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
-            };
-          });
-          setQueries(formattedQueries);
-      
-        } catch (error) {
-          console.log(error);
-        }
-      };
-  
-      fetchQueries();
-    }, []);
+  const token = Cookies.get('token');
+
+  useEffect(() => {
+    const fetchQueries = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/query", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        });
+        const queriesData = response.data;
+        const formattedQueries = queriesData.map(query => {
+          return {
+            ...query,
+            createdAt: new Date(query.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
+          };
+        });
+        setQueries(formattedQueries);
+
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchQueries();
+  }, []);
   return (
     <>
       {queries.map((user) => (

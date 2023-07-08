@@ -1,14 +1,4 @@
-import ProfileEditSideBar from "./ProfileEditSideBar";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faYoutube,
-  faFacebook,
-  faTwitter,
-  faInstagram,
-  faGithub,
-  faLinkedin
-} from "@fortawesome/free-brands-svg-icons";
 
 export default function Security() {
   return (
