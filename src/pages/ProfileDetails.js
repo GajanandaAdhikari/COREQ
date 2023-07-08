@@ -1,7 +1,7 @@
 import SettingsIcon from '@mui/icons-material/Settings';
 import SocialFollow from '../components/profile/SocialFollow';
 import '../css/ProfileDetails.css'
-import FollowButton from '../components/static/FollowButton';
+import FollowButton from '../components/Static/FollowButton';
 import UserPostDetails from '../components/profile/UserPostDetails';
 import { useState, useEffect } from "react";
 import axios from "axios";
