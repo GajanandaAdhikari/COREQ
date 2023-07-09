@@ -106,7 +106,7 @@ function QueryPostShow() {
           title={user.title}
           description={user.description}
           vote={user.vote}
-          tag={'query'}
+          tag={user.tag}
           postDate={user.createdAt}
         ></PostShow>
       ))}
