@@ -4,7 +4,8 @@ import {
   faFacebook,
   faInstagram,
   faGithub,
-  faLinkedin
+  faLinkedin,
+  faTwitter
 } from "@fortawesome/free-brands-svg-icons";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -21,6 +22,7 @@ export default function SocialLink() {
   const [linkedinUserName, setLinkedinUserName] = useState("");
   const [facebookUserName, setFacebookUserName] = useState("");
   const [instagramUserName, setInstagramUserName] = useState("");
+  const [twitterUserName, setTwitterUserName] = useState("");
 
   // Handle input changes and update the state variables
   const handleGithubUserNameChange = (e) => {
@@ -37,6 +39,9 @@ export default function SocialLink() {
   const handleInstagramUserNameChange = (e) => {
     setInstagramUserName(e.target.value);
   };
+  const handleTwitterUserNameChange = (e) => {
+    setInstagramUserName(e.target.value);
+  };
 
 
   //Handle Login API Integration here
@@ -51,7 +56,8 @@ export default function SocialLink() {
             github: githubUserName,
             linkedin: linkedinUserName,
             facebook: facebookUserName,
-            instagram: instagramUserName
+            instagram: instagramUserName,
+            twitter: twitterUserName
           }
         },
         {
@@ -75,6 +81,7 @@ export default function SocialLink() {
           <span className="flex mt-8"> <FontAwesomeIcon icon={faGithub} size="3x" /> <input class="ml-5  justify-center  shadow appearance-none border border-bcolor rounded w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Github Username" value={githubUserName} onChange={handleGithubUserNameChange}/></span>
           <span className="flex mt-8"> <FontAwesomeIcon icon={faLinkedin} size="3x" /> <input class="ml-7 justify-center  shadow appearance-none border border-bcolor rounded w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Linkedin Username" value={linkedinUserName} onChange={handleLinkedinUserNameChange}/></span>
           <span className="flex mt-8"> <FontAwesomeIcon icon={faFacebook} size="3x" /> <input class="ml-5 justify-center  shadow appearance-none border border-bcolor rounded w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Facebook Username" value={facebookUserName} onChange={handleFacebookUserNameChange}/></span>
+          <span className="flex mt-8"> <FontAwesomeIcon icon={faTwitter} size="3x" /> <input class="ml-5 justify-center  shadow appearance-none border border-bcolor rounded w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Twitter Username" value={twitterUserName} onChange={handleTwitterUserNameChange}/></span>
           <span className="flex mt-8"> <FontAwesomeIcon icon={faInstagram} size="3x" /> <input class="ml-6 justify-center  shadow appearance-none border border-bcolor rounded w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Instagram Username" value={instagramUserName} onChange={handleInstagramUserNameChange}/></span>
 
         </div>
