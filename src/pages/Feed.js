@@ -37,7 +37,7 @@ function Feed() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Feed;
