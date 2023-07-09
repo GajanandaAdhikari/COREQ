@@ -18,13 +18,13 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
       <div className='cover'>
         <img src={cover[0]} alt='cover' className='coverimg' />
       </div>
-      <div className='profiledetails flex pt-10'>
-        <div className='profilepic mr-10  ml-10'>
+      <div className='profiledetails flex  pt-10'>
+        <div className='profilepic  mr-10  ml-10'>
           <img src={profile[0]} alt='profile' className='profileimg' />
         </div>
         <div className='profileinfo'>
           <h1 className='text-3xl font-bold'>{userFullName}</h1>
-          <div className='profilestats flex'>
+          <div className='profilestats  flex'>
             <p><span className='font-bold text-blue-600'>{userFollowers}</span> Followers</p>
             <p className='ml-5'><span className='font-bold'>{userFollowing}</span> Following</p>
             <p className='ml-5'><span className='font-bold text-green-600'>{userProjects}</span> Projects</p>
@@ -32,22 +32,28 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
 
             <div className='ml-10 '><FollowButton></FollowButton></div>
             <span className='flex ml-20'><Link to={"/edit"}> <SettingsIcon sx={{ fontSize: 40 }}></SettingsIcon></Link></span>
+         
+          </div>
+          <div className='  mt-5 pr-30'>
+         <p className='mr-40 '>{userBio}</p>
           </div>
 
-          <div className='profilebio grid  grid-cols-10'>
-            <div className='col-span-7  mt-5 pr-30'><p className='mr-40'>{userBio}</p></div>
-            <div className='col-span-3 '>
-              <SocialFollow
-                facebookUserName={"nischal.khanal69"}
-                githubUserName={"hunter-420"}
-                linkedinUserName={"nischalkhanal"}
-                twitterUserName={"nischal_khanal1"}
-                instagramUserName={"nischal_khanal"}
-              > </SocialFollow></div>
 
-          </div>
 
         </div>
+
+        <div className='profilebio xl:ml-20 xl:pl-20  grid grid-cols-15'>
+  <div className='col-span-10 mt-5 pr-30'></div>
+  <div className='col-span-5 pl-20 mt-10 xl:ml-20  flex items-end justify-end'>
+    <SocialFollow
+      facebookUserName={"nischal.khanal69"}
+      githubUserName={"hunter-420"}
+      linkedinUserName={"nischalkhanal"}
+      twitterUserName={"nischal_khanal1"}
+      instagramUserName={"nischal_khanal"}
+    />
+  </div>
+</div>
 
       </div>
       <div className='block profile pt-20'>
