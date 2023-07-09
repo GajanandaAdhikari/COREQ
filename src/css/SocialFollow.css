@@ -1,6 +1,7 @@
 .social-container {
   background: transparent;
   text-align: left;
+  justify-content: end;
 }
 a.social {
   /* margin: 0 1rem; */

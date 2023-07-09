@@ -10,7 +10,7 @@ import {
 export default function SocialLink() {
   return (
     <>
-      <div className="bg-back-color h-screen md:h-full">
+      <div className="bg-back-color  h-screen md:h-full">
         <div >
           <h3 className="text-2xl font-bold pt-20 pl-20">Social Link</h3>
         </div>
