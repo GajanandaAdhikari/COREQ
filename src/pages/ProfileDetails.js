@@ -65,7 +65,10 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
 
 function ProfileDetails() {
   const [userDetails, setUserDetails] = useState([]);
-  const token = Cookies.get("token");
+  const [articlesCount, setArticleCount] = useState([]);
+  const [projectsCount, setProjectsCount] = useState([]);
+  const token = Cookies.get('token');
+  const userId = Cookies.get('userId');
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -83,8 +86,39 @@ function ProfileDetails() {
         console.log(error);
       }
     };
-
+    const fetchUserArticlesCount = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/article/user/${ userId }/countArticles`,  
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setArticleCount(response.data);
+      }    
+      catch(error) {
+        console.log(error);
+      }
+    };
+    const fetchUserProjectsCount = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/project/user/${ userId }/countProjects`,  
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setProjectsCount(response.data);
+      }    
+      catch(error) {
+        console.log(error);
+      }
+    };
     fetchUserDetails();
+    fetchUserArticlesCount();
+    fetchUserProjectsCount();
   }, []);
   return (
     <Profile
@@ -92,8 +126,8 @@ function ProfileDetails() {
       userBio={userDetails.bio}
       userFollowers={userDetails.following}
       userFollowing={userDetails.followers}
-      userProjects={50}
-      userArticles={30}
+      userProjects={projectsCount}
+      userArticles={articlesCount}
     ></Profile>
   )
 }
