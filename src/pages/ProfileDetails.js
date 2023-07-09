@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const cover = ["https://covermyfb.files.wordpress.com/2012/06/smile1.jpg"]
 const profile = ["https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais"]
 const bio = "Aurora Vega is a captivating enigma, a multifaceted soul roaming the tapestry of life with a boundless curiosity and an insatiable thirst for adventure. Born under the celestial symphony of stars, she embodies the essence of a wandering dreamer, forever seeking new experiences and connections."
-function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles }) {
+function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName }) {
   return (
     <div className='profile '>
       <div className='cover'>
@@ -46,11 +46,11 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
   <div className='col-span-10 mt-5 pr-30'></div>
   <div className='col-span-5 pl-20 mt-10 xl:ml-20  flex items-end justify-end'>
     <SocialFollow
-      facebookUserName={"nischal.khanal69"}
-      githubUserName={"hunter-420"}
-      linkedinUserName={"nischalkhanal"}
-      twitterUserName={"nischal_khanal1"}
-      instagramUserName={"nischal_khanal"}
+      facebookUserName={facebookUserName}
+      githubUserName={githubUserName}
+      linkedinUserName={linkedinUserName}
+      twitterUserName={twitterUserName}
+      instagramUserName={instagramUserName}
     />
   </div>
 </div>
@@ -67,6 +67,11 @@ function ProfileDetails() {
   const [userDetails, setUserDetails] = useState([]);
   const [articlesCount, setArticleCount] = useState([]);
   const [projectsCount, setProjectsCount] = useState([]);
+  const [githubUserName, setGithubUserName] = useState([]);
+  const [linkedinUserName, setLinkedinUserName] = useState([]);
+  const [facebookUserName, setFacebookUserName] = useState([]);
+  const [instagramUserName, setInstagramUserName] = useState([]);
+  const [twitterUserName, setTwitterUserName] = useState([]);
   const token = Cookies.get('token');
   const userId = Cookies.get('userId');
 
@@ -116,9 +121,29 @@ function ProfileDetails() {
         console.log(error);
       }
     };
+    const fetchSocialUserNames = async() => {
+      try {
+        const response = await axios.get(`http://localhost:8000/user/get/${ userId }`, 
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+        );
+        setGithubUserName(response.data.socialNames.github);
+        setLinkedinUserName(response.data.socialNames.linkedin);
+        setFacebookUserName(response.data.socialNames.facebook);
+        setInstagramUserName(response.data.socialNames.instagram);
+        setTwitterUserName(response.data.socialNames.twitter);
+      }
+      catch(error) {
+        console.log(error);
+      }
+    };
     fetchUserDetails();
     fetchUserArticlesCount();
     fetchUserProjectsCount();
+    fetchSocialUserNames();
   }, []);
   return (
     <Profile
@@ -128,6 +153,11 @@ function ProfileDetails() {
       userFollowing={userDetails.followers}
       userProjects={projectsCount}
       userArticles={articlesCount}
+      githubUserName={githubUserName}
+      linkedinUserName={linkedinUserName}
+      twitterUserName={twitterUserName}
+      facebookUserName={facebookUserName}
+      instagramUserName={instagramUserName}
     ></Profile>
   )
 }
