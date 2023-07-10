@@ -26,7 +26,7 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
                 <a href='' className='2xl:text-[20px]'>{name}</a>
                 <p className='font-k2d 2xl:text-[15px]'>{tag}</p>
                 <p className='font-k2d 2xl:text-[15px]'>{team}</p>
-              </div>
+              </div>  
             </div>
             <div className='col-span-1 '>
               <h1 className='font-k2d text-sm 2xl:text-[20px] '>{postDate}</h1>
@@ -79,7 +79,7 @@ function ProjectShow() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/projects", {
+        const response = await axios.get("http://localhost:8000/project", {
           headers: {
             Authorization: `Bearer ${token}`,
           }
