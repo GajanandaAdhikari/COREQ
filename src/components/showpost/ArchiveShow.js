@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { Archive } from '@mui/icons-material';
 
-
 function CommentShow() {
   return (
     <>
@@ -18,7 +17,7 @@ function CommentShow() {
 function PostShow({ name, profileImage, title, description, vote, tag, postDate, author, team, keywords }) {
   return (
     <>
-      <div className=' w-full  p-4 border border-gray-300 rounded-lg mt-5'>
+      <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
         <div className='grid grid-rows-13 gap-4 '>
           <div className='row-span-2 grid grid-cols-5 '>
             <div className='flex col-span-4'>
@@ -72,55 +71,54 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
   )
 }
 
-function ProfileProjects() {
-  const [project, setProject] = useState([]);
-  
+function ArchiveShow() {
+  const [archive, setArchive] = useState([]);
 
   const token = Cookies.get('token');
 
   useEffect(() => {
-    const fetchProject = async () => {
+    const fetchArchive = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/project/user/${Cookies.get('userId')}`, {
+        const response = await axios.get("http://localhost:8000/archive", {
           headers: {
             Authorization: `Bearer ${token}`,
           }
         });
-        const projectData = response.data;
-        const formattedProject = projectData.map(project => {
+        const archiveData = response.data;
+        const formattedArchives = archiveData.map(archive => {
           return {
-            ...project,
-            createdAt: new Date(project.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
+            ...archive,
+            createdAt: new Date(archive.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
           };
         });
-        setProject(formattedProject);
+        setArchive(formattedArchives);
 
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchProject();
+    fetchArchive();
   }, []);
 
   return (
     <>
-      {project.map((project) => (
+      {archive.map((archive) => (
         <PostShow
-          key={project.id}
-          name={project.userFullName}
-          profileImage={project.profileImage}
-          title={project.title}
-          description={project.description}
-          vote={project.vote}
-          tag={project.tag}
-          postDate={project.createdAt}
-          author={project.collabrators}
-          publicationYear={project.publicationYear}
-          team={project.team}
-          keywords={project.keywords}
+          key={archive.id}
+          name={archive.userFullName}
+          profileImage={archive.profileImage}
+          title={archive.title}
+          description={archive.description}
+          vote={archive.vote}
+          tag={archive.tag}
+          postDate={archive.createdAt}
+          author={archive.collabrators}
+          publicationYear={archive.publicationYear}
+          team={archive.team}
+          keywords={archive.keywords}
 
-        />
+        /> 
       ))}
     </>
   );
@@ -128,4 +126,4 @@ function ProfileProjects() {
 
 
 
-export default ProfileProjects;
+export default ArchiveShow;

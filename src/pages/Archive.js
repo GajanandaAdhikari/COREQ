@@ -5,7 +5,7 @@ import FriendSuggestion from "../components/suggestion/FriendSuggestion";
 import TopProjects from "../components/suggestion/TopProjects";
 import TopResearchArticles from "../components/suggestion/TopResearchArticles";
 import CirculateArchive from "../components/circulate/CirculateArchive";
-import QueryPostShow from "../components/showpost/QueryPostShow";
+import ArchiveShow from "../components/showpost/ArchiveShow";
 
 function Archive() {
   return (
@@ -24,7 +24,7 @@ function Archive() {
 
           <div className="md:col-span-3 max-sm:col-span-5 max-sm:col-start-1 max-sm:overflow-scroll max-sm:h-[600px] md:overflow-y-scroll md:h-[540px] 2xl:h-[760px]  ">
             <div className="2xl:pl-20"><CirculateArchive /></div>
-            <div className="2xl:pl-20"><QueryPostShow /></div>
+            <div className="2xl:pl-20"><ArchiveShow /></div>
           </div>
 
           <div className="max-sm:hidden grid  overflow-y-scroll md:h-[540px] 2xl:h-[760px] ">

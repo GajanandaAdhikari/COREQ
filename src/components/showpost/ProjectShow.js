@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { Archive } from '@mui/icons-material';
 
-
 function CommentShow() {
   return (
     <>
@@ -18,7 +17,7 @@ function CommentShow() {
 function PostShow({ name, profileImage, title, description, vote, tag, postDate, author, team, keywords }) {
   return (
     <>
-      <div className=' w-full  p-4 border border-gray-300 rounded-lg mt-5'>
+      <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
         <div className='grid grid-rows-13 gap-4 '>
           <div className='row-span-2 grid grid-cols-5 '>
             <div className='flex col-span-4'>
@@ -27,7 +26,7 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
                 <a href='' className='2xl:text-[20px]'>{name}</a>
                 <p className='font-k2d 2xl:text-[15px]'>{tag}</p>
                 <p className='font-k2d 2xl:text-[15px]'>{team}</p>
-              </div>
+              </div>  
             </div>
             <div className='col-span-1 '>
               <h1 className='font-k2d text-sm 2xl:text-[20px] '>{postDate}</h1>
@@ -72,28 +71,27 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
   )
 }
 
-function ProfileProjects() {
+function ProjectShow() {
   const [project, setProject] = useState([]);
-  
 
   const token = Cookies.get('token');
 
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/project/user/${Cookies.get('userId')}`, {
+        const response = await axios.get("http://localhost:8000/project", {
           headers: {
             Authorization: `Bearer ${token}`,
           }
         });
         const projectData = response.data;
-        const formattedProject = projectData.map(project => {
+        const formattedProjects = projectData.map(project => {
           return {
             ...project,
             createdAt: new Date(project.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
           };
         });
-        setProject(formattedProject);
+        setProject(formattedProjects);
 
       } catch (error) {
         console.log(error);
@@ -128,4 +126,4 @@ function ProfileProjects() {
 
 
 
-export default ProfileProjects;
+export default ProjectShow;
