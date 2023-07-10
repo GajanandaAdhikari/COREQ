@@ -111,7 +111,7 @@ function ProfileArticles() {
           title={article.title}
           description={article.description}
           vote={article.vote}
-          tag={"article"}
+          tag={article.tag}
           postDate={article.createdAt}
           author={article.authors}
           publicationYear={article.publicationYear}

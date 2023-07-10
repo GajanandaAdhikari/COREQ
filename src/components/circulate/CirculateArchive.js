@@ -72,7 +72,7 @@ function CirculateArchive() {
       setDescription("");
       setKeywords("");
 
-      navigate("/projects");
+      navigate("/archive");
     } catch (error) {
       console.error(error);
     }

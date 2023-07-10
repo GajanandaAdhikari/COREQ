@@ -64,7 +64,7 @@ function ProfileQueries() {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/query/${Cookies.get('userId')}`, {
+        const response = await axios.get(`http://localhost:8000/query/user/${Cookies.get('userId')}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
@@ -95,7 +95,7 @@ function ProfileQueries() {
           title={queries.title}
           description={queries.description}
           vote={queries.vote}
-          tag={"queries"}
+          tag={queries.tag}
           postDate={queries.createdAt}
         />
       ))}

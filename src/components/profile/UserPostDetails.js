@@ -8,14 +8,16 @@ import {
 } from "@material-tailwind/react";
 import ProfileQueries from "./ProfileQueries";
 import ProfileArticles from "./ProfileArticles";
+import ProfileArchive from "./ProfileArchive";
+import ProfileProjects from "./ProfileProjects";
 
 export default function UserPostDetails() {
   const [activeTab, setActiveTab] = React.useState("html");
   const data = [
     {
-      label: "Projecs",
+      label: "Projects",
       value: "projects",
-      desc: <ProfileQueries></ProfileQueries>,
+      desc: <ProfileProjects></ProfileProjects>,
     },
     {
       label: "Articles",
@@ -23,11 +25,9 @@ export default function UserPostDetails() {
       desc: <ProfileArticles></ProfileArticles>,
     },
     {
-      label: "Archieves",
-      value: "archieves",
-      desc: `We're not always in the position that we want to be at.
-      We're constantly growing. We're constantly making mistakes. We're
-      constantly trying to express ourselves and actualize our dreams.`,
+      label: "Archives",
+      value: "archives",
+      desc: <ProfileArchive></ProfileArchive>,
     },
     {
       label: "Queries",
