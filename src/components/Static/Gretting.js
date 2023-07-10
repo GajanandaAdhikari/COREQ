@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function UserName({ name, userName, userImage }) {
   return (
     <div class="max-w-md rounded-3xl block flex-grow border-b border-gray-300 pb-2">
-      <Link to={'/profile'}><div class="rounded-[calc(1.5rem-1px)] ">
+      <div class="rounded-[calc(1.5rem-1px)] ">
         <h1 className="md:text-[30px]">Namaste🙏</h1>
         <div class="flex gap-4 items-center ">
           <div>
@@ -21,14 +21,13 @@ function UserName({ name, userName, userImage }) {
             alt=""
           />
         </div>
-      </div></Link>
+      </div>
     </div>
   );
 }
 
 function Gretting() {
   const [userDetails, setUserDetails] = useState([]);
-  const token = Cookies.get("token");
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -37,7 +36,7 @@ function Gretting() {
           `http://localhost:8000/user/get/${Cookies.get("userId")}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${Cookies.get('token')}`,
             },
           }
         );
@@ -51,11 +50,13 @@ function Gretting() {
   }, []);
   return (
     <div>
-      <UserName
-        name={userDetails.fullName}
-        userName={userDetails.username}
-        userImage={userDetails.profilePic}
-      />
+      <Link to={`/profile/${Cookies.get("userId")}`} key={Cookies.get("userId")}>
+        <UserName
+          name={userDetails.fullName}
+          userName={userDetails.username}
+          userImage={userDetails.profilePic}
+        />
+      </Link>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 
 const cover = ["https://covermyfb.files.wordpress.com/2012/06/smile1.jpg"]
@@ -83,13 +84,14 @@ function ProfileDetails() {
   const [twitterUserName, setTwitterUserName] = useState([]);
 
   const token = Cookies.get('token');
-  const userId = Cookies.get('userId');
+  // Access the route parameters
+  const { userId } = useParams();
 
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/user/get/${Cookies.get("userId")}`,
+          `http://localhost:8000/user/get/${ userId }`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

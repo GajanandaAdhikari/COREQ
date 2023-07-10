@@ -7,22 +7,23 @@ import axios from "axios";
 
 function FriendSuggestionList() {
   const [suggestedFriends, setSuggestedFriends] = useState([]);
-  const token = Cookies.get("token");
 
   useEffect(() => {
     const fetchSuggestedFriends = async () => {
       try {
-        console.log(Cookies.get('userId'))
         const response = await axios.get(
           `http://localhost:8000/feed/friendSuggestions/${Cookies.get('userId')}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${Cookies.get("token")}`,
             },
           }
         );
+        
+
         console.log(response.data)
         setSuggestedFriends(response.data);
+
       } catch (error) {
         console.log(error);
       }
@@ -34,11 +35,13 @@ function FriendSuggestionList() {
   return (
     <>
       {suggestedFriends.map((user) => (
-        <SuggestedFriend
-          userFullName={user.fullName}
-          userName={user.username}
-          userImage={user.profilePic}
-        />
+        <Link to={`/profile/${user._id}`} key={user._id}>
+          <SuggestedFriend
+            userFullName={user.fullName}
+            userName={user.username}
+            userImage={user.profilePic}
+          />
+        </Link>
       ))}
     </>
   );
@@ -54,10 +57,10 @@ function SuggestedFriend({ userFullName, userName, userImage }) {
           </div>
           <div class="flex-1 min-w-0">
             <p className=" md:text-[20px] 2xl:text-[20px]  hover:text-sky-700  ">
-              <Link to="/profile">
+              <span >
                 {" "}
                 <span className="">{userFullName}</span>
-              </Link>
+              </span>
             </p>
             <p className="text-[16px] text-gray-700 dark:text-gray-700">
               @{userName}
