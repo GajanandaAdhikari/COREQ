@@ -29,9 +29,9 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
             <p className='ml-5'><span className='font-bold'>{userFollowing}</span> Following</p>
             <p className='ml-5'><span className='font-bold text-green-600'>{userProjects}</span> Projects</p>
             <p className='ml-5'><span className='font-bold text-yellow-400'>{userArticles}</span> Articles</p>
-            <p className='ml-5'>Faculty : <span className='font-bold text-purple-700'>{userFaculty}</span></p>
-            <p className='ml-5'>Semester : <span className='font-bold text-red-600'>{userSemester}</span></p>
-            <p className='ml-5'>Batch : <span className='font-bold text-blue-600'>{userBatch}</span></p>
+            <p className='ml-5'>Faculty <span className='font-bold text-purple-700'>{userFaculty}</span></p>
+            <p className='ml-5'>Semester <span className='font-bold text-red-600'>{userSemester}</span></p>
+            <p className='ml-5'>Batch <span className='font-bold text-blue-600'>{userBatch}</span></p>
             <div className='ml-10 '><FollowButton></FollowButton></div>
             <span className='flex ml-20'><Link to={"/edit"}> <SettingsIcon sx={{ fontSize: 40 }}></SettingsIcon></Link></span>
          
@@ -67,13 +67,21 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
 
 function ProfileDetails() {
   const [userDetails, setUserDetails] = useState([]);
+
   const [articlesCount, setArticleCount] = useState([]);
   const [projectsCount, setProjectsCount] = useState([]);
+
+  const [followingDetails, setFollowingDetails] = useState([]);
+  const [followerDetails, setFollowerDetails] = useState([]);
+  const [followingCount, setFollowingCount] = useState();
+  const [followerCount, setFollowerCount] = useState();
+
   const [githubUserName, setGithubUserName] = useState([]);
   const [linkedinUserName, setLinkedinUserName] = useState([]);
   const [facebookUserName, setFacebookUserName] = useState([]);
   const [instagramUserName, setInstagramUserName] = useState([]);
   const [twitterUserName, setTwitterUserName] = useState([]);
+
   const token = Cookies.get('token');
   const userId = Cookies.get('userId');
 
@@ -142,17 +150,51 @@ function ProfileDetails() {
         console.log(error);
       }
     };
+    const fetchFollowingDetails = async() => {
+      try {
+        const response = await axios.get(`http://localhost:8000/user/get/${ userId }/followings`, 
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setFollowingDetails(response.data.followingDetails);
+        setFollowingCount(response.data.followingCount);
+
+      }
+      catch(error) {
+        console.log(error);
+      }
+    };
+    const fetchFollowerDetails = async() => {
+      try {
+        const response = await axios.get(`http://localhost:8000/user/get/${ userId }/followers`, 
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setFollowerDetails(response.data.followerDetails);
+        setFollowerCount(response.data.followerCount);
+
+      }
+      catch(error) {
+        console.log(error);
+      }
+    };
     fetchUserDetails();
     fetchUserArticlesCount();
     fetchUserProjectsCount();
     fetchSocialUserNames();
+    fetchFollowingDetails();
+    fetchFollowerDetails();
   }, []);
   return (
     <Profile
       userFullName={userDetails.fullName}
       userBio={userDetails.bio}
-      userFollowers={userDetails.following}
-      userFollowing={userDetails.followers}
+      userFollowers={followerCount}
+      userFollowing={followingCount}
       userProjects={projectsCount}
       userArticles={articlesCount}
       userFaculty={userDetails.faculty}
