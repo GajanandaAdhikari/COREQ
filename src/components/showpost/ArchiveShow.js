@@ -118,7 +118,7 @@ function ArchiveShow() {
           team={archive.team}
           keywords={archive.keywords}
 
-        />
+        /> 
       ))}
     </>
   );
