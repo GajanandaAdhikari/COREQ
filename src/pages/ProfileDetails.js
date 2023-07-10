@@ -29,7 +29,8 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
             <p className='ml-5'><span className='font-bold'>{userFollowing}</span> Following</p>
             <p className='ml-5'><span className='font-bold text-green-600'>{userProjects}</span> Projects</p>
             <p className='ml-5'><span className='font-bold text-yellow-400'>{userArticles}</span> Articles</p>
-
+            <p className='ml-5'>Faculty : <span className='font-bold text-purple-700'>{userFaculty}</span></p>
+            <p className='ml-5'>Semester : <span className='font-bold text-red-600'>{userSemester}</span></p>
             <div className='ml-10 '><FollowButton></FollowButton></div>
             <span className='flex ml-20'><Link to={"/edit"}> <SettingsIcon sx={{ fontSize: 40 }}></SettingsIcon></Link></span>
          

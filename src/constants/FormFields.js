@@ -54,6 +54,16 @@ const signupFields=[
         placeholder:"Faculty"   
     },
     {
+        labelText:"Userbatch",
+        labelFor:"userbatch",
+        id:"batch",
+        name:"userbatch",
+        type:"text",
+        autoComplete:"userbatch",
+        isRequired:true,
+        placeholder:"Batch"   
+    },
+    {
         labelText:"Usersemester",
         labelFor:"usersemester",
         id:"semester",
