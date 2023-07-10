@@ -39,6 +39,8 @@ function CirculateQueries() {
           },
         }
       );
+      setTitle("");
+      setDescription("");
       navigate("/query");
     } catch (error) {
       console.error(error);

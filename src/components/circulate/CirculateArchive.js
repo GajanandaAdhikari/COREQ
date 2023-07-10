@@ -1,8 +1,9 @@
 import TextareaAutosize from "@mui/base/TextareaAutosize";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import UploadPDF from "./UploadPDF";
 
 function CirculateArchive() {
   const year = new Date().getFullYear();
@@ -64,6 +65,13 @@ function CirculateArchive() {
         }
       );
 
+      // Clear the form by resetting the state variables
+      setTitle("");
+      setCollabrators("");
+      setTeam("");
+      setDescription("");
+      setKeywords("");
+
       navigate("/projects");
     } catch (error) {
       console.error(error);
@@ -79,29 +87,29 @@ function CirculateArchive() {
         <input
           type="text"
           id="title"
-          placeholder="Title"
+          placeholder="Project Title"
           value={title}
           onChange={handleTitleChange}
-          class="flex items-start md:text-[20px] w-full 2xl:h-[40px]  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="flex items-start md:text-[20px] w-full 2xl:h-[40px]  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
         <input
           type="text"
           id="collaburator"
-          placeholder="Collabrators"
+          placeholder="Members Name"
           value={collabrators}
           onChange={handleCollabratorsChange}
-          class="flex mt-4 items-start md:text-[20px] w-full 2xl:h-[40px]  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="flex mt-4 items-start md:text-[20px] w-full 2xl:h-[40px]  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
 
-        {/* <input type="text" id="author" placeholder="published year" class=" mt-4 items-start md:text-[20px] w-1/2  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/> */}
+        {/* <input type="text" id="author" placeholder="published year" className="mt-4 items-start md:text-[20px] w-1/2  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/> */}
 
         <input
           type="text"
-          id="author"
+          id="team_name"
           placeholder="Team Name"
           value={team}
           onChange={handleTeamChange}
-          class="mt-4 text-start md:text-[20px] max-sm:w-full   w-full  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="mt-4 text-start md:text-[20px] max-sm:w-full   w-full  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
 
         <TextareaAutosize
@@ -117,14 +125,20 @@ function CirculateArchive() {
           maxRows={1}
           value={keywords}
           onChange={handleKeywordsChange}
-          className="max-sm:flex md:inline-flex md:mr-10 items-start md:text-[20px] max-sm:w-full md:w-2/3 mt-3  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="max-sm:flex md:inline-flex md:mr-10 items-start md:text-[20px] w-full mt-3  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         ></TextareaAutosize>
-        <button class="inline-flex max-sm:mt-3 max-sm:ml-7 max-sm:mr-20 mr-5 bg-green-500  hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
-          Draft
-        </button>
-        <button class="inline-flex max-sm:mt-3 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" onClick={HandleSubmitArchive}>
-          Submit
-        </button>
+        <UploadPDF message={"Upload Archive Details PDF"}></UploadPDF>
+        <div className="flex justify-center mt-5">
+          <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
+            Draft
+          </button>
+          <button
+            className="ml-10 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
+            onClick={HandleSubmitArchive}
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </>
   );

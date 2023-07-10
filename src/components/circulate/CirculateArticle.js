@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
+import UploadPDF from "./UploadPDF";
 
 function CirculateArticle() {
   const year = new Date().getFullYear();
@@ -71,6 +72,14 @@ function CirculateArticle() {
         }
       );
       console.log(response.data);
+
+      // Reset the form fields
+      setTitle("");
+      setAuthors("");
+      setPublicationYear("");
+      setPublicationHouse("");
+      setDescription("");
+      setKeywords("");
 
       navigate("/articles");
     } catch (error) {
@@ -142,14 +151,17 @@ function CirculateArticle() {
           onChange={handleKeywordsChange}
           aria-rowcount={1}
           maxRows={1}
-          className="max-sm:flex md:inline-flex md:mr-10 items-start md:text-[20px] max-sm:w-full md:w-2/3 mt-3  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="max-sm:flex md:inline-flex md:mr-10 items-start md:text-[20px] w-full mt-3  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         ></TextareaAutosize>
-        <button class="inline-flex max-sm:mt-3 max-sm:ml-7 max-sm:mr-20 mr-5 bg-green-500  hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
+        <UploadPDF message={"Upload Article PDF"}></UploadPDF>
+        <div className="flex justify-center mt-5">
+        <button class=" bg-green-500  hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
           Draft
         </button>
-        <button class="inline-flex max-sm:mt-3 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" onClick={HandleSubmitArticle} type="submit">
+        <button class="ml-10 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" onClick={HandleSubmitArticle} type="submit">
           Submit
         </button>
+        </div>
       </div>
     </div>
   );
