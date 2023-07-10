@@ -83,10 +83,11 @@ export default function EditProfile() {
 
         <div class="flex mx-auto pb-10">
           <select className="mr-[40px] w-2/3 border border-bcolor text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 overflow-y-scroll"
-            id="grid-state"
+            id="faculty"
             size="1"
+            value={faculty} onChange={(handleFacultyChange)}
           >
-            <option  value={faculty} onChange={(handleFacultyChange)} disabled selected>
+            <option   disabled selected>
               Faculty
             </option>
             <option>BEIT</option>
@@ -95,15 +96,22 @@ export default function EditProfile() {
             <option>BE Elx</option>
           </select>
 
-          <select className="block appearance-none w-2/3  border border-bcolor  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-            <option  value={batch} onChange={(handleBatchChange)} disabled selected>
-              Batch
-            </option>
-            {Array.from({ length: 7 }, (_, index) => {
-              const year = 2017 + index;
-              return <option key={year}>{year}</option>;
-            })}
-          </select>
+          <select
+  className="block appearance-none w-2/3 border border-bcolor text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+  id="batch"
+  size="1"
+
+  onChange={handleBatchChange}
+>
+  <option disabled value="">
+    Batch
+  </option>
+  {Array.from({ length: 7 }, (_, index) => {
+    const year = 2017 + index;
+    return <option key={year} value={year} onChange={handleBatchChange}>{year}</option>;
+  })}
+</select>
+
 
 
         </div>
