@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const cover = ["https://covermyfb.files.wordpress.com/2012/06/smile1.jpg"]
 const profile = ["https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais"]
 const bio = "Aurora Vega is a captivating enigma, a multifaceted soul roaming the tapestry of life with a boundless curiosity and an insatiable thirst for adventure. Born under the celestial symphony of stars, she embodies the essence of a wandering dreamer, forever seeking new experiences and connections."
-function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName }) {
+function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName, userFaculty, userSemester, userBatch }) {
   return (
     <div className='profile '>
       <div className='cover'>
@@ -31,6 +31,7 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
             <p className='ml-5'><span className='font-bold text-yellow-400'>{userArticles}</span> Articles</p>
             <p className='ml-5'>Faculty : <span className='font-bold text-purple-700'>{userFaculty}</span></p>
             <p className='ml-5'>Semester : <span className='font-bold text-red-600'>{userSemester}</span></p>
+            <p className='ml-5'>Batch : <span className='font-bold text-blue-600'>{userBatch}</span></p>
             <div className='ml-10 '><FollowButton></FollowButton></div>
             <span className='flex ml-20'><Link to={"/edit"}> <SettingsIcon sx={{ fontSize: 40 }}></SettingsIcon></Link></span>
          
@@ -154,6 +155,9 @@ function ProfileDetails() {
       userFollowing={userDetails.followers}
       userProjects={projectsCount}
       userArticles={articlesCount}
+      userFaculty={userDetails.faculty}
+      userBatch={userDetails.batch}
+      userSemester={userDetails.semester}
       githubUserName={githubUserName}
       linkedinUserName={linkedinUserName}
       twitterUserName={twitterUserName}
