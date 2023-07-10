@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useParams } from 'react-router-dom';
 
 class FollowButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFollowing: false,
+      isFollowing: props.initialIsFollowing || false,
     };
   }
   
@@ -15,12 +16,18 @@ class FollowButton extends React.Component {
       isFollowing: !prevState.isFollowing,
     }));
 
+    // Extract followingId from props
+    const { followingId } = this.props;
+
     try {
-      const response = await axios.get(
-        `http://localhost:8000/user/follow/${Cookies.get('userId')}`,
+      const response = await axios.post(
+        `http://localhost:8000/user/follow/${Cookies.get('userId')}`, 
+        {
+          followingId: followingId
+        },
         {
           headers: {
-            Authorization: `Bearer ${Cookies.get(Cookies.get('token'))}`,
+            Authorization: `Bearer ${Cookies.get('token')}`,
           },
         }
       );

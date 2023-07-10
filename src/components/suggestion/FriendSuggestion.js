@@ -35,26 +35,27 @@ function FriendSuggestionList() {
   return (
     <>
       {suggestedFriends.map((user) => (
-        <Link to={`/profile/${user._id}`} key={user._id}>
           <SuggestedFriend
             userFullName={user.fullName}
             userName={user.username}
             userImage={user.profilePic}
+            userId={user._id}
           />
-        </Link>
       ))}
     </>
   );
 }
 
-function SuggestedFriend({ userFullName, userName, userImage }) {
+function SuggestedFriend({ userFullName, userName, userImage, userId }) {
   return (
     <>
+    
       <li className="py-2 ">
         <div className="flex items-left space-x-4">
           <div class="flex-shrink-0">
             <img className="w-8 h-8 rounded-full" src={userImage} />
           </div>
+          <Link to={`/profile/${userId}`} key={userId}>
           <div class="flex-1 min-w-0">
             <p className=" md:text-[20px] 2xl:text-[20px]  hover:text-sky-700  ">
               <span >
@@ -66,8 +67,9 @@ function SuggestedFriend({ userFullName, userName, userImage }) {
               @{userName}
             </p>
           </div>
+          </Link>
           <div className="inline-flex md:text-2xl font-semibold text-gray-900 dark:text-white">
-            <FollowButton></FollowButton>
+            <FollowButton followingId={userId}></FollowButton>
           </div>
         </div>
       </li>
