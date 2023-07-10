@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom';
 const cover = ["https://covermyfb.files.wordpress.com/2012/06/smile1.jpg"]
 const profile = ["https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais"]
 const bio = "Aurora Vega is a captivating enigma, a multifaceted soul roaming the tapestry of life with a boundless curiosity and an insatiable thirst for adventure. Born under the celestial symphony of stars, she embodies the essence of a wandering dreamer, forever seeking new experiences and connections."
-function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName, userFaculty, userSemester, userBatch }) {
+function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName, userFaculty, userSemester, userBatch, userId }) {
   return (
     <div className='profile '>
       <div className='cover'>
@@ -33,7 +33,7 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
             <p className='ml-5'>Faculty <span className='font-bold text-purple-700'>{userFaculty}</span></p>
             <p className='ml-5'>Semester <span className='font-bold text-red-600'>{userSemester}</span></p>
             <p className='ml-5'>Batch <span className='font-bold text-blue-600'>{userBatch}</span></p>
-            <div className='ml-10 '><FollowButton></FollowButton></div>
+            <div className='ml-10 '><FollowButton followingId={userId}></FollowButton></div>
             <span className='flex ml-20'><Link to={"/edit"}> <SettingsIcon sx={{ fontSize: 40 }}></SettingsIcon></Link></span>
          
           </div>
@@ -83,7 +83,6 @@ function ProfileDetails() {
   const [instagramUserName, setInstagramUserName] = useState([]);
   const [twitterUserName, setTwitterUserName] = useState([]);
 
-  const token = Cookies.get('token');
   // Access the route parameters
   const { userId } = useParams();
 
@@ -94,7 +93,7 @@ function ProfileDetails() {
           `http://localhost:8000/user/get/${ userId }`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${Cookies.get('token')}`,
             },
           }
         );
@@ -108,7 +107,7 @@ function ProfileDetails() {
         const response = await axios.get(`http://localhost:8000/article/user/${ userId }/countArticles`,  
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${Cookies.get('token')}`,
           },
         }
       );
@@ -123,7 +122,7 @@ function ProfileDetails() {
         const response = await axios.get(`http://localhost:8000/project/user/${ userId }/countProjects`,  
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${Cookies.get('token')}`,
           },
         }
       );
@@ -138,7 +137,7 @@ function ProfileDetails() {
         const response = await axios.get(`http://localhost:8000/user/get/${ userId }`, 
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${Cookies.get('token')}`,
           },
         }
         );
@@ -157,7 +156,7 @@ function ProfileDetails() {
         const response = await axios.get(`http://localhost:8000/user/get/${ userId }/followings`, 
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${Cookies.get('token')}`,
           },
         });
         setFollowingDetails(response.data.followingDetails);
@@ -173,7 +172,7 @@ function ProfileDetails() {
         const response = await axios.get(`http://localhost:8000/user/get/${ userId }/followers`, 
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${Cookies.get('token')}`,
           },
         });
         setFollowerDetails(response.data.followerDetails);
@@ -207,6 +206,7 @@ function ProfileDetails() {
       twitterUserName={twitterUserName}
       facebookUserName={facebookUserName}
       instagramUserName={instagramUserName}
+      userId={userId}
     ></Profile>
   )
 }
