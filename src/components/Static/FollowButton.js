@@ -61,6 +61,6 @@ class FollowButton extends React.Component {
       </button>
     ) : null;
   }
-}
+} 
 
 export default FollowButton;
