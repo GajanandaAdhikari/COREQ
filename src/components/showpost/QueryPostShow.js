@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import DeleteButton from "../Static/DeleteButton";
 
 function CommentShow() {
   return <></>;
@@ -45,6 +46,7 @@ function PostShow({ name, profileImage, description, vote, tag, postDate }) {
               <button>
                 <img src={downvote} className="w-10 pl-0"></img>
               </button>
+              <DeleteButton />
             </div>
           </div>
           <div className="row-span-2  p-1 flex">
