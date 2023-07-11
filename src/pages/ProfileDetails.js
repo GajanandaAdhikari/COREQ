@@ -81,7 +81,7 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
                     Batch <span className='font-bold text-blue-600'>{userBatch}</span>
                   </p>
                   <div className='ml-10'>
-                    <FollowButton userId={userId}></FollowButton>
+                    <FollowButton followingId={userId}></FollowButton>
                   </div>
                   <span className='flex ml-20'>
                     {shouldShowEdit && (  
