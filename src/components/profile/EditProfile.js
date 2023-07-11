@@ -6,6 +6,9 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import FailedAlert from "../Static/FailedAlert";
+import SucessAlert from "../Static/SucessAlert";
+
 
 export default function EditProfile() {
   const navigate = useNavigate();
@@ -17,6 +20,7 @@ export default function EditProfile() {
   const [bio, setBio] = useState("");
   const [faculty, setFaculty] = useState("");
   const [batch, setBatch] = useState("");
+  const [alerts, setAlerts] = useState([]);
 
   // Handle input changes and update the state variables
   const handleFullNameChange = (e) => {
@@ -54,19 +58,45 @@ export default function EditProfile() {
           },
         }
       );
-      navigate("/profile");
+      setAlerts((prevAlerts) => [...prevAlerts, "profileUpdatedSucess"]);
+      setFullName("");
+      setBatch("");
+      setBio("");
+      setFaculty("");
+      navigate("/edit");
     } catch (error) {
+      setAlerts((prevAlerts) => [...prevAlerts, "profileUpdatedFailed"]);
       console.error(error);
     }
   };
+  const renderAlerts = () => {
+    return alerts.map((alert, index) => {
+      switch (alert) {
+        
+        case "profileUpdatedSucess":
+          return (
+            <SucessAlert
+              key={index}
+              message={"Profile updated successfully"}
+            />
+          );
+        case "profileUpdatedFailed":
+          return <FailedAlert key={index} message={"Failed to update Profile"} />;
+        default:
+          return null;
+      }
+    });
+  };
+
   return (
-    <div className="bg-back-color h-screen overflow-y-scroll">
+    <div className="bg-back-color h-screen ">
       <div >
-        <h3 className="text-2xl font-bold pt-10 pl-20">Edit Profile</h3>
+        <h3 className="overflow-y-scroll text-2xl font-bold pt-10 pl-10">Edit Profile</h3>
+        {renderAlerts()}
         <CardProfile></CardProfile>
         <CoverPictureUpload></CoverPictureUpload>
       </div>
-      <div class="w-2/3 mx-auto">
+      <div class="w-2/3 mx-auto ">
         <input class="mt-8  justify-center  shadow appearance-none border border-bcolor rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Full Name" value={fullName} onChange={handleFullNameChange}/>
       </div>
       <div className="flex justify-center">
@@ -116,7 +146,7 @@ export default function EditProfile() {
 
         </div>
         <div className="flex justify-end">
-          <Link to={"/profile"}>
+          <Link to={`/profile/${Cookies.get("userId")}`} key={Cookies.get("userId")}>
             <button className="inline-flex max-sm:mr-20 md:mr-20 border border-pbcolor bg-white rounded hover:bg-gray-100 text-pbcolor font-bold py-1 px-8">Cancel</button>
           </Link>
           <button className="inline-flex   max-sm:mt-3 bg-pbcolor  text-white font-bold py-1 px-9 rounded" onClick={HandleOnSave}>Save</button>

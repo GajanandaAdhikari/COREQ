@@ -9,9 +9,10 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import axios from "axios";
-import FailedAlert from "../Static/FailedAlert";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
+import SucessAlert from "../Static/SucessAlert";
+import FailedAlert from "../Static/FailedAlert";
 
 export default function SocialLink() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ export default function SocialLink() {
   const [twitterUserName, setTwitterUserName] = useState("");
   const [showFailedAlert, setShowFailedAlert] = useState(false);
   const [isUpdateSuccess, setIsUpdateSuccess] = useState(false);
+  const [alerts, setAlerts] = useState([]);
 
   // Handle input changes and update the state variables
   const handleGithubUserNameChange = (e) => {
@@ -66,15 +68,36 @@ export default function SocialLink() {
           },
         }
       );
+      setAlerts((prevAlerts) => [...prevAlerts, "socialLinkUpdatedSucess"]);
       setIsUpdateSuccess(true);
       setShowFailedAlert(false);
-      navigate("/profile");
+      navigate("/sociallink");
     } catch (error) {
+      setAlerts((prevAlerts) => [...prevAlerts, "socialLinkUpdatedFailed"]);
       console.error(error);
       setIsUpdateSuccess(false);
       setShowFailedAlert(true);
     }
   };
+  const renderAlerts = () => {
+    return alerts.map((alert, index) => {
+      switch (alert) {
+        
+        case "socialLinkUpdatedSucess":
+          return (
+            <SucessAlert
+              key={index}
+              message={"Social link updated successfully"}
+            />
+          );
+        case "socialLinkUpdatedFailed":
+          return <FailedAlert key={index} message={"Failed to update social link"} />;
+        default:
+          return null;
+      }
+    });
+  };
+
 
   return (
     <>
@@ -82,9 +105,7 @@ export default function SocialLink() {
         <div>
           <h3 className="text-2xl font-bold pt-20 pl-20">Social Link</h3>
         </div>
-        {showFailedAlert && !isUpdateSuccess && (
-          <FailedAlert message={"Failed to update social links"} />
-        )}
+        {renderAlerts()}
         <div className="w-2/3 mx-auto mb-10 pb-20 pt-20 mt-20">
           <span className="flex mt-8">
             <FontAwesomeIcon icon={faGithub} size="3x" />
@@ -144,7 +165,7 @@ export default function SocialLink() {
         </div>
 
         <div className="flex justify-center">
-          <Link to={"/profile"}>
+          <Link to={`/profile/${Cookies.get("userId")}`} key={Cookies.get("userId")}>
             <button className="inline-flex max-sm:mr-20 md:mr-20 border border-pbcolor bg-white rounded hover:bg-gray-100 text-pbcolor font-bold py-1 px-8">
               Cancel
             </button>

@@ -117,7 +117,7 @@ export default function Security() {
         </div>
 
         <div className="flex justify-end w-2/3 mx-auto">
-          <Link to={"/profile"}>
+          <Link to={`/profile/${Cookies.get("userId")}`} key={Cookies.get("userId")}>
             <button className="inline-flex border mr-10 border-pbcolor bg-white rounded hover:bg-gray-100 text-pbcolor font-bold py-1 px-8">
               Cancel
             </button>

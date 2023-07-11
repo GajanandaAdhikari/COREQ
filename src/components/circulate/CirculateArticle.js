@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import UploadPDF from "./UploadPDF";
+import FailedAlert from "../Static/FailedAlert";
+import SucessAlert from "../Static/SucessAlert";
 
 function CirculateArticle() {
   const year = new Date().getFullYear();
@@ -20,6 +22,8 @@ function CirculateArticle() {
   const [publicationHouse, setPublicationHouse] = useState("");
   const [description, setDescription] = useState("");
   const [keywords, setKeywords] = useState("");
+  const [alerts,setAlerts]=useState([]);
+  
 
   // Handle input changes and update the state variables
   const handleTitleChange = (e) => {
@@ -72,6 +76,7 @@ function CirculateArticle() {
         }
       );
       console.log(response.data);
+      setAlerts((prevAlerts) => [...prevAlerts, "circulateArticleSucess"]);
 
       // Reset the form fields
       setTitle("");
@@ -83,12 +88,32 @@ function CirculateArticle() {
 
       navigate("/articles");
     } catch (error) {
+      setAlerts((prevAlerts) => [...prevAlerts, "circulateArticleFailed"]);
       console.error(error);
     }
+  };
+  const renderAlerts = () => {
+    return alerts.map((alert, index) => {
+      switch (alert) {
+        
+        case "circulateArticleSucess":
+          return (
+            <SucessAlert
+              key={index}
+              message={"Circulate article successfully"}
+            />
+          );
+        case "circulateArticleFailed":
+          return <FailedAlert key={index} message={"Failed to circulate article"} />;
+        default:
+          return null;
+      }
+    });
   };
   return (
     <div>
       <div className=" max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-boderColor rounded-lg mt-5 ">
+      {renderAlerts()}
         <h1 className="text-center md:text-xl font-bold pb-3">
           Circulate Article
         </h1>

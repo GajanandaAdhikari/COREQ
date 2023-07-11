@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import '../../css/FAQ.css';
+import Cookies from "js-cookie";
 
 export default function Help() {
   return (
@@ -19,7 +20,7 @@ export default function Help() {
         </div>
 
         <div className="flex justify-center w-2/3 mx-auto">
-          <Link to={"/profile"}>
+          <Link to={`/profile/${Cookies.get("userId")}`} key={Cookies.get("userId")}>
             <button className="inline-flex border mr-10 border-pbcolor bg-white rounded hover:bg-gray-100 text-pbcolor font-bold py-1 px-8">Cancel</button>
           </Link>
           <button className="inline-flex max-sm:mt-3 bg-pbcolor text-white font-bold py-1 px-9 rounded">Save</button>

@@ -3,6 +3,7 @@ import AddLinkIcon from '@mui/icons-material/AddLink';
 import SecurityIcon from '@mui/icons-material/Security';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import Cookies from 'js-cookie';
 
 import { Link, useLocation } from "react-router-dom";
 
@@ -17,7 +18,7 @@ function ProfileEditSideBar() {
     <>
       <div className="flex-grow h-screen   border-r border-bcolor bg-back-color">
         <div className="">
-          <Link to={"/profile"}>
+          <Link to={`/profile/${Cookies.get("userId")}`} key={Cookies.get("userId")}>
             {" "}
             <h1 className='pt-20 md:pl-5 xl:pl-20 md:text-md lg:text-lg 2xl:text-2xl font-semibold hover:text-sky-700'>
               <ArrowBackIosIcon className=" mr-6  " sx={{ fontSize: 30 }} />
