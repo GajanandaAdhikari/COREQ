@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function UserName({ name, userName, userImage }) {
   return (
-    <div class="max-w-md rounded-3xl block flex-grow border-b border-gray-300 pb-2">
+    <div class="max-w-md rounded-3xl block flex-grow ml-10 pb-2">
       <div class="rounded-[calc(1.5rem-1px)] ">
         <h1 className="md:text-[30px]">Namaste🙏</h1>
         <div class="flex gap-4 items-center ">

@@ -24,7 +24,9 @@ const cover = ["https://covermyfb.files.wordpress.com/2012/06/smile1.jpg"]
 const profile = ["https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais"]
 const bio = "Aurora Vega is a captivating enigma, a multifaceted soul roaming the tapestry of life with a boundless curiosity and an insatiable thirst for adventure. Born under the celestial symphony of stars, she embodies the essence of a wandering dreamer, forever seeking new experiences and connections."
 
-function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName, userFaculty, userSemester, userBatch }) {
+function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName, userFaculty, userSemester, userBatch, userId }) {
+     // Check if userId prop is equal to the value of Cookies.get('userId')
+     const shouldShowEdit = userId == Cookies.get('userId');
   return (
     <div className='p-10 bg-back-color'>
       <div className="grid md:grid-cols-5 sm:grid-cols-5 pr-5  ">
@@ -75,12 +77,14 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
                     Batch <span className='font-bold text-blue-600'>{userBatch}</span>
                   </p>
                   <div className='ml-10'>
-                    <FollowButton></FollowButton>
+                    <FollowButton userId={userId}></FollowButton>
                   </div>
                   <span className='flex ml-20'>
+                    {shouldShowEdit && (  
                     <Link to={'/edit'}>
-                      <SettingsIcon sx={{ fontSize: 40 }}></SettingsIcon>
+                      <SettingsIcon sx={{ fontSize: 40 }} userId={userId}></SettingsIcon>
                     </Link>
+                    )}
                   </span>
                 </div>
                 <div className='mt-5 pr-30'>
@@ -254,6 +258,7 @@ function ProfileDetails() {
       twitterUserName={twitterUserName}
       facebookUserName={facebookUserName}
       instagramUserName={instagramUserName}
+      userId={userId}
     />
   )
 }

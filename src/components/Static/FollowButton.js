@@ -10,20 +10,19 @@ class FollowButton extends React.Component {
       isFollowing: props.initialIsFollowing || false,
     };
   }
-  
-  handleFollowClick = async() => {
+
+  handleFollowClick = async () => {
     this.setState((prevState) => ({
       isFollowing: !prevState.isFollowing,
     }));
 
-    // Extract followingId from props
     const { followingId } = this.props;
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/user/follow/${Cookies.get('userId')}`, 
+        `http://localhost:8000/user/follow/${Cookies.get('userId')}`,
         {
-          followingId: followingId
+          followingId: followingId,
         },
         {
           headers: {
@@ -32,15 +31,17 @@ class FollowButton extends React.Component {
         }
       );
       this.setState({ isFollowing: response.data.isFollowing });
+    } catch (error) {
+      console.log(error);
     }
-    catch(error) {
-      console.log(error)
-    }
-
   };
 
   render() {
     const { isFollowing } = this.state;
+    const { userId } = this.props;
+
+    // Check if userId prop is equal to the value of Cookies.get('userId')
+    const shouldShowButton = userId !== Cookies.get('userId');
 
     const buttonStyle = {
       padding: '10px 20px',
@@ -51,14 +52,14 @@ class FollowButton extends React.Component {
       color: '#fff',
       background: isFollowing ? 'green' : '#1DA1F2',
       cursor: 'pointer',
-
     };
 
-    return (
+    // Render the button only if shouldShowButton is true
+    return shouldShowButton ? (
       <button style={buttonStyle} onClick={this.handleFollowClick}>
         {isFollowing ? 'Following' : 'Follow'}
       </button>
-    );
+    ) : null;
   }
 }
 
