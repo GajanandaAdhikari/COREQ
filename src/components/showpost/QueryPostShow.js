@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import DeleteButton from "../Static/DeleteButton";
+import PdfViewer from "../Static/PdfViewer";
 
 function CommentShow() {
   return <></>;
@@ -48,6 +49,7 @@ function PostShow({ name, profileImage, description, vote, tag, postDate }) {
               </button>
               <DeleteButton />
             </div>
+            <PdfViewer/>
           </div>
           <div className="row-span-2  p-1 flex">
             <Link to="/comment">

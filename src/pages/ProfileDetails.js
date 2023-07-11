@@ -27,6 +27,10 @@ const bio = "Aurora Vega is a captivating enigma, a multifaceted soul roaming th
 function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName, userFaculty, userSemester, userBatch, userId }) {
      // Check if userId prop is equal to the value of Cookies.get('userId')
      const shouldShowEdit = userId == Cookies.get('userId');
+
+
+
+
   return (
     <div className='p-10 bg-back-color'>
       <div className="grid md:grid-cols-5 sm:grid-cols-5 pr-5  ">
