@@ -11,10 +11,10 @@ import '../../css/SocialFollow.css';
 function SocialFollow({ facebookUserName, githubUserName, linkedinUserName, twitterUserName, instagramUserName }) {
   
   const shouldShowGithub = githubUserName != null;
-  const shouldShowLinkedin = linkedinUserName == null;
-  const shouldShowFacebook = facebookUserName == null;
-  const shouldShowInstagram = instagramUserName == null;
-  const shouldShowTwitter = twitterUserName == null;
+  const shouldShowLinkedin = linkedinUserName != null;
+  const shouldShowFacebook = facebookUserName != null;
+  const shouldShowInstagram = instagramUserName != null;
+  const shouldShowTwitter = twitterUserName != null;
   return (
     <div class="social-container mt-5 truncate">
      {shouldShowGithub && (
