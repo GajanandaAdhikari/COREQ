@@ -42,7 +42,7 @@ function PostShow({userId, name, profileImage, description, vote, tag, postDate 
             <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar />
+            <PostBar userId={userId}/>
             </div>
           </div>
           <div className="row-span-2  p-1 flex">

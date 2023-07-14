@@ -7,8 +7,10 @@ import Downvote from '@mui/icons-material/ArrowCircleDown';
 import Share from '@mui/icons-material/Share';
 import PostAdd from '@mui/icons-material/PostAdd';
 import { Button } from '@mui/material';
+import Cookies from "js-cookie";
 
-export default function PostBar() {
+export default function PostBar({userId}) {
+  const shouldShowDelete = userId == Cookies.get('userId');
   return (
    <div>
 
@@ -18,8 +20,9 @@ export default function PostBar() {
             <IconButton><Share sx={{ fontSize: 30  }} /> </IconButton>
              <IconButton><Upvote sx={{ fontSize: 30 ,color: 'green' }} /> </IconButton>
              <IconButton><Downvote sx={{ fontSize: 30 ,color: 'red' }} /> </IconButton>
-             <IconButton aria-label="delete" > <DeleteIcon fontSize="inherit" sx={{fontSize: 30 }}/>
-      </IconButton>
+             {shouldShowDelete && (
+             <IconButton aria-label="delete" > <DeleteIcon fontSize="inherit" sx={{fontSize: 30 }}/></IconButton>
+              )}
     </Stack> 
    </div>
   );
