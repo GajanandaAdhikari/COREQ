@@ -11,28 +11,28 @@ import ProfileArticles from "./ProfileArticles";
 import ProfileArchive from "./ProfileArchive";
 import ProfileProjects from "./ProfileProjects";
 
-export default function UserPostDetails() {
+export default function UserPostDetails(props) {
   const [activeTab, setActiveTab] = React.useState("html");
   const data = [
     {
       label: "Projects",
       value: "projects",
-      desc: <ProfileProjects></ProfileProjects>,
+      desc: <ProfileProjects userId={props.userId}></ProfileProjects>,
     },
     {
       label: "Articles",
       value: "articles",
-      desc: <ProfileArticles></ProfileArticles>,
+      desc: <ProfileArticles userId={props.userId}></ProfileArticles>,
     },
     {
       label: "Archives",
       value: "archives",
-      desc: <ProfileArchive></ProfileArchive>,
+      desc: <ProfileArchive userId={props.userId}></ProfileArchive>,
     },
     {
       label: "Queries",
       value: "queries",
-      desc: <ProfileQueries></ProfileQueries>,
+      desc: <ProfileQueries userId={props.userId}></ProfileQueries>,
     },
 
   ];

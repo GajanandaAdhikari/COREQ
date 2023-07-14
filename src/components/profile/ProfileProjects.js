@@ -72,7 +72,7 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
   )
 }
 
-function ProfileProjects() {
+function ProfileProjects(props) {
   const [project, setProject] = useState([]);
   
 
@@ -81,7 +81,7 @@ function ProfileProjects() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/project/user/${Cookies.get('userId')}`, {
+        const response = await axios.get(`http://localhost:8000/project/user/${props.userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

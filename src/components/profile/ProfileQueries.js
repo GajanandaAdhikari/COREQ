@@ -57,14 +57,14 @@ function PostShow({ name, title, profileImage, description, vote, tag, postDate 
 }
 
 
-function ProfileQueries() {
+function ProfileQueries(props) {
   const [queries, setQueries] = useState([]);
   const token = Cookies.get('token');
 
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/query/user/${Cookies.get('userId')}`, {
+        const response = await axios.get(`http://localhost:8000/query/user/${props.userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

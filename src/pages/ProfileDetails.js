@@ -103,7 +103,7 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
               </div>
             </div>
             <div className='block profile pt-20'>
-              <UserPostDetails></UserPostDetails>
+              <UserPostDetails userId={userId}></UserPostDetails>
             </div>
           </div>
 

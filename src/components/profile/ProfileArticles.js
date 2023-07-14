@@ -72,7 +72,7 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
 
 
 
-function ProfileArticles() {
+function ProfileArticles(props) {
   const [articles, setArticles] = useState([]);
 
   const token = Cookies.get('token');
@@ -80,7 +80,7 @@ function ProfileArticles() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/article/user/${Cookies.get('userId')}`, {
+        const response = await axios.get(`http://localhost:8000/article/user/${props.userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

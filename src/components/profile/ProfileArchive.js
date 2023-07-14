@@ -72,7 +72,7 @@ function PostShow({  name, profileImage, title, description, vote, tag, postDate
   )
 }
 
-function ProfileArchive() {
+function ProfileArchive(props) {
   const [archive, setArchive] = useState([]);
   
 
@@ -81,7 +81,7 @@ function ProfileArchive() {
   useEffect(() => {
     const fetchArchive = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/archive/user/${Cookies.get('userId')}`, {
+        const response = await axios.get(`http://localhost:8000/archive/user/${props.userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
