@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import DeleteButton from "../Static/DeleteButton";
 import PdfViewer from "../Static/PdfViewer";
+import PostBar from "../Static/PostBar";
 
 function CommentShow() {
   return <></>;
@@ -36,20 +36,13 @@ function PostShow({ name, profileImage, description, vote, tag, postDate }) {
           <div className="row-span-5 flex-grow border-b border-gray-300 2xl:text-[20px] pb-7">
             <p>{description}</p>
           </div>
-          <div className="row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2">
-            <div className="col-span-4 oldstyle-nums font-bold md:text-xl ml-5">
-              <h1>{vote}</h1>
+          <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
+            <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
+            <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
             </div>
-            <div className="col-span-1 flex pr-4 ">
-              <button>
-                <img src={upvote} className="w-10 "></img>
-              </button>
-              <button>
-                <img src={downvote} className="w-10 pl-0"></img>
-              </button>
-              <DeleteButton />
+            <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
+            <PostBar />
             </div>
-            <PdfViewer/>
           </div>
           <div className="row-span-2  p-1 flex">
             <Link to="/comment">

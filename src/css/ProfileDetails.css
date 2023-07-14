@@ -28,3 +28,31 @@
   left: 50px;
   cursor: hand;
 }
+
+/* medial query for less than 400px */
+@media only screen and (max-width: 400px) {
+  .profile {
+    margin: 0px;
+    background-color: #f7fbee;
+  }
+  .profileimg {
+    width: 8.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+  }
+  .follow_button {
+    color: #3399ff;
+    font-family: "Helvetica";
+    font-size: 10pt;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #3399ff;
+    border-radius: 3px;
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    cursor: hand;
+  }
+}

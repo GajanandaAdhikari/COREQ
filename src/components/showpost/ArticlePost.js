@@ -3,8 +3,11 @@ import downvote from '../../img/downvote.png';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import DeleteButton from '../Static/DeleteButton';
 import PDFViewer from '../Static/PdfViewer';
+import Vote from '../Static/Vote';
+
+import PostBar from '../Static/PostBar';
+
 
 function CommentShow() {
   return (
@@ -52,22 +55,18 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
           <PDFViewer message={"Dowload Article"} pdfUrl={"https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiqgJ3V-YeAAxUYl1YBHb1aDaoQFnoECA0QAQ&url=https%3A%2F%2Ffiles.eric.ed.gov%2Ffulltext%2FED604401.pdf&usg=AOvVaw0xlLREaqQuGWBhF6ipz6Lk&opi=89978449"}  />
-           
-            {/* <img class="h-9 w-9 rounded-full mr-10 max-sm:mr-4 max-sm:ml-4 max-sm:h-9 max-sm:w-9" src={profileImage} alt="" />
-      <input type="text" id="large-input" placeholder="CLICK HERE TO CIRCULATE ...." class="flex items-start md:text-[24px] max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px] 2xl:h-[60px]  p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
-    */}
           </div>
           <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
-            <div className='col-span-4 oldstyle-nums font-bold md:text-md ml-5'>
-              <h1>{vote}</h1>
+            <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
+            <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
             </div>
-            <div className='col-span-1 flex pr-4 '>
-              <button><img src={upvote} className='w-7 h-7 mr-4 '></img></button>
-              <button><img src={downvote} className='w-7 h-7 ml-3'></img></button>
-              <DeleteButton />
+            <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
+            <PostBar />
             </div>
-           
           </div>
+          
+         
+        
       
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
     

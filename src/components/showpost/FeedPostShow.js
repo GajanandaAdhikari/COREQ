@@ -3,7 +3,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import upvote from '../../img/upvote.png';
 import downvote from '../../img/downvote.png';
-import DeleteButton from '../Static/DeleteButton';
+import PostBar from '../Static/PostBar';
 
 function CommentShow() {
   return (
@@ -35,13 +35,11 @@ function PostShow({ name, profileImage, description, vote, tag, postDate }) {
             <p>{description}</p>
           </div>
           <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
-            <div className='col-span-4 oldstyle-nums font-bold md:text-xl ml-5'>
-              <h1>{vote}</h1>
+            <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
+            <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
             </div>
-            <div className='col-span-1 flex pr-4 '>
-              <button><img src={upvote} className='w-7 h-7 mr-4 '></img></button>
-              <button><img src={downvote} className='w-7 h-7 ml-3'></img></button>
-              <DeleteButton />
+            <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
+            <PostBar />
             </div>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>

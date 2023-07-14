@@ -1,13 +1,7 @@
 import SettingsIcon from '@mui/icons-material/Settings';
 import SocialFollow from '../components/profile/SocialFollow';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faInstagram,
-  faGithub,
-  faLinkedin,
-  faTwitter
-} from "@fortawesome/free-brands-svg-icons";
+
+
 import '../css/ProfileDetails.css'
 import FollowButton from '../components/Static/FollowButton';
 import UserPostDetails from '../components/profile/UserPostDetails';
@@ -46,7 +40,7 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
           <div className="max-sm:hidden md:ml-10"></div>
         </div>
 
-        <div className="md:col-span-7 max-sm:col-span-5 max-sm:col-start-1 max-sm:overflow-scroll max-sm:h-[600px] md:overflow-y-scroll   ">
+        <div className="md:col-span-7 max-sm:col-span-5 max-sm:col-start-1 max-sm:overflow-scroll max-sm:h-[600px] sm:overflow-y-scroll   ">
 
           <div className='profile'>
             <div className='cover'>
@@ -56,7 +50,7 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
               <div className='profilepic mr-10 ml-10'>
                 <img src={profile[0]} alt='profile' className='profileimg' />
               </div>
-              <div className='profileinfo'>
+              <div className='profileinfo '>
                 <h1 className='text-3xl font-bold'>{userFullName}</h1>
                 <div className='profilestats flex'>
                   <p>
@@ -81,7 +75,7 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
                     Batch <span className='font-bold text-blue-600'>{userBatch}</span>
                   </p>
                   <div className='ml-10'>
-                    <FollowButton followingId={userId}></FollowButton>
+                    <FollowButton userId={userId}></FollowButton>
                   </div>
                   <span className='flex ml-20'>
                     {shouldShowEdit && (  

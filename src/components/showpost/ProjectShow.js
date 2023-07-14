@@ -4,7 +4,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { Archive } from '@mui/icons-material';
-import DeleteButton from '../Static/DeleteButton';
+import PostBar from '../Static/PostBar';
+import PDFViewer from '../Static/PdfViewer';
 
 function CommentShow() {
   return (
@@ -51,14 +52,15 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
 
             <p>keywords: {keywords}</p>
           </div>
+          <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
+          <PDFViewer message={"Dowload Project Details"} pdfUrl={"https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiqgJ3V-YeAAxUYl1YBHb1aDaoQFnoECA0QAQ&url=https%3A%2F%2Ffiles.eric.ed.gov%2Ffulltext%2FED604401.pdf&usg=AOvVaw0xlLREaqQuGWBhF6ipz6Lk&opi=89978449"}  />
+          </div>
           <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
-            <div className='col-span-4 oldstyle-nums font-bold md:text-md ml-5'>
-              <h1>{vote}</h1>
+            <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
+            <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
             </div>
-            <div className='col-span-1 flex pr-4 '>
-              <button><img src={upvote} className='w-7 h-7 mr-4 '></img></button>
-              <button><img src={downvote} className='w-7 h-7 ml-3'></img></button>
-              <DeleteButton />
+            <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
+            <PostBar />
             </div>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
