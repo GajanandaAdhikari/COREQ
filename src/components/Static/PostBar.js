@@ -20,7 +20,7 @@ export default function PostBar() {
              <IconButton><Downvote sx={{ fontSize: 30 ,color: 'red' }} /> </IconButton>
              <IconButton aria-label="delete" > <DeleteIcon fontSize="inherit" sx={{fontSize: 30 }}/>
       </IconButton>
-    </Stack>
+    </Stack> 
    </div>
   );
 }
