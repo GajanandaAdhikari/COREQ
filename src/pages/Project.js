@@ -5,7 +5,7 @@ import FriendSuggestion from "../components/suggestion/FriendSuggestion";
 import TopProjects from "../components/suggestion/TopProjects";
 import TopResearchArticles from "../components/suggestion/TopResearchArticles";
 import CirculateProjects from "../components/circulate/CirculateProjects";
-import ProjectShow from "../components/showpost/ProjectShow";
+import ProjectPostShow from "../components/showpost/ProjectShow";
 
 
 function Project() {
@@ -33,7 +33,7 @@ function Project() {
             <div className="2xl:pl-20">
               <CirculateProjects />
             </div>
-            <div className="2xl:pl-20"><ProjectShow /></div>
+            <div className="2xl:pl-20"><ProjectPostShow /></div>
           </div>
 
           <div className="max-sm:hidden grid  overflow-y-scroll md:h-[540px] 2xl:h-[760px] ">
