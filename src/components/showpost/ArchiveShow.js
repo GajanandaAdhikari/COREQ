@@ -17,7 +17,7 @@ function CommentShow() {
 }
 
 
-function PostShow({ userId,name, profileImage, title, description, vote, tag, postDate, author, team, keywords }) {
+function PostShow({ name, profileImage, title, description, vote, tag, postDate, author, team, keywords, deletePost }) {
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -60,8 +60,10 @@ function PostShow({ userId,name, profileImage, title, description, vote, tag, po
             <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
             <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
             </div>
-            <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar />
+            <div className='col-span-1 flex pr-4 '>
+              <button><img src={upvote} className='w-7 h-7 mr-4 '></img></button>
+              <button><img src={downvote} className='w-7 h-7 ml-3'></img></button>
+              <DeleteButton onClick={deletePost}/>
             </div>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
