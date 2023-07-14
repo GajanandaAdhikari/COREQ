@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import PDFViewer from '../Static/PdfViewer';
 import Vote from '../Static/Vote';
-
+import {Link} from 'react-router-dom';
 import PostBar from '../Static/PostBar';
 
 
@@ -18,7 +18,7 @@ function CommentShow() {
 }
 
 
-function PostShow({ name, profileImage, title, description, vote, tag, postDate, author, publicationYear, publicationHouse, keywords }) {
+function PostShow({userId, name, profileImage, title, description, vote, tag, postDate, author, publicationYear, publicationHouse, keywords }) {
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -26,11 +26,12 @@ function PostShow({ name, profileImage, title, description, vote, tag, postDate,
           <div className='row-span-2 grid grid-cols-5 '>
             <div className='flex col-span-4'>
               <img className='h-9 w-9 2xl:h-12 2xl:w-12 rounded-full mr-5 max-sm:mr-4  max-sm:h-9 max-sm:w-9' src={profileImage}></img>
-              <div className=''>
+              <Link to={`/profile/${userId}`} key={userId}>  <div className=''>
                 <a href='' className='2xl:text-[20px]'>{name}</a>
                 <p className='font-k2d 2xl:text-[15px]'>{tag}</p>
-              </div>
+              </div></Link>
             </div>
+            
             <div className='col-span-1 '>
               <h1 className='font-k2d text-sm 2xl:text-[20px] '>{postDate}</h1>
             </div>
@@ -127,6 +128,7 @@ function ArticlePostShow() {
           publicationYear={article.publicationYear}
           publicationHouse={article.publicationHouse}
           keywords={article.keywords}
+          userId={article.userId}
 
         />
       ))}

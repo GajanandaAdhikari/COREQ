@@ -7,11 +7,12 @@ import Cookies from "js-cookie";
 import PdfViewer from "../Static/PdfViewer";
 import PostBar from "../Static/PostBar";
 
+
 function CommentShow() {
   return <></>;
 }
 
-function PostShow({ name, profileImage, description, vote, tag, postDate }) {
+function PostShow({userId, name, profileImage, description, vote, tag, postDate }) {
   return (
     <>
       <div className=" max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5">
@@ -22,12 +23,12 @@ function PostShow({ name, profileImage, description, vote, tag, postDate }) {
                 className="h-9 w-9 2xl:h-12 2xl:w-12 rounded-full mr-5 max-sm:mr-4  max-sm:h-9 max-sm:w-9"
                 src={profileImage}
               ></img>
-              <div className="">
+              <Link to={`/profile/${userId}`} key={userId}>   <div className="">
                 <a href="" className="2xl:text-[25px]">
                   {name}
                 </a>
                 <p className="font-k2d 2xl:text-[20px]">{tag}</p>
-              </div>
+              </div> </Link>
             </div>
             <div className="col-span-1 ">
               <h1 className="font-k2d text-sm 2xl:text-[20px] ">{postDate}</h1>
@@ -105,6 +106,7 @@ function QueryPostShow() {
           vote={user.vote}
           tag={user.tag}
           postDate={user.createdAt}
+          userId={user.userId}
         ></PostShow>
       ))}
     </>
