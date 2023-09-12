@@ -38,7 +38,7 @@ To maintain a consistent codebase, please adhere to the following guidelines:
 
 If you have any questions or need assistance with the contribution process, you can reach out to us through the following channels:
 
-- Email: [your_cosmicgz11@gmail.com](mailto:cosmicgz11@gmail.com)
+- Email: [cosmicgz11@gmail.com](mailto:cosmicgz11@gmail.com)
 - GitHub Issues: [Link to the project's issue tracker](https://github.com/cosmicgz/coreq/issues)
 
 We appreciate your contributions and look forward to working with you to make COREQ even better!
