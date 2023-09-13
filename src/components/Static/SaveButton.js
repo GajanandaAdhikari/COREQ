@@ -1,0 +1,63 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import IconButton from '@mui/material/IconButton';
+import PostAdd from '@mui/icons-material/PostAdd';
+
+class SavePostButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSaved: props.initialIsSaved || false,
+    };
+  }
+
+  handleSaveClick = async () => {
+    const { postId } = this.props;
+
+    try {
+      if (this.state.isSaved) {
+        // If the post is already saved, unsave it
+        await axios.post(
+          `http://localhost:8000/user/savePost/${postId}`,
+          {
+            userId: Cookies.get('userId'),
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${Cookies.get('token')}`,
+            },
+          }
+        );
+      } else {
+        // If the post is not saved, save it
+        await axios.post(
+          `http://localhost:8000/user/savePost/${postId}`,
+          {
+            userId: Cookies.get('userId'),
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${Cookies.get('token')}`,
+            },
+          }
+        );
+      }
+
+      // Toggle the saved state
+      this.setState((prevState) => ({
+        isSaved: !prevState.isSaved,
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  render() {
+    return (
+      <IconButton onClick={this.handleSaveClick}><PostAdd sx={{ fontSize: 30,color: 'black'  }} /></IconButton>
+    );
+  }
+}
+
+export default SavePostButton;

@@ -17,7 +17,7 @@ function CommentShow() {
 }
 
 
-function PostShow({ userId,name, profileImage, title, description, vote, tag, postDate, author, team, keywords }) {
+function PostShow({ userId,name, profileImage, title, description, vote, tag, postDate, author, team, keywords, postId }) {
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -61,7 +61,7 @@ function PostShow({ userId,name, profileImage, title, description, vote, tag, po
             <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar userId={userId} />
+            <PostBar userId={userId} postId={postId}/>
             </div>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
@@ -123,7 +123,7 @@ function ArchiveShow() {
           team={archive.team}
           keywords={archive.keywords}
           userId={archive.userId}
-
+          postId={archive._id}
         /> 
       ))}
     </>
