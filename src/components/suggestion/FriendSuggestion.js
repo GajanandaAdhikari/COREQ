@@ -20,8 +20,6 @@ function FriendSuggestionList() {
           }
         );
         
-
-        console.log(response.data)
         setSuggestedFriends(response.data);
 
       } catch (error) {
