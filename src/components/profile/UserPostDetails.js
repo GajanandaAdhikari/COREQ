@@ -10,6 +10,7 @@ import ProfileQueries from "./ProfileQueries";
 import ProfileArticles from "./ProfileArticles";
 import ProfileArchive from "./ProfileArchive";
 import ProfileProjects from "./ProfileProjects";
+import SavedPost from "./SavedPost";
 
 export default function UserPostDetails(props) {
   const [activeTab, setActiveTab] = React.useState("html");
@@ -33,6 +34,11 @@ export default function UserPostDetails(props) {
       label: "Queries",
       value: "queries",
       desc: <ProfileQueries userId={props.userId}></ProfileQueries>,
+    },
+    {
+      label: "Saved Posts",
+      value: "savedpost",
+      desc: <SavedPost userId={props.userId}></SavedPost>,
     },
 
   ];

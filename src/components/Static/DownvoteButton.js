@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import IconButton from '@mui/material/IconButton';
-import PostAdd from '@mui/icons-material/PostAdd';
+import Downvote from '@mui/icons-material/ArrowCircleDown';
 
-class SavePostButton extends Component {
+class DownvoteButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,10 +63,10 @@ class SavePostButton extends Component {
   render() {
     return (
       <IconButton onClick={this.handleSaveClick}>
-        <PostAdd sx={{ fontSize: 30, color: this.state.saveSuccess ? 'blue' : 'back' }} />
+        <Downvote sx={{ fontSize: 30, color: this.state.saveSuccess ? 'red' : 'back' }} />
       </IconButton>
     );
   }
 }
 
-export default SavePostButton;
+export default DownvoteButton;
