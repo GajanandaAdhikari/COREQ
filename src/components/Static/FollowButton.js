@@ -44,7 +44,7 @@ class FollowButton extends React.Component {
     const shouldShowButton = userId !== Cookies.get('userId');
 
     const buttonStyle = {
-      padding: '10px 20px',
+      padding: '10px 15px',
       fontSize: '16px',
       fontWeight: 'bold',
       borderRadius: '10px',

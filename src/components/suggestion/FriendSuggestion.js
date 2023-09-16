@@ -48,8 +48,8 @@ function SuggestedFriend({ userFullName, userName, userImage, userId }) {
   return (
     <>
     
-      <li className="py-2 ">
-        <div className="flex items-left  space-x-4">
+        <div className=" grid grid-cols-7 ">
+        <div className=" flex col-span-5 items-left ">
           <div class="flex-shrink-0">
             <img className="w-8 h-8 rounded-full" src={userImage} />
           </div>
@@ -66,11 +66,12 @@ function SuggestedFriend({ userFullName, userName, userImage, userId }) {
             </p>
           </div>
           </Link>
-          <div className="flex justify-right items-end md:text-2xl font-semibold text-gray-900 dark:text-white">
+          
+        </div>
+        <div className="flex col-span-2   md:text-2xl font-semibold text-gray-900 dark:text-white">
             <FollowButton followingId={userId}></FollowButton>
           </div>
-        </div>
-      </li>
+      </div>
     </>
   );
 }
