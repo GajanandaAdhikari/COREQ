@@ -49,6 +49,8 @@ function CirculateArticle() {
     setKeywords(e.target.value);
   };
 
+  const [selectedFile, setSelectedFile] = useState(null);
+
 
   //Handle Login API Integration here
   const HandleSubmitArticle = async (e) => {
@@ -178,7 +180,11 @@ function CirculateArticle() {
           maxRows={1}
           className="max-sm:flex md:inline-flex md:mr-10 items-start md:text-[20px] w-full mt-3  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         ></TextareaAutosize>
-        <UploadPDF message={"Upload Article PDF"}></UploadPDF>
+        <UploadPDF
+          message={"Upload Archive Details PDF"}
+          selectedFile={selectedFile}
+          setSelectedFile={setSelectedFile}
+        />
         <div className="flex justify-center mt-5">
         <button class=" bg-green-500  hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
           Draft

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-function UploadPDF({message}) {
-  const [selectedFile, setSelectedFile] = useState(null);
+function UploadPDF({message, selectedFile, setSelectedFile}) {
   const [fileSelected, setFileSelected] = useState(false);
 
   const handleFileChange = (event) => {
@@ -57,4 +56,4 @@ function UploadPDF({message}) {
 }
 
 export default UploadPDF;
-export {fileSelected};
+

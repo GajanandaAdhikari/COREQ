@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import UploadPDF,{fileSelected} from "./UploadPDF";
+import UploadPDF from "./UploadPDF";
 
 function CirculateArchive() {
   const year = new Date().getFullYear();
@@ -40,6 +40,7 @@ function CirculateArchive() {
   };
 
   
+  const [selectedFile, setSelectedFile] = useState(null);
 
   //Handle Login API Integration here
   const HandleSubmitArchive = async (e) => {
@@ -49,6 +50,7 @@ function CirculateArchive() {
       console.log({ userId, title, collabrators, team, description, keywords });
       console.log(token);
       console.log(userId);
+      console.log(selectedFile);
       const response = await axios.post(
         "http://localhost:8000/archive",
         {
@@ -128,7 +130,11 @@ function CirculateArchive() {
           onChange={handleKeywordsChange}
           className="max-sm:flex md:inline-flex md:mr-10 items-start md:text-[20px] w-full mt-3  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         ></TextareaAutosize>
-        <UploadPDF message={"Upload Archive Details PDF"}></UploadPDF>
+         <UploadPDF
+          message={"Upload Archive Details PDF"}
+          selectedFile={selectedFile}
+          setSelectedFile={setSelectedFile}
+        />
         <div className="flex justify-center mt-5">
           <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
             Draft
