@@ -57,3 +57,4 @@ function UploadPDF({message}) {
 }
 
 export default UploadPDF;
+export {fileSelected};

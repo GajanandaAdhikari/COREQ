@@ -244,10 +244,10 @@ function ProfileDetails() {
     <Profile
       userFullName={userDetails.fullName}
       userBio={userDetails.bio}
-      userFollowers={userDetails.followerCount}
-      userFollowing={userDetails.followingCount}
-      userProjects={userDetails.projectsCount}
-      userArticles={userDetails.articlesCount}
+      userFollowers={followerCount}
+      userFollowing={followingCount}
+      userProjects={projectsCount}
+      userArticles={articlesCount}
       userFaculty={userDetails.faculty}
       userBatch={userDetails.batch}
       userSemester={userDetails.semester}
