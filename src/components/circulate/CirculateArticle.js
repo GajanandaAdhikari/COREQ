@@ -2,7 +2,7 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import UploadPDF from "./UploadPDF";
 import FailedAlert from "../Static/FailedAlert";
 import SucessAlert from "../Static/SucessAlert";
@@ -13,8 +13,8 @@ function CirculateArticle() {
 
   const navigate = useNavigate();
 
-  const token = Cookies.get('token');
-  const userId = Cookies.get('userId');
+  const token = Cookies.get("token");
+  const userId = Cookies.get("userId");
 
   const [title, setTitle] = useState("");
   const [authors, setAuthors] = useState("");
@@ -22,8 +22,7 @@ function CirculateArticle() {
   const [publicationHouse, setPublicationHouse] = useState("");
   const [description, setDescription] = useState("");
   const [keywords, setKeywords] = useState("");
-  const [alerts,setAlerts]=useState([]);
-  
+  const [alerts, setAlerts] = useState([]);
 
   // Handle input changes and update the state variables
   const handleTitleChange = (e) => {
@@ -51,33 +50,44 @@ function CirculateArticle() {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
-
   //Handle Login API Integration here
   const HandleSubmitArticle = async (e) => {
     e.preventDefault();
 
+    const formDataToSend = new FormData();
+    // Define the form fields and their values as an object
+    const formFields = {
+      title: title,
+      authors: authors,
+      publicationHouse: publicationHouse,
+      publicationYear: publicationYear,
+      description: description,
+      keywords: keywords,
+      userId: userId,
+    };
+
+    // Append the form fields to the FormData object in a loop
+    for (const [fieldName, fieldValue] of Object.entries(formFields)) {
+      formDataToSend.append(fieldName, fieldValue);
+    }
+
+    if (selectedFile) {
+      // Set the field name to 'artriclePdf' to match your backend configuration
+      formDataToSend.append("articlePdf", selectedFile);
+    }
+
     try {
-      console.log({ userId, title, authors, publicationHouse, publicationYear, description, keywords });
-      console.log(token);
-      console.log(userId);
       const response = await axios.post(
-        "http://localhost:8000/article",
-        {
-          title: title,
-          authors: authors,
-          publicationHouse: publicationHouse,
-          publicationYear: publicationYear,
-          description: description,
-          keywords: keywords,
-          userId: userId
-        },
+        "http://localhost:8000/article/",
+        formDataToSend,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log(response.data);
+      console.log("Data sent successfully:", response.data);
+
       setAlerts((prevAlerts) => [...prevAlerts, "circulateArticleSucess"]);
 
       // Reset the form fields
@@ -90,14 +100,13 @@ function CirculateArticle() {
 
       navigate("/articles");
     } catch (error) {
+      console.error("Error sending data:", error);
       setAlerts((prevAlerts) => [...prevAlerts, "circulateArticleFailed"]);
-      console.error(error);
     }
   };
   const renderAlerts = () => {
     return alerts.map((alert, index) => {
       switch (alert) {
-        
         case "circulateArticleSucess":
           return (
             <SucessAlert
@@ -106,7 +115,9 @@ function CirculateArticle() {
             />
           );
         case "circulateArticleFailed":
-          return <FailedAlert key={index} message={"Failed to circulate article"} />;
+          return (
+            <FailedAlert key={index} message={"Failed to circulate article"} />
+          );
         default:
           return null;
       }
@@ -115,7 +126,7 @@ function CirculateArticle() {
   return (
     <div>
       <div className=" max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-boderColor rounded-lg mt-5 ">
-      {renderAlerts()}
+        {renderAlerts()}
         <h1 className="text-center md:text-xl font-bold pb-3">
           Circulate Article
         </h1>
@@ -142,7 +153,8 @@ function CirculateArticle() {
           {" "}
           published Year :
         </p>
-        <select className="mt-3 pt-1 h-[30px] border-boderColor rounded-lg ml-2"
+        <select
+          className="mt-3 pt-1 h-[30px] border-boderColor rounded-lg ml-2"
           value={publicationYear}
           onChange={handlePublicationYearChange}
         >
@@ -186,12 +198,16 @@ function CirculateArticle() {
           setSelectedFile={setSelectedFile}
         />
         <div className="flex justify-center mt-5">
-        <button class=" bg-green-500  hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
-          Draft
-        </button>
-        <button class="ml-10 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" onClick={HandleSubmitArticle} type="submit">
-          Submit
-        </button>
+          <button class=" bg-green-500  hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
+            Draft
+          </button>
+          <button
+            class="ml-10 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
+            onClick={HandleSubmitArticle}
+            type="submit"
+          >
+            Submit
+          </button>
         </div>
       </div>
     </div>
@@ -199,4 +215,3 @@ function CirculateArticle() {
 }
 
 export default CirculateArticle;
-

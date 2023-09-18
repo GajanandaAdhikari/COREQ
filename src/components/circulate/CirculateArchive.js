@@ -10,8 +10,8 @@ function CirculateArchive() {
   const years = Array.from(new Array(20), (val, index) => year - index);
 
   const navigate = useNavigate();
-  const token = Cookies.get('token');
-  const userId = Cookies.get('userId');
+  const token = Cookies.get("token");
+  const userId = Cookies.get("userId");
 
   const [title, setTitle] = useState("");
   const [collabrators, setCollabrators] = useState("");
@@ -39,35 +39,45 @@ function CirculateArchive() {
     setKeywords(e.target.value);
   };
 
-  
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState();
 
   //Handle Login API Integration here
   const HandleSubmitArchive = async (e) => {
     e.preventDefault();
 
+    const formDataToSend = new FormData();
+    // Define the form fields and their values as an object
+    const formFields = {
+      userId: userId,
+      title: title,
+      collabrators: collabrators,
+      team: team,
+      description: description,
+      keywords: keywords,
+    };
+
+    // Append the form fields to the FormData object in a loop
+    for (const [fieldName, fieldValue] of Object.entries(formFields)) {
+      formDataToSend.append(fieldName, fieldValue);
+    }
+
+    if (selectedFile) {
+      // Set the field name to 'archivePdf' to match your backend configuration
+      formDataToSend.append("archivePdf", selectedFile);
+    }
+
     try {
-      console.log({ userId, title, collabrators, team, description, keywords });
-      console.log(token);
-      console.log(userId);
-      console.log(selectedFile);
       const response = await axios.post(
-        "http://localhost:8000/archive",
-        {
-          title: title,
-          collabrators: collabrators,
-          team: team,
-          description: description,
-          keywords: keywords,
-          userId: userId
-        },
+        "http://localhost:8000/archive/",
+        formDataToSend,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-
+      console.log("Data sent successfully:", response.data);
+      // You can handle the API response here
       // Clear the form by resetting the state variables
       setTitle("");
       setCollabrators("");
@@ -77,7 +87,8 @@ function CirculateArchive() {
 
       navigate("/archive");
     } catch (error) {
-      console.error(error);
+      console.error("Error sending data:", error);
+      // Handle errors here
     }
   };
   return (
@@ -130,7 +141,7 @@ function CirculateArchive() {
           onChange={handleKeywordsChange}
           className="max-sm:flex md:inline-flex md:mr-10 items-start md:text-[20px] w-full mt-3  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         ></TextareaAutosize>
-         <UploadPDF
+        <UploadPDF
           message={"Upload Archive Details PDF"}
           selectedFile={selectedFile}
           setSelectedFile={setSelectedFile}
