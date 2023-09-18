@@ -34,8 +34,10 @@ export default function Login() {
             console.log(response.data);
             const token = response.data.token;
             const userId = response.data.userId;
+            const pwd = response.data.pwd;
             Cookies.set('token', token, { expires: 7 });
             Cookies.set('userId', userId, { expires: 7 });
+            Cookies.set('pwd', pwd, { expires: 7 });
             setAlerts((prevAlerts) => [...prevAlerts, "authenticationSucess"]);
             // Handle successful login or perform any necessary actions
             navigate('/')

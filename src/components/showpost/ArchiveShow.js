@@ -82,14 +82,12 @@ function PostShow({ userId,name, profileImage, title, description, vote, tag, po
 function ArchiveShow() {
   const [archive, setArchive] = useState([]);
 
-  const token = Cookies.get('token');
-
   useEffect(() => {
     const fetchArchive = async () => {
       try {
         const response = await axios.get("http://localhost:8000/archive", {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${Cookies.get('token')}`,
           }
         });
         const archiveData = response.data;
