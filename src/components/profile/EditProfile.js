@@ -38,26 +38,47 @@ export default function EditProfile() {
     setBatch(e.target.value);
   };
 
+  const [selectedProfilePic, setSelectedProfilePic] = useState(null);
+  const [selectedCoverPic, setSelectedCoverPic] = useState(null);
 
   //Handle Login API Integration here
   const HandleOnSave = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.patch(
-        `http://localhost:8000/user/editProfile/${userId}`,
-        {
-          fullName: fullName,
+    const formDataToSend = new FormData();
+    // Define the form fields and their values as an object
+    const formFields = {
+      fullName: fullName,
           bio: bio,
           faculty: faculty,
           batch: batch
-        },
+    };
+
+    // Append the form fields to the FormData object in a loop
+    for (const [fieldName, fieldValue] of Object.entries(formFields)) {
+      formDataToSend.append(fieldName, fieldValue);
+    }
+
+    if (selectedProfilePic) {
+      // Set the field name to 'profilePic' to match your backend configuration
+      formDataToSend.append("profilePic", selectedFile);
+    } 
+    if (selectedCoverPic) {
+      // Set the field name to 'coverPic' to match your backend configuration
+      formDataToSend.append("coverPic", selectedFile);
+    }
+
+    try {
+      const response = await axios.patch(
+        `http://localhost:8000/user/editProfile/${userId}`,
+        formDataToSend,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
+      console.log("Profile updated successfully:", response.data);
       setAlerts((prevAlerts) => [...prevAlerts, "profileUpdatedSucess"]);
       setFullName("");
       setBatch("");
