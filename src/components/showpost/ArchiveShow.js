@@ -20,7 +20,7 @@ function CommentShow() {
 
 
 function PostShow({ userId,name, profileImage, title, description, vote, tag, postDate, author, team, keywords, postId,PdfUrl }) {
-  console.log(PdfUrl)
+
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -82,12 +82,14 @@ function PostShow({ userId,name, profileImage, title, description, vote, tag, po
 function ArchiveShow() {
   const [archive, setArchive] = useState([]);
 
+  const token = Cookies.get('token');
+
   useEffect(() => {
     const fetchArchive = async () => {
       try {
         const response = await axios.get("http://localhost:8000/archive", {
           headers: {
-            Authorization: `Bearer ${Cookies.get('token')}`,
+            Authorization: `Bearer ${token}`,
           }
         });
         const archiveData = response.data;
@@ -125,7 +127,7 @@ function ArchiveShow() {
           keywords={archive.keywords}
           userId={archive.userId}
           postId={archive._id}
-          PdfUrl={archive.archivePDFPath}
+          PdfUrl={archive.archivePDFPath} 
         /> 
       ))}
     </>

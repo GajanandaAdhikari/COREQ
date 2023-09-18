@@ -6,9 +6,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 function PDFViewer({ pdfUrl,message }) {
   const handleDownload = () => {
-    window.open('file://' + Cookies.get('pwd') + '/' + pdfUrl, '_blank');
+    window.open('http://127.0.0.1:8081/'+pdfUrl, '_blank');
   };
-
+// 'file://' + Cookies.get('pwd') + '/' + pdfUrl
   return (
 	<div className="flex justify-center flex-col items-center w-full   mt-5 ">
     <div className='w-full h-[100px]  flex flex-col items-center px-4 py-6 bg-back-color text-blue rounded-lg shadow-lg  cursor-pointer hover:bg-blue hover:text-white'>
