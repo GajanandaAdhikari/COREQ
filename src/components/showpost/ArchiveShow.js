@@ -17,7 +17,10 @@ function CommentShow() {
 }
 
 
-function PostShow({ userId,name, profileImage, title, description, vote, tag, postDate, author, team, keywords, postId }) {
+
+
+function PostShow({ userId,name, profileImage, title, description, vote, tag, postDate, author, team, keywords, postId,PdfUrl }) {
+  console.log(PdfUrl)
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -54,7 +57,7 @@ function PostShow({ userId,name, profileImage, title, description, vote, tag, po
             <p>keywords: {keywords}</p>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
-          <PDFViewer message={"Dowload Archive Details"} pdfUrl={"https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiqgJ3V-YeAAxUYl1YBHb1aDaoQFnoECA0QAQ&url=https%3A%2F%2Ffiles.eric.ed.gov%2Ffulltext%2FED604401.pdf&usg=AOvVaw0xlLREaqQuGWBhF6ipz6Lk&opi=89978449"}  />
+          <PDFViewer message={"Dowload Archive Details"} pdfUrl={PdfUrl}  />
           </div>
           <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
             <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
@@ -124,6 +127,7 @@ function ArchiveShow() {
           keywords={archive.keywords}
           userId={archive.userId}
           postId={archive._id}
+          PdfUrl={archive.archivePDFPath}
         /> 
       ))}
     </>

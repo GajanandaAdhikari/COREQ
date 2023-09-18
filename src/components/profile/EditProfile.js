@@ -61,11 +61,12 @@ export default function EditProfile() {
 
     if (selectedProfilePic) {
       // Set the field name to 'profilePic' to match your backend configuration
-      formDataToSend.append("profilePic", selectedFile);
+      formDataToSend.append("profilePic", selectedProfilePic);
+      // pahila selectedFile thiyo hai
     } 
     if (selectedCoverPic) {
       // Set the field name to 'coverPic' to match your backend configuration
-      formDataToSend.append("coverPic", selectedFile);
+      formDataToSend.append("coverPic", selectedCoverPic);
     }
 
     try {
