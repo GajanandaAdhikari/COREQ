@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CoverPictureUpload = () => {
+const CoverPictureUpload = ({ onFileChange }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [fileSelected, setFileSelected] = useState(false);
@@ -11,13 +11,23 @@ const CoverPictureUpload = () => {
       setSelectedFile(file);
       setPreviewUrl(URL.createObjectURL(file));
       setFileSelected(true);
+
+     
     }
+
+    // Call the onFileChange prop with the selectedFile
+    if (onFileChange) {
+      onFileChange(file);
+    }
+    
   };
+
+
 
   const handleUpload = () => {
     // Implement the upload logic here
     // You can use Axios or any other method to send the file to the server
-    console.log('Selected File:', selectedFile);
+
   };
 
   return (

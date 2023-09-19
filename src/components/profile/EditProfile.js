@@ -10,7 +10,7 @@ import FailedAlert from "../Static/FailedAlert";
 import SucessAlert from "../Static/SucessAlert";
 
 
-export default function EditProfile() {
+export default function EditProfile({ imagePreviewUrl }) {
   const navigate = useNavigate();
 
   const token = Cookies.get('token');
@@ -22,6 +22,7 @@ export default function EditProfile() {
   const [batch, setBatch] = useState("");
   const [alerts, setAlerts] = useState([]);
 
+  console.log("hello", imagePreviewUrl);
   // Handle input changes and update the state variables
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
@@ -38,8 +39,24 @@ export default function EditProfile() {
     setBatch(e.target.value);
   };
 
+  // const [uploadedFile, setUploadedFile] = useState(null);
+
   const [selectedProfilePic, setSelectedProfilePic] = useState(null);
   const [selectedCoverPic, setSelectedCoverPic] = useState(null);
+
+  console.log("profile", selectedProfilePic);
+  console.log("cover", selectedCoverPic);
+
+
+      // Handle file change
+  const handlePhotoChange = (file) => {
+    // Set the uploaded file in state
+    setSelectedProfilePic(file);
+  };
+
+  const handleCoverChange = (file) => {
+    setSelectedCoverPic(file);
+  };
 
   //Handle Login API Integration here
   const HandleOnSave = async (e) => {
@@ -115,8 +132,8 @@ export default function EditProfile() {
       <div >
         <h3 className="overflow-y-scroll text-2xl font-bold pt-10 pl-10">Edit Profile</h3>
         {renderAlerts()}
-        <CardProfile></CardProfile>
-        <CoverPictureUpload></CoverPictureUpload>
+        <CardProfile onFileChange={handlePhotoChange}></CardProfile>
+        <CoverPictureUpload onFileChange={handleCoverChange}></CoverPictureUpload>
       </div>
       <div class="w-2/3 mx-auto ">
         <input class="mt-8  justify-center  shadow appearance-none border border-bcolor rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Full Name" value={fullName} onChange={handleFullNameChange}/>
