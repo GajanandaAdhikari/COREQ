@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Cookies from 'js-cookie';
-import IconButton from '@mui/material/IconButton';
-import Downvote from '@mui/icons-material/ArrowCircleDown';
+import React, { Component } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
+import IconButton from "@mui/material/IconButton";
+import Downvote from "@mui/icons-material/ArrowCircleDown";
 
 class DownvoteButton extends Component {
   constructor(props) {
@@ -13,37 +13,22 @@ class DownvoteButton extends Component {
     };
   }
 
-  handleSaveClick = async () => {
+  handleDownVoteClick = async () => {
     const { postId } = this.props;
 
     try {
-      if (this.state.isSaved) {
-        // If the post is already saved, unsave it
-        await axios.post(
-          `http://localhost:8000/user/savePost/${postId}`,
-          {
-            userId: Cookies.get('userId'),
+      const response = await axios.patch(
+        `http://localhost:8000/feature/${postId}/downVote`,
+        {
+          userId: Cookies.get('userId'),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get('token')}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${Cookies.get('token')}`,
-            },
-          }
-        );
-      } else {
-        // If the post is not saved, save it
-        await axios.post(
-          `http://localhost:8000/user/savePost/${postId}`,
-          {
-            userId: Cookies.get('userId'),
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${Cookies.get('token')}`,
-            },
-          }
-        );
-      }
+        }
+      );
+      console.log(response.data);
 
       // Toggle the saved state
       this.setState(
@@ -62,8 +47,10 @@ class DownvoteButton extends Component {
 
   render() {
     return (
-      <IconButton onClick={this.handleSaveClick}>
-        <Downvote sx={{ fontSize: 30, color: this.state.saveSuccess ? 'red' : 'back' }} />
+      <IconButton onClick={this.handleDownVoteClick}>
+        <Downvote
+          sx={{ fontSize: 30, color: this.state.saveSuccess ? "red" : "back" }}
+        />
       </IconButton>
     );
   }
