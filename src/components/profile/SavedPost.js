@@ -59,21 +59,19 @@ function PostShow({userId, name, profileImage, description, vote, tag, postDate,
 function SavedPost() {
   const [feedPosts, setfeedPosts] = useState([]);
 
-  const token = Cookies.get('token');
-
   useEffect(() => {
     const fetchFeedPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/feed/getFeed", {
+        const response = await axios.get(`http://localhost:8000/user/get/${Cookies.get('userId')}/savedPost`, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${Cookies.get('token')}`,
           }
         });
-        const feedPostsData = response.data;
+        const feedPostsData = response.data.posts;
         const formattedFeedPosts = feedPostsData.map(feedPosts => {
           return {
-            ...feedPosts,
-            createdAt: new Date(feedPosts.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
+            ...feedPosts.details,
+            createdAt: new Date(feedPosts.details.createdAt).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short' }) //, year: 'numeric'
           };
         });
         setfeedPosts(formattedFeedPosts);

@@ -15,11 +15,11 @@ class SavePostButton extends Component {
 
   handleSaveClick = async () => {
     const { postId } = this.props;
-
+ 
     try {
       if (this.state.isSaved) {
         // If the post is already saved, unsave it
-        await axios.post(
+        await axios.patch(
           `http://localhost:8000/user/savePost/${postId}`,
           {
             userId: Cookies.get('userId'),
@@ -32,7 +32,7 @@ class SavePostButton extends Component {
         );
       } else {
         // If the post is not saved, save it
-        await axios.post(
+        await axios.patch(
           `http://localhost:8000/user/savePost/${postId}`,
           {
             userId: Cookies.get('userId'),
