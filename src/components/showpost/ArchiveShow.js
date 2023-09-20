@@ -119,7 +119,7 @@ function ArchiveShow() {
           profileImage={archive.profileImage}
           title={archive.title}
           description={archive.description}
-          vote={archive.vote}
+          vote={VoteCount({ votes: archive.votes})}
           tag={archive.tag}
           postDate={archive.createdAt}
           author={archive.collabrators}
@@ -134,6 +134,30 @@ function ArchiveShow() {
     </>
   );
 }
+
+function VoteCount({votes}){
+  var vote = 0;
+    
+  if (!votes || votes.length === 0) {
+    // Handle the case where votes is undefined or empty
+    console.log('No votes available');
+    return 0; // Or whatever value you want to return in this case
+  }
+
+  for(var i=0;i<votes.length;i++){
+    if (votes[i] && votes[i].hasOwnProperty('hasVoted')) {
+      console.log(votes[i].hasVoted);
+      if(votes[i].hasVoted){
+        vote = vote + 1;
+      }
+      
+    } else {
+      console.log('Invalid vote object');
+    }
+  
+    return vote; 
+}
+ }
 
 
 

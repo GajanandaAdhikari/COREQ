@@ -153,7 +153,6 @@ function ProjectShow() {
     }
   
     return vote; 
-
 }
  }
 
