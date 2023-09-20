@@ -52,7 +52,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 We would like to acknowledge the following individuals for their contributions and support:
 
-- [Supervisor]
+- Ranjan Ran Aryal - Supervisor
 - Bibek Ropakheti - HoD ICT
 
 ## Our Team
