@@ -100,6 +100,7 @@ function ArchiveShow() {
           };
         });
         setArchive(formattedArchives);
+       
 
       } catch (error) {
         console.log(error);

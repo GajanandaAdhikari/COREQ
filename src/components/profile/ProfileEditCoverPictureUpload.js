@@ -23,7 +23,6 @@ const CoverPictureUpload = ({ onFileChange }) => {
   };
 
 
-
   const handleUpload = () => {
     // Implement the upload logic here
     // You can use Axios or any other method to send the file to the server

@@ -17,7 +17,7 @@ function CommentShow() {
 }
 
 
-function PostShow({userId, name, profileImage, title, description, vote, tag, postDate, author, team, keywords, postId }) {
+function PostShow({userId, name, profileImage, title, description, votes, tag, postDate, author, team, keywords, postId }) {
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -58,7 +58,7 @@ function PostShow({userId, name, profileImage, title, description, vote, tag, po
           </div>
           <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
             <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
-            <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
+            <h1 className='font-bold md:text-[25px] ml-5'>{votes}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
             <PostBar userId={userId} postId={postId}/>
@@ -97,9 +97,9 @@ function ProjectShow() {
           };
         });
         setProject(formattedProjects);
-
+        console.log(formattedProjects[0].votes[0].hasVoted);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
 
@@ -124,11 +124,38 @@ function ProjectShow() {
           keywords={project.keywords}
           userId={project.userId}
           postId={project._id}
+          votes={VoteCount({ votes: project.votes})}
+
         />
       ))}
     </>
   );
 }
+
+ function VoteCount({votes}){
+  var vote = 0;
+    
+  if (!votes || votes.length === 0) {
+    // Handle the case where votes is undefined or empty
+    console.log('No votes available');
+    return 0; // Or whatever value you want to return in this case
+  }
+
+  for(var i=0;i<votes.length;i++){
+    if (votes[i] && votes[i].hasOwnProperty('hasVoted')) {
+      console.log(votes[i].hasVoted);
+      if(votes[i].hasVoted){
+        vote = vote + 1;
+      }
+      
+    } else {
+      console.log('Invalid vote object');
+    }
+  
+    return vote; 
+
+}
+ }
 
 
 

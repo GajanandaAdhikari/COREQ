@@ -18,7 +18,7 @@ function CommentShow() {
 }
 
 
-function PostShow({userId, name, profileImage, title, description, vote, tag, postDate, author, publicationYear, publicationHouse, keywords, postId }) {
+function PostShow({userId, name, profileImage, title, description, votes, tag, postDate, author, publicationYear, publicationHouse, keywords, postId }) {
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -59,7 +59,7 @@ function PostShow({userId, name, profileImage, title, description, vote, tag, po
           </div>
           <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
             <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
-            <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
+            <h1 className='font-bold md:text-[25px] ml-5'>{votes}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
             <PostBar userId={userId} postId={postId}/>
@@ -103,6 +103,8 @@ function ArticlePostShow() {
           };
         });
         setArticles(formattedArticles);
+        console.log(formattedArticles);
+        console.log(formattedArticles[0].votes.length);
 
       } catch (error) {
         console.log(error);
@@ -130,6 +132,7 @@ function ArticlePostShow() {
           keywords={article.keywords}
           userId={article.userId}
           postId={article._id}
+          votes={article.votes.length}
         />
       ))}
     </>
