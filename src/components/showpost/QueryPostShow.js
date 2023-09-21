@@ -14,6 +14,17 @@ function CommentShow() {
 }
 
 function PostShow({userId, name, profileImage, description, vote, tag, postDate,voteStatus }) {
+  const [profile, setProfile] = useState("");
+  
+      useEffect(() => {
+    
+        if(profileImage!=undefined){
+          setProfile('http://127.0.0.1:8081/'+profileImage);
+        }
+        else{
+          setProfile('https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
+    
+    }}, []); // Empty dependency array ensures this runs only once on component mount
   return (
     <>
       <div className=" max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5">
@@ -22,7 +33,7 @@ function PostShow({userId, name, profileImage, description, vote, tag, postDate,
             <div className="flex col-span-4">
               <img
                 className="h-9 w-9 2xl:h-12 2xl:w-12 rounded-full mr-5 max-sm:mr-4  max-sm:h-9 max-sm:w-9"
-                src={profileImage}
+                src={profile}
               ></img>
               <Link to={`/profile/${userId}`} key={userId}>   <div className="">
                 <a href="" className="2xl:text-[25px]">

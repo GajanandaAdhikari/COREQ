@@ -20,11 +20,23 @@ const bio = "Aurora Vega is a captivating enigma, a multifaceted soul roaming th
 
 function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName, userFaculty, userSemester, userBatch, userId, profileImage, profileCover }) {
      // Check if userId prop is equal to the value of Cookies.get('userId')
-     const shouldShowEdit = userId == Cookies.get('userId');
+    const shouldShowEdit = userId == Cookies.get('userId');
     console.log("profile : "+profileImage);
     console.log("cover : "+profileCover);
 
+    // Use conditional checks to set profile and cover states
+  const [profile, setProfile] = useState(profileImage ? 'http://127.0.0.1:8081/' + profileImage : 'https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
+  const [cover, setCover] = useState(profileCover ? 'http://127.0.0.1:8081/' + profileCover : 'https://covermyfb.files.wordpress.com/2012/06/smile1.jpg');
 
+  useEffect(() => {
+    // Update profile and cover states when props change
+    if (profileImage) {
+      setProfile('http://127.0.0.1:8081/' + profileImage);
+    }
+    if (profileCover) {
+      setCover('http://127.0.0.1:8081/' + profileCover);
+    }
+  }, [profileImage, profileCover]);// Empty dependency array ensures this runs only once on component mount
 
   return (
     <div className='p-10 bg-back-color'>
@@ -45,11 +57,11 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
 
           <div className='profile'>
             <div className='cover'>
-              <img src={cover[0]} alt='cover' className='coverimg' />
+              <img src={cover} alt='cover' className='coverimg' />
             </div>
             <div className='profiledetails flex pt-10'>
               <div className='profilepic mr-10 ml-10'>
-                <img src={profile[0]} alt='profile' className='profileimg' />
+                <img src={profile} alt='profile' className='profileimg' />
               </div>
               <div className='profileinfo '>
                 <h1 className='text-3xl font-bold'>{userFullName}</h1>

@@ -3,7 +3,16 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 
-function UserName({ name, userName, userImage }) {
+function UserName({ name, userName, profileImage }) {
+  const [profile, setProfile] = useState(profileImage ? 'http://127.0.0.1:8081/' + profileImage : 'https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
+  
+      
+  useEffect(() => {
+    
+    if (profileImage) {
+      setProfile('http://127.0.0.1:8081/' + profileImage);
+    }
+  }, [profileImage]); // Empty dependency array ensures this runs only once on component mount
   return (
     <div class="max-w-md rounded-3xl block flex-grow ml-10 pb-2">
       <div class="rounded-[calc(1.5rem-1px)] ">
@@ -17,7 +26,7 @@ function UserName({ name, userName, userImage }) {
           </div>
           <img
             class="max-sm:h-7 max-sm:w-7 ml-3 h-10 w-10 rounded-full "
-            src={userImage}
+            src={profile}
             alt=""
           />
         </div>
@@ -54,7 +63,7 @@ function Gretting() {
         <UserName
           name={userDetails.fullName}
           userName={userDetails.username}
-          userImage={userDetails.profilePic}
+          profileImage={userDetails.profilePic}
         />
       </Link>
     </div>
