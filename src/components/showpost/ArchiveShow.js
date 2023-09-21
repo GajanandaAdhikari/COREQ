@@ -133,7 +133,7 @@ function ArchiveShow() {
           keywords={archive.keywords}
           userId={archive.userId} 
           postId={archive._id}
-          PdfUrl={archive.archivePDFPath} 
+          PdfUrl={archive.archivePDFPath}
         /> 
       ))}
     </>
