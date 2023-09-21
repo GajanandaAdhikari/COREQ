@@ -7,6 +7,8 @@ import { Archive } from '@mui/icons-material';
 import PostBar from '../Static/PostBar';
 import PDFViewer from '../Static/PdfViewer';
 import { Link } from 'react-router-dom';
+import { bool } from 'prop-types';
+import {VoteCount,VoteStatus}  from '../Static/VoteChecking';
 
 function CommentShow() {
   return (
@@ -16,10 +18,10 @@ function CommentShow() {
   )
 }
 
+// const [voteStatus, setVoteStatus] = bool(false);
 
 
-
-function PostShow({ userId,name, profileImage, title, description, vote, tag, postDate, author, team, keywords, postId,PdfUrl }) {
+function PostShow({ userId,name, profileImage, title, description, vote, tag, postDate, author, team, keywords, postId,PdfUrl,voteStatus }) {
 
   return (
     <>
@@ -64,7 +66,7 @@ function PostShow({ userId,name, profileImage, title, description, vote, tag, po
             <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar userId={userId} postId={postId}/>
+            <PostBar userId={userId} postId={postId} voteStatus={voteStatus}/>
             </div>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
@@ -83,6 +85,8 @@ function ArchiveShow() {
   const [archive, setArchive] = useState([]);
 
   const token = Cookies.get('token');
+
+  
 
   useEffect(() => {
     const fetchArchive = async () => {
@@ -120,44 +124,23 @@ function ArchiveShow() {
           title={archive.title}
           description={archive.description}
           vote={VoteCount({ votes: archive.votes})}
+          voteStatus={VoteStatus({ votes: archive.votes})}
           tag={archive.tag}
           postDate={archive.createdAt}
           author={archive.collabrators}
           publicationYear={archive.publicationYear}
           team={archive.team}
           keywords={archive.keywords}
-          userId={archive.userId}
+          userId={archive.userId} 
           postId={archive._id}
           PdfUrl={archive.archivePDFPath} 
         /> 
       ))}
     </>
   );
-}
+} 
 
-function VoteCount({votes}){
-  var vote = 0;
-    
-  if (!votes || votes.length === 0) {
-    // Handle the case where votes is undefined or empty
-    console.log('No votes available');
-    return 0; // Or whatever value you want to return in this case
-  }
 
-  for(var i=0;i<votes.length;i++){
-    if (votes[i] && votes[i].hasOwnProperty('hasVoted')) {
-      console.log(votes[i].hasVoted);
-      if(votes[i].hasVoted){
-        vote = vote + 1;
-      }
-      
-    } else {
-      console.log('Invalid vote object');
-    }
-  
-    return vote; 
-}
- }
 
 
 

@@ -9,12 +9,13 @@ class UpvoteButton extends Component {
     super(props);
     this.state = {
       isSaved: props.initialIsSaved || false,
-      saveSuccess: false, // Added saveSuccess state
+      saveSuccess: props.voteStatus || false, // Added saveSuccess state
     };
   }
 
   handleUpVoteClick = async () => {
     const { postId } = this.props;
+    const { voteStatus } = this.props;
 
     try {
       const response = await axios.patch(
@@ -38,6 +39,7 @@ class UpvoteButton extends Component {
         }),
         () => {
           // After setting the state, you can perform any additional actions here
+          // saveSuccess: voteStatus;
         }
       );
     } catch (error) {

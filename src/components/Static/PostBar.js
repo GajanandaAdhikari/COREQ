@@ -11,7 +11,7 @@ import SavePostButton from './SaveButton';
 import UpvoteButton from './UpvoteButton';
 import DownvoteButton from './DownvoteButton';
 
-export default function PostBar({userId, postId}) {
+export default function PostBar({userId, postId,voteStatus}) {
   const shouldShowDelete = userId == Cookies.get('userId');
   return (
    <div>
@@ -20,8 +20,8 @@ export default function PostBar({userId, postId}) {
    
       <SavePostButton postId={ postId }></SavePostButton>
             <IconButton><Share sx={{ fontSize: 30  }} /> </IconButton>
-             <UpvoteButton postId={ postId }></UpvoteButton>
-             <DownvoteButton postId={postId}></DownvoteButton>
+             <UpvoteButton postId={ postId } voteStatus={voteStatus}></UpvoteButton>
+             <DownvoteButton postId={postId} voteStatus={voteStatus}></DownvoteButton>
              {shouldShowDelete && (
              <IconButton aria-label="delete" > <DeleteIcon fontSize="inherit" sx={{fontSize: 30 }}/></IconButton>
               )}

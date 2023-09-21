@@ -15,6 +15,9 @@ class DownvoteButton extends Component {
 
   handleDownVoteClick = async () => {
     const { postId } = this.props;
+    const { voteStatus } = this.props;
+
+    console.log(voteStatus);
 
     try {
       const response = await axios.patch(
@@ -38,6 +41,7 @@ class DownvoteButton extends Component {
         }),
         () => {
           // After setting the state, you can perform any additional actions here
+          // saveSucess: VoteStatus(voteStatus)
         }
       );
     } catch (error) {
@@ -55,5 +59,11 @@ class DownvoteButton extends Component {
     );
   }
 }
+
+// console.log(voteStatus);
+
+// function VoteStatus({ voteStatus }) {
+//   console.log(voteStatus);
+// }
 
 export default DownvoteButton;
