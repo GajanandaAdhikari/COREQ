@@ -9,7 +9,7 @@ class DownvoteButton extends Component {
     super(props);
     this.state = {
       isSaved: props.initialIsSaved || false,
-      saveSuccess: false, // Added saveSuccess state
+      saveSuccess: props.voteStatus||false, // Added saveSuccess state
     };
   }
 
@@ -37,7 +37,7 @@ class DownvoteButton extends Component {
       this.setState(
         (prevState) => ({
           isSaved: !prevState.isSaved,
-          saveSuccess: true, // Set saveSuccess to true on successful save
+          saveSuccess: false, // Set saveSuccess to true on successful save
         }),
         () => {
           // After setting the state, you can perform any additional actions here
@@ -53,7 +53,7 @@ class DownvoteButton extends Component {
     return (
       <IconButton onClick={this.handleDownVoteClick}>
         <Downvote
-          sx={{ fontSize: 30, color: this.state.saveSuccess ? "red" : "back" }}
+          sx={{ fontSize: 30, color: this.state.saveSuccess ? "gray" : "red" }}
         />
       </IconButton>
     );

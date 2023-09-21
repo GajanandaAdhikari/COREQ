@@ -37,7 +37,7 @@ export function VoteCount({votes}){
     if (!votes || votes.length === 0) {
       // Handle the case where votes is undefined or empty
       console.log('No votes available');
-      return false; // Or whatever value you want to return in this case
+      return "invalid"; // Or whatever value you want to return in this case
     }
   
     for(var i=0;i<votes.length;i++){
