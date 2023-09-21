@@ -6,6 +6,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import PdfViewer from "../Static/PdfViewer";
 import PostBar from "../Static/PostBar";
+import {VoteCount,VoteStatus}  from '../Static/VoteChecking';
 
 
 function CommentShow() {
@@ -104,7 +105,7 @@ function QueryPostShow() {
           title={user.title}
           description={user.description}
           vote={VoteCount({ votes: user.votes})}
-          voteStatus =  {user.votes}
+          voteStatus={VoteStatus({ votes: user.votes})}
           tag={user.tag}
           postDate={user.createdAt}
           userId={user.userId}
@@ -114,29 +115,7 @@ function QueryPostShow() {
   );
 }
 
-function VoteCount({votes}){
-  var vote = 0;
-    
-  if (!votes || votes.length === 0) {
-    // Handle the case where votes is undefined or empty
-    console.log('No votes available');
-    return 0; // Or whatever value you want to return in this case
-  }
 
-  for(var i=0;i<votes.length;i++){
-    if (votes[i] && votes[i].hasOwnProperty('hasVoted')) {
-      console.log(votes[i].hasVoted);
-      if(votes[i].hasVoted){
-        vote = vote + 1;
-      }
-      
-    } else {
-      console.log('Invalid vote object');
-    }
-  
-    return vote; 
-}
- }
 
 
 

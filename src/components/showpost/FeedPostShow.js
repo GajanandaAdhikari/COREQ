@@ -5,6 +5,7 @@ import upvote from '../../img/upvote.png';
 import downvote from '../../img/downvote.png';
 import PostBar from '../Static/PostBar';
 import { Link } from 'react-router-dom';
+import {VoteCount,VoteStatus}  from '../Static/VoteChecking';
 
 function CommentShow() {
   return (
@@ -15,7 +16,7 @@ function CommentShow() {
 }
 
 
-function PostShow({userId, name, profileImage, description, votes, tag, postDate, postId }) {
+function PostShow({userId, name, profileImage, description, votes, tag, postDate, postId,voteStatus }) {
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -40,7 +41,7 @@ function PostShow({userId, name, profileImage, description, votes, tag, postDate
             <h1 className='font-bold md:text-[25px] ml-5'>{votes}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar userId={userId} postId={postId}/>
+            <PostBar userId={userId} postId={postId} voteStatus={voteStatus}/>
             </div>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
@@ -95,6 +96,7 @@ function FeedPostShow() {
           title={user.title}
           description={user.description}
           votes={VoteCount({ votes: user.votes})}
+          voteStatus={VoteStatus({ votes: user.votes})}
           tag={user.tag}
           postDate={user.createdAt}
           userId={user.userId}
@@ -104,29 +106,5 @@ function FeedPostShow() {
     </>
   )
 }
-
-function VoteCount({votes}){
-  var vote = 0;
-    
-  if (!votes || votes.length === 0) {
-    // Handle the case where votes is undefined or empty
-    console.log('No votes available');
-    return 0; // Or whatever value you want to return in this case
-  }
-
-  for(var i=0;i<votes.length;i++){
-    if (votes[i] && votes[i].hasOwnProperty('hasVoted')) {
-      console.log(votes[i].hasVoted);
-      if(votes[i].hasVoted){
-        vote = vote + 1;
-      }
-      
-    } else {
-      console.log('Invalid vote object');
-    }
-  
-    return vote; 
-}
- }
 
 export default FeedPostShow;

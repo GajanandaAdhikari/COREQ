@@ -9,7 +9,7 @@ class DownvoteButton extends Component {
     super(props);
     this.state = {
       isSaved: props.initialIsSaved || false,
-      saveSuccess: props.voteStatus||false, // Added saveSuccess state
+      saveSuccess: props.voteStatus !== undefined ? props.voteStatus : false,
     };
   }
 
@@ -17,17 +17,15 @@ class DownvoteButton extends Component {
     const { postId } = this.props;
     const { voteStatus } = this.props;
 
-    console.log(voteStatus);
-
     try {
       const response = await axios.patch(
         `http://localhost:8000/feature/${postId}/downVote`,
         {
-          userId: Cookies.get('userId'),
+          userId: Cookies.get("userId"),
         },
         {
           headers: {
-            Authorization: `Bearer ${Cookies.get('token')}`,
+            Authorization: `Bearer ${Cookies.get("token")}`,
           },
         }
       );
@@ -37,11 +35,10 @@ class DownvoteButton extends Component {
       this.setState(
         (prevState) => ({
           isSaved: !prevState.isSaved,
-          saveSuccess: false, // Set saveSuccess to true on successful save
+          saveSuccess: false, // Set saveSuccess to false on successful save
         }),
         () => {
           // After setting the state, you can perform any additional actions here
-          // saveSucess: VoteStatus(voteStatus)
         }
       );
     } catch (error) {
@@ -50,20 +47,24 @@ class DownvoteButton extends Component {
   };
 
   render() {
+    const { voteStatus } = this.props;
+
     return (
       <IconButton onClick={this.handleDownVoteClick}>
         <Downvote
-          sx={{ fontSize: 30, color: this.state.saveSuccess ? "gray" : "red" }}
+          sx={{
+            fontSize: 30,
+            color:
+              voteStatus === undefined
+                ? "gray"
+                : voteStatus
+                ? "gray"
+                : "red",
+          }}
         />
       </IconButton>
     );
   }
 }
-
-// console.log(voteStatus);
-
-// function VoteStatus({ voteStatus }) {
-//   console.log(voteStatus);
-// }
 
 export default DownvoteButton;

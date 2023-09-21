@@ -7,6 +7,7 @@ import { Archive } from '@mui/icons-material';
 import PostBar from '../Static/PostBar';
 import PDFViewer from '../Static/PdfViewer';
 import { Link } from 'react-router-dom';
+import {VoteCount,VoteStatus}  from '../Static/VoteChecking';
 
 function CommentShow() {
   return (
@@ -17,7 +18,7 @@ function CommentShow() {
 }
 
 
-function PostShow({userId, name, profileImage, title, description, votes, tag, postDate, author, team, keywords, postId }) {
+function PostShow({userId, name, profileImage, title, description, votes, tag, postDate, author, team, keywords, postId,voteStatus }) {
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -61,7 +62,7 @@ function PostShow({userId, name, profileImage, title, description, votes, tag, p
             <h1 className='font-bold md:text-[25px] ml-5'>{votes}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar userId={userId} postId={postId}/>
+            <PostBar userId={userId} postId={postId} voteStatus={voteStatus}/>
             </div>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
@@ -115,7 +116,6 @@ function ProjectShow() {
           profileImage={project.profileImage}
           title={project.title}
           description={project.description}
-          vote={project.vote}
           tag={project.tag}
           postDate={project.createdAt}
           author={project.collabrators}
@@ -125,6 +125,7 @@ function ProjectShow() {
           userId={project.userId}
           postId={project._id}
           votes={VoteCount({ votes: project.votes})}
+          voteStatus={VoteStatus({ votes: project.votes})}
 
         />
       ))}
@@ -132,30 +133,6 @@ function ProjectShow() {
   );
 }
 
- function VoteCount({votes}){
-  var vote = 0;
-    
-  if (!votes || votes.length === 0) {
-    // Handle the case where votes is undefined or empty
-    console.log('No votes available');
-    return 0; // Or whatever value you want to return in this case
-  }
-
-  for(var i=0;i<votes.length;i++){
-    if (votes[i] && votes[i].hasOwnProperty('hasVoted')) {
-      console.log(votes[i].hasVoted);
-      if(votes[i].hasVoted){
-        vote = vote + 1;
-      }
-      
-    } else {
-      console.log('Invalid vote object');
-    }
-  
-    return vote; 
-}
- }
-
-
+ 
 
 export default ProjectShow;

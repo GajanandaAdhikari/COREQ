@@ -12,13 +12,11 @@ export function VoteCount({votes}){
   
     for(var i=0;i<votes.length;i++){
       if (votes[i] && votes[i].hasOwnProperty('hasVoted') && votes[i].hasOwnProperty('userId')) {
-        // console.log(votes[i].hasVoted);
-        // console.log(votes[i].userId);
-        // if(votes[i].userId == Cookies.get('userId')){
-        //   setVoteStatus(votes[i].hasVoted);
-        // }
         if(votes[i].hasVoted){
           vote = vote + 1;
+        }
+        else{
+          vote = vote - 1;
         }
         
       } else {
@@ -37,7 +35,8 @@ export function VoteCount({votes}){
     if (!votes || votes.length === 0) {
       // Handle the case where votes is undefined or empty
       console.log('No votes available');
-      return "invalid"; // Or whatever value you want to return in this case
+      return undefined;
+       // Or whatever value you want to return in this case
     }
   
     for(var i=0;i<votes.length;i++){
