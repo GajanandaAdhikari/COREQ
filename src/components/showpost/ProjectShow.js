@@ -18,7 +18,7 @@ function CommentShow() {
 }
 
 
-function PostShow({userId, name, profileImage, title, description, votes, tag, postDate, author, team, keywords, postId,voteStatus }) {
+function PostShow({userId, name,pdfUrl, profileImage, title, description, votes, tag, postDate, author, team, keywords, postId,voteStatus }) {
   const [profile, setProfile] = useState("");
   
       useEffect(() => {
@@ -66,7 +66,7 @@ function PostShow({userId, name, profileImage, title, description, votes, tag, p
             <p>keywords: {keywords}</p>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
-          <PDFViewer message={"Dowload Project Details"} pdfUrl={"https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiqgJ3V-YeAAxUYl1YBHb1aDaoQFnoECA0QAQ&url=https%3A%2F%2Ffiles.eric.ed.gov%2Ffulltext%2FED604401.pdf&usg=AOvVaw0xlLREaqQuGWBhF6ipz6Lk&opi=89978449"}  />
+          <PDFViewer message={"Dowload Project Details"} pdfUrl={pdfUrl}  />
           </div>
           <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
             <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
@@ -137,6 +137,7 @@ function ProjectShow() {
           postId={project._id}
           votes={VoteCount({ votes: project.votes})}
           voteStatus={VoteStatus({ votes: project.votes})}
+          pdfUrl={project.projectPDFPath}
 
         />
       ))}

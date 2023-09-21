@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import upvote from '../../img/upvote.png';
-import downvote from '../../img/downvote.png';
+import {VoteCount,VoteStatus} from '../Static/VoteChecking';
 import PostBar from '../Static/PostBar';
+import PDFViewer from '../Static/PdfViewer';
 import { Link } from 'react-router-dom';
 
 function CommentShow() {
@@ -15,14 +15,25 @@ function CommentShow() {
 }
 
 
-function PostShow({userId, name, profileImage, description, vote, tag, postDate, postId }) {
+function PostShow({userId, name, profileImage, description, votes, tag, postDate, postId,voteStatus }) {
+  const [profile, setProfile] = useState("");
+  
+      useEffect(() => {
+    
+        if(profileImage!=undefined){
+          setProfile('http://127.0.0.1:8081/'+profileImage);
+        }
+        else{
+          setProfile('https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
+    
+    }}, []); // Empty dependency array ensures this runs only once on component mount
   return (
     <>
-      <div className=' w-full p-4 border border-gray-300 rounded-lg mt-5'>
+      <div className=' w-full  p-4 border border-gray-300 rounded-lg mt-5'>
         <div className='grid grid-rows-10 gap-4 '>
           <div className='row-span-2 grid grid-cols-5 '>
             <div className='flex col-span-4'>
-              <img className='h-9 w-9 2xl:h-12 2xl:w-12 rounded-full mr-5 max-sm:mr-4  max-sm:h-9 max-sm:w-9' src={profileImage}></img>
+              <img className='h-9 w-9 2xl:h-12 2xl:w-12 rounded-full mr-5 max-sm:mr-4  max-sm:h-9 max-sm:w-9' src={profile}></img>
               <Link to={`/profile/${userId}`} key={userId}>  <div className=''>
                 <a href='' className='2xl:text-[25px]'>{name}</a>
                 <p className='font-k2d 2xl:text-[20px]'>{tag}</p>
@@ -37,10 +48,10 @@ function PostShow({userId, name, profileImage, description, vote, tag, postDate,
           </div>
           <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
             <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
-            <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
+            <h1 className='font-bold md:text-[25px] ml-5'>{votes}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar userId={userId} postId={postId}/>
+            <PostBar userId={userId} postId={postId} voteStatus={voteStatus}/>
             </div>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
@@ -92,7 +103,8 @@ function SavedPost() {
           profileImage={user.profilePic}
           title={user.title}
           description={user.description}
-          vote={user.vote}
+          votes={VoteCount({ votes: user.votes})}
+          voteStatus={VoteStatus({ votes: user.votes})}
           tag={user.tag}
           postDate={user.createdAt}
           userId={user.userId}
