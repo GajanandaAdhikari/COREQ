@@ -15,6 +15,7 @@ import SocialLink from "./components/profile/SocialLink"
 import Security from "./components/profile/Security"
 import ProfileEditSideBar from "./components/profile/ProfileEditSideBar"
 import Help from "./components/profile/Help"
+import PostBar from "./components/Static/PostBar";
 
 
 
@@ -39,7 +40,7 @@ function App() {
             <Route path="/sociallink" element={<div className="grid grid-cols-10"> <span className="md:col-span-4 xl:col-span-3"><ProfileEditSideBar /> </span><span className="max-md:col-span-6 xl:col-span-7"><SocialLink /></span></div>} />
             <Route path="/security" exact element={<div className="grid grid-cols-10"> <span className="md:col-span-4 xl:col-span-3"><ProfileEditSideBar /> </span><span className="max-md:col-span-6 xl:col-span-7"><Security /></span></div>} />
             <Route path="/help" exact element={<div className="grid grid-cols-10"> <span className="md:col-span-4 xl:col-span-3"><ProfileEditSideBar /> </span><span className="max-md:col-span-6 xl:col-span-7"><Help /></span></div>} />
-
+            <Route path="/postbar" exact element={<PostBar />} />
           </Routes>
         </BrowserRouter>
       </div>

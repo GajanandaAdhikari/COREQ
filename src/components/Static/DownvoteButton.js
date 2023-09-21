@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import IconButton from "@mui/material/IconButton";
 import Downvote from "@mui/icons-material/ArrowCircleDown";
+
+const handleReloadComponent = () => {
+  window.location.reload();
+};
 
 class DownvoteButton extends Component {
   constructor(props) {
@@ -46,11 +51,16 @@ class DownvoteButton extends Component {
     }
   };
 
+  handleCombinedClick = async () => {
+    await this.handleDownVoteClick(); // Make sure to await the async function
+    handleReloadComponent();
+  };
+
   render() {
     const { voteStatus } = this.props;
 
     return (
-      <IconButton onClick={this.handleDownVoteClick}>
+      <IconButton onClick={this.handleCombinedClick}>
         <Downvote
           sx={{
             fontSize: 30,

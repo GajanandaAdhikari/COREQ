@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import IconButton from "@mui/material/IconButton";
 import Upvote from "@mui/icons-material/ArrowCircleUp";
 
+const handleReloadComponent = () => {
+  window.location.reload();
+};
 class UpvoteButton extends Component {
   constructor(props) {
     super(props);
@@ -46,17 +50,22 @@ class UpvoteButton extends Component {
       console.log(error);
     }
   };
+  handleCombinedClick = async () => {
+    await this.handleUpVoteClick(); // Make sure to await the async function
+    handleReloadComponent();
+  };
 
   render() {
     return (
-      <IconButton onClick={this.handleUpVoteClick}>
+   
+     <IconButton onClick={this.handleCombinedClick}>
         <Upvote
           sx={{
             fontSize: 30,
             color: this.state.saveSuccess ? "green" : "back",
           }}
         />
-      </IconButton>
+      </IconButton> 
     );
   }
 }
