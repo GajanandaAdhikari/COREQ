@@ -99,14 +99,14 @@ function CirculateProjects() {
   const renderAlerts = () => {
     return alerts.map((alert, index) => {
       switch (alert) {
-        case "circulateArticleSucess":
+        case "circulateProjectSucess":
           return (
             <SucessAlert
               key={index}
               message={"Circulate project successfully"}
             />
           );
-        case "circulateArticleFailed":
+        case "circulateProjectFailed":
           return (
             <FailedAlert key={index} message={"Failed to circulate project"} />
           );

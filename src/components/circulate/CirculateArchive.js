@@ -4,6 +4,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import UploadPDF from "./UploadPDF";
+import FailedAlert from "../Static/FailedAlert";
+import SucessAlert from "../Static/SucessAlert";
 
 function CirculateArchive() {
   const year = new Date().getFullYear();
@@ -18,6 +20,7 @@ function CirculateArchive() {
   const [team, setTeam] = useState("");
   const [description, setDescription] = useState("");
   const [keywords, setKeywords] = useState("");
+  const [alerts, setAlerts] = useState([]);
 
   // Handle input changes and update the state variables
   const handleTitleChange = (e) => {
@@ -77,6 +80,8 @@ function CirculateArchive() {
         }
       );
       console.log("Data sent successfully:", response.data);
+      setAlerts((prevAlerts) => [...prevAlerts, "circulateArchiveSucess"]);
+
       // You can handle the API response here
       // Clear the form by resetting the state variables
       setTitle("");
@@ -88,12 +93,33 @@ function CirculateArchive() {
       navigate("/archive");
     } catch (error) {
       console.error("Error sending data:", error);
+      setAlerts((prevAlerts) => [...prevAlerts, "circulateArchiveFailed"]);
       // Handle errors here
     }
+  };
+  const renderAlerts = () => {
+    return alerts.map((alert, index) => {
+      switch (alert) {
+        case "circulateArchiveSucess":
+          return (
+            <SucessAlert
+              key={index}
+              message={"Circulate archive successfully"}
+            />
+          );
+        case "circulateArchiveFailed":
+          return (
+            <FailedAlert key={index} message={"Failed to circulate archive"} />
+          );
+        default:
+          return null;
+      }
+    });
   };
   return (
     <>
       <div className=" max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-boderColor rounded-lg mt-5 ">
+      {renderAlerts()}
         <h1 className="text-center md:text-xl font-bold pb-3">
           Circulate Archive
         </h1>
