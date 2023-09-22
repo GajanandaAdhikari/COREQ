@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 
 import Downvote from '@mui/icons-material/ArrowCircleDown';
 import Share from '@mui/icons-material/Share';
@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import SavePostButton from './SaveButton';
 import UpvoteButton from './UpvoteButton';
 import DownvoteButton from './DownvoteButton';
+import DeleteButton from './DeleteButton';
 
 export default function PostBar({userId, postId,voteStatus}) {
   const shouldShowDelete = userId == Cookies.get('userId');
@@ -23,7 +24,7 @@ export default function PostBar({userId, postId,voteStatus}) {
              <UpvoteButton postId={ postId } voteStatus={voteStatus}></UpvoteButton>
              <DownvoteButton postId={postId} voteStatus={voteStatus}></DownvoteButton>
              {shouldShowDelete && (
-             <IconButton aria-label="delete" > <DeleteIcon fontSize="inherit" sx={{fontSize: 30 }}/></IconButton>
+             <DeleteButton postId={postId}></DeleteButton> 
               )}
     </Stack> 
    </div>

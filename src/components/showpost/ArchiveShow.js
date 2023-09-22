@@ -115,6 +115,7 @@ function ArchiveShow() {
           };
         });
         setArchive(formattedArchives);
+        console.log(formattedArchives);
        
 
       } catch (error) {

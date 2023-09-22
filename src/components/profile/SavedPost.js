@@ -109,6 +109,7 @@ function SavedPost() {
           postDate={user.createdAt}
           userId={user.userId}
           postId={user._id}
+          
         ></PostShow>)
       }
     </>
