@@ -24,11 +24,11 @@ class DeleteButton extends Component {
       const response = await axios.delete(
         `http://localhost:8000/feature/${postId}/deletePost`,
         {
-          userId: Cookies.get('userId'),
-        },
-        {
           headers: {
             Authorization: `Bearer ${Cookies.get('token')}`,
+          },
+          data: {
+            userId: Cookies.get('userId'),
           },
         }
       );
