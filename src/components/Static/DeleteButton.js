@@ -21,8 +21,8 @@ class DeleteButton extends Component {
     const { voteStatus } = this.props;
 
     try {
-      const response = await axios.patch(
-        `http://localhost:8000/feature/${postId}/upVote`,
+      const response = await axios.delete(
+        `http://localhost:8000/feature/${postId}/deletePost`,
         {
           userId: Cookies.get('userId'),
         },
