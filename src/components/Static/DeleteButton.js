@@ -16,7 +16,7 @@ class DeleteButton extends Component {
     };
   }
 
-  handleUpVoteClick = async () => {
+  handleDeleteClick = async () => {
     const { postId } = this.props;
     const { voteStatus } = this.props;
 
@@ -50,7 +50,7 @@ class DeleteButton extends Component {
     }
   };
   handleCombinedClick = async () => {
-    await this.handleUpVoteClick(); // Make sure to await the async function
+    await this.handleDeleteClick(); // Make sure to await the async function
     handleReloadComponent();
   };
 
