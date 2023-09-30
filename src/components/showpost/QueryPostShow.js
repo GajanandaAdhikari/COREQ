@@ -14,7 +14,7 @@ function CommentShow() {
   return <></>;
 }
 
-function PostShow({userId,refreshCount, name, profileImage, description, vote, tag, postDate,voteStatus, postId }) {
+function PostShow({userId,refreshCount,title, name, profileImage, description, vote, tag, postDate,voteStatus, postId }) {
   const [profile, setProfile] = useState("");
   
       useEffect(() => {
@@ -46,6 +46,11 @@ function PostShow({userId,refreshCount, name, profileImage, description, vote, t
             </div>
             <div className="col-span-1 ">
               <h1 className="font-k2d text-sm 2xl:text-[20px] ">{postDate}</h1>
+            </div>
+          </div>
+          <div className='row-span-1 '>
+            <div className='flex font-bold 2xl:text-[20px]'>
+              <h1>{title}</h1>
             </div>
           </div>
           <div className="row-span-5 flex-grow border-b border-gray-300 2xl:text-[20px] pb-7">
@@ -118,6 +123,7 @@ function QueryPostShow({refreshCount}) {
           userId={query.userId}
           refreshCount={refreshCount}
           postId={query._id}
+          
         ></PostShow>
       ))
 
