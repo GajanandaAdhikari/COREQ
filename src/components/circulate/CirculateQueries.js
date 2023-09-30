@@ -39,7 +39,7 @@ function CirculateQueries({ onRefresh }) {
           },
         }
       );
-      onRefresh();
+  
       setTitle("");
       setDescription("");
       navigate("/query");
