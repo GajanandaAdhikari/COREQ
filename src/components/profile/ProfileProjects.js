@@ -124,7 +124,7 @@ function ProfileProjects() {
         <PostShow
           key={project.id}
           name={project.userFullName}
-          profileImage={project.profileImage}
+          profileImage={project.profilePic}
           title={project.title}
           description={project.description}
           tag={project.tag}
