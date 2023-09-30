@@ -9,11 +9,12 @@ import PostBar from "../Static/PostBar";
 import {VoteCount,VoteStatus}  from '../Static/VoteChecking';
 
 
+
 function CommentShow() {
   return <></>;
 }
 
-function PostShow({userId, name, profileImage, description, vote, tag, postDate,voteStatus }) {
+function PostShow({userId,refreshCount, name, profileImage, description, vote, tag, postDate,voteStatus }) {
   const [profile, setProfile] = useState("");
   
       useEffect(() => {
@@ -27,6 +28,7 @@ function PostShow({userId, name, profileImage, description, vote, tag, postDate,
     }}, []); // Empty dependency array ensures this runs only once on component mount
   return (
     <>
+    {refreshCount >0 && (
       <div className=" max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5">
         <div className="grid grid-rows-10 gap-4 ">
           <div className="row-span-2 grid grid-cols-5 ">
@@ -73,11 +75,12 @@ function PostShow({userId, name, profileImage, description, vote, tag, postDate,
           </div>
         </div>
       </div>
+    )}
     </>
   );
 }
 
-function QueryPostShow() {
+function QueryPostShow({refreshCount}) {
   const [queries, setQueries] = useState([]);
 
   const token = Cookies.get('token');
@@ -108,7 +111,8 @@ function QueryPostShow() {
   }, []);
   return (
     <>
-      {queries.map((user) => (
+      {refreshCount >=0 && (
+      queries.map((user) => (
         <PostShow
           name={user.userFullName}
           userName={user.username}
@@ -120,8 +124,12 @@ function QueryPostShow() {
           tag={user.tag}
           postDate={user.createdAt}
           userId={user.userId}
+          refreshCount={refreshCount}
         ></PostShow>
-      ))}
+      ))
+
+      )}
+
     </>
   );
 }

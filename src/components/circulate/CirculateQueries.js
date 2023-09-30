@@ -4,7 +4,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-function CirculateQueries() {
+function CirculateQueries({ onRefresh }) {
   const navigate = useNavigate();
 
   const token = Cookies.get("token");
@@ -22,7 +22,7 @@ function CirculateQueries() {
   };
 
   //Handle Login API Integration here
-  const handleSubmitQuery = async (e) => {
+  const handleSubmitQuery = async (e) => { 
     e.preventDefault();
 
     try {
@@ -39,9 +39,12 @@ function CirculateQueries() {
           },
         }
       );
+      onRefresh();
       setTitle("");
       setDescription("");
       navigate("/query");
+      // After successfully submitting the query, trigger the refresh
+      
     } catch (error) {
       console.error(error);
     }
@@ -74,11 +77,11 @@ function CirculateQueries() {
             Draft
           </button>
           <button
-            class="inline-flex   max-sm:mt-3 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
-            onClick={handleSubmitQuery}
-          >
-            Submit
-          </button>
+        class="inline-flex max-sm:mr-20 md:mr-20 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
+        onClick={handleSubmitQuery}
+      >
+        Submit
+      </button>
         </div>
       </div>
     </>

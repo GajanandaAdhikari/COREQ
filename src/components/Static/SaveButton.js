@@ -9,7 +9,7 @@ class SavePostButton extends Component {
     super(props);
     this.state = {
       isSaved: props.initialIsSaved || false,
-      saveSuccess: false, // Added saveSuccess state
+      saveSuccess: props.savedStatus || false, // Added saveSuccess state
     };
   }
 

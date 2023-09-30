@@ -151,35 +151,41 @@ export default function EditProfile({ imagePreviewUrl }) {
       <div class=" mx-auto w-2/3 pt-8 mb-3 md:mb-0">
 
         <div class="flex mx-auto pb-10">
-          <select className="mr-[40px] w-2/3 border border-bcolor text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 overflow-y-scroll"
-            id="faculty"
-            size="1"
-            value={faculty} onChange={(handleFacultyChange)}
-          >
-            <option   disabled selected>
-              Faculty
-            </option>
-            <option>BEIT</option>
-            <option>BCE</option>
-            <option>BE Civil</option>
-            <option>BE Elx</option>
-          </select>
+        <select
+  className="mr-[40px] w-2/3 border border-bcolor text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 overflow-y-scroll"
+  id="faculty"
+  size="1"
+  value={faculty}
+  onChange={handleFacultyChange}
+>
+  <option  disabled value="" selected>
+    Faculty
+  </option>
+  <option >BEIT</option>
+  <option >BCE</option>
+  <option >BE Civil</option>
+  <option >BE Elx</option>
+</select>
 
-          <select
+<select
   className="block appearance-none w-2/3 border border-bcolor text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
   id="batch"
   size="1"
-
   onChange={handleBatchChange}
 >
-  <option disabled value="">
+  <option disabled value="" selected>
     Batch
   </option>
   {Array.from({ length: 7 }, (_, index) => {
     const year = 2017 + index;
-    return <option key={year} value={year} onChange={handleBatchChange}>{year}</option>;
+    return (
+      <option key={year} value={year}>
+        {year}
+      </option>
+    );
   })}
 </select>
+
 
 
 

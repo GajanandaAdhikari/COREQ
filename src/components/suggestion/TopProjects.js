@@ -20,6 +20,7 @@ function TopProjectList() {
                     }
                 );
                 setRecommendedProjects(response.data);
+                // console.log(response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -31,6 +32,7 @@ function TopProjectList() {
         <div>
             {
                 recommendedProjects.map(user => <SuggestedProject
+                    key={user._id}
                     name={user.userFullName}
                     userName={user.username}
                     userImage={user.profilePic}

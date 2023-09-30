@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Gretting from "../components/Static/Gretting";
 import Search from "../components/Static/Search";
 import SideBar from "../components/Static/SideBar";
@@ -7,7 +8,15 @@ import TopResearchArticles from "../components/suggestion/TopResearchArticles";
 import CirculateQueries from "../components/circulate/CirculateQueries";
 import QueryPostShow from "../components/showpost/QueryPostShow";
 
+
 function QueriesPage() {
+  const [refreshCount, setRefreshCount] = useState(0);
+
+  const handleRefreshQueryPostShow = () => {
+    console.log("Refreshing QueryPostShow : "+refreshCount);
+    setRefreshCount(refreshCount + 1);
+  };
+  
   return (
     <>
       <div className="font-sans bg-back-color overflow-hidden h-screen p-5 ">
@@ -25,8 +34,8 @@ function QueriesPage() {
           </div>
 
           <div className="md:col-span-3 max-sm:col-span-5 max-sm:col-start-1 max-sm:overflow-scroll max-sm:h-[600px] md:overflow-y-scroll md:h-[540px] 2xl:h-[760px]  ">
-            <div className="2xl:pl-20"><CirculateQueries /></div>
-            <div className="2xl:pl-20"><QueryPostShow /></div>
+            <div className="2xl:pl-20"><CirculateQueries onRefresh={handleRefreshQueryPostShow} /></div>
+            <div className="2xl:pl-20"><QueryPostShow refreshCount={refreshCount}/></div>
           </div>
 
           <div className="max-sm:hidden grid  overflow-y-scroll md:h-[540px] 2xl:h-[760px] ">

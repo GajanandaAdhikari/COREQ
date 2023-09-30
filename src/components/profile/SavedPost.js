@@ -5,6 +5,10 @@ import {VoteCount,VoteStatus} from '../Static/VoteChecking';
 import PostBar from '../Static/PostBar';
 import PDFViewer from '../Static/PdfViewer';
 import { Link } from 'react-router-dom';
+import SavedPostChecking from '../Static/SavedPostChecking';
+
+
+
 
 function CommentShow() {
   return (
@@ -15,7 +19,7 @@ function CommentShow() {
 }
 
 
-function PostShow({userId, name, profileImage, description, votes, tag, postDate, postId,voteStatus }) {
+function PostShow({userId,savedStatus, name, profileImage, description, votes, tag, postDate, postId,voteStatus }) {
   const [profile, setProfile] = useState("");
   
       useEffect(() => {
@@ -51,7 +55,7 @@ function PostShow({userId, name, profileImage, description, votes, tag, postDate
             <h1 className='font-bold md:text-[25px] ml-5'>{votes}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar userId={userId} postId={postId} voteStatus={voteStatus}/>
+            <PostBar userId={userId} postId={postId} voteStatus={voteStatus} savedStatus={savedStatus}/>
             </div>
           </div>
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
@@ -67,7 +71,7 @@ function PostShow({userId, name, profileImage, description, votes, tag, postDate
 }
 
 
-function SavedPost() {
+function SavedPost({children}) {
   const [feedPosts, setfeedPosts] = useState([]);
 
   useEffect(() => {
@@ -86,6 +90,8 @@ function SavedPost() {
           };
         });
         setfeedPosts(formattedFeedPosts);
+        // console.log(formattedFeedPosts[0]._id);
+        
 
       } catch (error) {
         console.log(error);
@@ -94,6 +100,7 @@ function SavedPost() {
 
     fetchFeedPosts();
   }, []);
+  console.log(feedPosts);
   return (
     <>
       {
@@ -109,11 +116,16 @@ function SavedPost() {
           postDate={user.createdAt}
           userId={user.userId}
           postId={user._id}
+          savedStatus={true}
+         
           
         ></PostShow>)
       }
+      
     </>
   )
 }
+
+
 
 export default SavedPost;

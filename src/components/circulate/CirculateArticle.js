@@ -158,6 +158,9 @@ function CirculateArticle() {
           value={publicationYear}
           onChange={handlePublicationYearChange}
         >
+          <option disabled value="" selected>
+            Year
+          </option>
           {years.map((year, index) => {
             return (
               <option key={`year${index}`} value={year}>

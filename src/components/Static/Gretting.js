@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
+import SavedPostChecking from "./SavedPostChecking";
 
-function UserName({ name, userName, profileImage }) {
+
+function UserName({ name, userName, profileImage,savedPostDetails }) {
   const [profile, setProfile] = useState(profileImage ? 'http://127.0.0.1:8081/' + profileImage : 'https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
   
+    
       
   useEffect(() => {
     
@@ -31,12 +34,15 @@ function UserName({ name, userName, profileImage }) {
           />
         </div>
       </div>
+      <SavedPostChecking savedPostDetails={savedPostDetails}>
+    </SavedPostChecking>
     </div>
   );
 }
 
 function Gretting() {
   const [userDetails, setUserDetails] = useState([]);
+  const [savedPost, setSavedPost] = useState([]);
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -50,6 +56,9 @@ function Gretting() {
           }
         );
         setUserDetails(response.data);
+        // setSavedPost(response.data);
+        // console.log(savedPost);
+        console.log(userDetails.savedPost);
       } catch (error) {
         console.log(error);
       }
@@ -58,15 +67,20 @@ function Gretting() {
     fetchUserDetails();
   }, []);
   return (
+    <>
     <div>
       <Link to={`/profile/${Cookies.get("userId")}`} key={Cookies.get("userId")}>
         <UserName
           name={userDetails.fullName}
           userName={userDetails.username}
           profileImage={userDetails.profilePic}
+          savedPostDetails={userDetails.savedPost}
         />
       </Link>
     </div>
+    
+    </>
+    
   );
 }
 

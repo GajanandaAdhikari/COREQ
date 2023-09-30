@@ -38,6 +38,7 @@ function FriendSuggestionList() {
             userName={user.username}
             userImage={user.profilePic}
             userId={user._id}
+            key={user._id}
           />
       ))}
     </>

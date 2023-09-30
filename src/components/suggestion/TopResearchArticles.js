@@ -34,6 +34,7 @@ function TopResearchArticlesList() {
                     userName={user.username}
                     userImage={user.profilePic}
                     projTitle={user.title}
+                    key={user._id}
                 ></SuggestedResearchArticles>)
             }
         </div>

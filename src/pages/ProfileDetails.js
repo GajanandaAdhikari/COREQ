@@ -14,13 +14,11 @@ import Search from '../components/Static/Search';
 import Gretting from '../components/Static/Gretting';
 import SideBar from '../components/Static/SideBar';
 
-const cover = ["https://covermyfb.files.wordpress.com/2012/06/smile1.jpg"]
-const profile = ["https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais"]
-const bio = "Aurora Vega is a captivating enigma, a multifaceted soul roaming the tapestry of life with a boundless curiosity and an insatiable thirst for adventure. Born under the celestial symphony of stars, she embodies the essence of a wandering dreamer, forever seeking new experiences and connections."
+
 
 function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName, userFaculty, userSemester, userBatch, userId, profileImage, profileCover }) {
      // Check if userId prop is equal to the value of Cookies.get('userId')
-    const shouldShowEdit = userId == Cookies.get('userId');
+    const shouldShowEdit = userId === Cookies.get('userId');
     console.log("profile : "+profileImage);
     console.log("cover : "+profileCover);
 

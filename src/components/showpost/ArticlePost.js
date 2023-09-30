@@ -8,6 +8,7 @@ import Vote from '../Static/Vote';
 import {Link} from 'react-router-dom';
 import PostBar from '../Static/PostBar';
 import {VoteCount,VoteStatus}  from '../Static/VoteChecking';
+import SavedPostChecking from '../Static/SavedPostChecking';
 
 
 function CommentShow() {
@@ -19,10 +20,10 @@ function CommentShow() {
 }
 
 
-function PostShow({userId, name,pdfUrl, profileImage, title, description, votes, tag, postDate, author, publicationYear, publicationHouse, keywords, postId,voteStatus }) {
+function PostShow({userId, name,pdfUrl, profileImage, title, description, votes, tag, postDate, author, publicationYear, publicationHouse, keywords, postId,voteStatus,savedStatus }) {
   const [profile, setProfile] = useState("https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais");
   
-      console.log("profileImage : "+profile)
+
   useEffect(() => {
     
     if(profileImage!=undefined){
@@ -75,7 +76,7 @@ function PostShow({userId, name,pdfUrl, profileImage, title, description, votes,
             <h1 className='font-bold md:text-[25px] ml-5'>{votes}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar userId={userId} postId={postId} voteStatus={voteStatus}/>
+            <PostBar userId={userId} postId={postId} voteStatus={voteStatus} savedStatus={savedStatus}/>
             </div>
           </div>
           
@@ -116,8 +117,8 @@ function ArticlePostShow() {
           };
         });
         setArticles(formattedArticles);
-        console.log(formattedArticles);
-        console.log(formattedArticles[0].votes.length);
+        // console.log(formattedArticles);
+        // console.log(formattedArticles[0].votes.length);
 
       } catch (error) {
         console.log(error);
@@ -147,11 +148,13 @@ function ArticlePostShow() {
           postId={article._id}
           votes={VoteCount({ votes: article.votes})}
           PdfUrl={article.articlePDFPath}
+          savedStatus={SavedPostChecking({postID:article._id})}
         />
       ))}
     </>
   );
 }
+
 
 
 

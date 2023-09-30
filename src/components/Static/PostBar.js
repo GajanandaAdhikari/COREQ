@@ -12,14 +12,14 @@ import UpvoteButton from './UpvoteButton';
 import DownvoteButton from './DownvoteButton';
 import DeleteButton from './DeleteButton';
 
-export default function PostBar({userId, postId,voteStatus}) {
+export default function PostBar({userId, postId,voteStatus,savedStatus}) {
   const shouldShowDelete = userId == Cookies.get('userId');
   return (
    <div>
 
      <Stack direction="row" alignItems="end" spacing={2}>
    
-      <SavePostButton postId={ postId }></SavePostButton>
+      <SavePostButton postId={ postId } savedStatus={savedStatus}></SavePostButton>
             <IconButton><Share sx={{ fontSize: 30  }} /> </IconButton>
              <UpvoteButton postId={ postId } voteStatus={voteStatus}></UpvoteButton>
              <DownvoteButton postId={postId} voteStatus={voteStatus}></DownvoteButton>
