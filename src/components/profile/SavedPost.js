@@ -6,7 +6,7 @@ import PostBar from '../Static/PostBar';
 import PDFViewer from '../Static/PdfViewer';
 import { Link } from 'react-router-dom';
 import SavedPostChecking from '../Static/SavedPostChecking';
-
+import { useParams } from "react-router-dom";
 
 
 
@@ -73,11 +73,12 @@ function PostShow({userId,savedStatus, name, profileImage, description, votes, t
 
 function SavedPost({children}) {
   const [feedPosts, setfeedPosts] = useState([]);
+    const { userId } = useParams();
 
   useEffect(() => {
     const fetchFeedPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/user/get/${Cookies.get('userId')}/savedPost`, {
+        const response = await axios.get(`http://localhost:8000/user/get/${userId}/savedPost`, {
           headers: {
             Authorization: `Bearer ${Cookies.get('token')}`,
           }

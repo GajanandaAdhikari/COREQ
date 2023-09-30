@@ -5,6 +5,7 @@ import {VoteCount,VoteStatus} from '../Static/VoteChecking';
 import PostBar from '../Static/PostBar';
 import PDFViewer from '../Static/PdfViewer';
 import { Link } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 
 function CommentShow() {
@@ -90,11 +91,12 @@ function ProfileProjects() {
   const [project, setProject] = useState([]);
 
   const token = Cookies.get('token');
+  const { userId } = useParams();
 
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/project", {
+        const response = await axios.get(`http://localhost:8000/project/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

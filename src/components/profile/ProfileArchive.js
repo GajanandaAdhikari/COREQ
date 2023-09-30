@@ -5,6 +5,7 @@ import {VoteCount,VoteStatus} from '../Static/VoteChecking';
 import PostBar from '../Static/PostBar';
 import PDFViewer from '../Static/PdfViewer';
 import { Link } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 
 function CommentShow() {
@@ -91,13 +92,13 @@ function ProfileArchive() {
   const [archive, setArchive] = useState([]);
 
   const token = Cookies.get('token');
-
+  const { userId } = useParams();
   
 
   useEffect(() => {
     const fetchArchive = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/archive", {
+        const response = await axios.get(`http://localhost:8000/archive/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
