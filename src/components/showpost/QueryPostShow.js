@@ -14,7 +14,7 @@ function CommentShow() {
   return <></>;
 }
 
-function PostShow({userId,refreshCount, name, profileImage, description, vote, tag, postDate,voteStatus }) {
+function PostShow({userId,refreshCount, name, profileImage, description, vote, tag, postDate,voteStatus, postId }) {
   const [profile, setProfile] = useState("");
   
       useEffect(() => {
@@ -56,7 +56,7 @@ function PostShow({userId,refreshCount, name, profileImage, description, vote, t
             <h1 className='font-bold md:text-[25px] ml-5'>{vote}</h1>
             </div>
             <div className='col-span-4 flex justify-end oldstyle-nums font-bold md:text-md ml-5'>
-            <PostBar userId={userId} voteStatus={voteStatus}/>
+            <PostBar userId={userId} postId={postId} voteStatus={voteStatus}/>
             </div>
           </div>
           <div className="row-span-2  p-1 flex">
@@ -112,19 +112,20 @@ function QueryPostShow({refreshCount}) {
   return (
     <>
       {refreshCount >=0 && (
-      queries.map((user) => (
+      queries.map((query) => (
         <PostShow
-          name={user.userFullName}
-          userName={user.username}
-          profileImage={user.profilePic}
-          title={user.title}
-          description={user.description}
-          vote={VoteCount({ votes: user.votes})}
-          voteStatus={VoteStatus({ votes: user.votes})}
-          tag={user.tag}
-          postDate={user.createdAt}
-          userId={user.userId}
+          name={query.userFullName}
+          userName={query.username}
+          profileImage={query.profilePic}
+          title={query.title}
+          description={query.description}
+          vote={VoteCount({ votes: query.votes})}
+          voteStatus={VoteStatus({ votes: query.votes})}
+          tag={query.tag}
+          postDate={query.createdAt}
+          userId={query.userId}
           refreshCount={refreshCount}
+          postId={query._id}
         ></PostShow>
       ))
 
