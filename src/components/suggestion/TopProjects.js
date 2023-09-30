@@ -37,19 +37,30 @@ function TopProjectList() {
                     userName={user.username}
                     userImage={user.profilePic}
                     projTitle={user.title}
+                    profileImage={user.profilePic}
                 ></SuggestedProject>)
             }
         </div>
     )
 }
 
-function SuggestedProject({ name, userName, userImage, projTitle }) {
+function SuggestedProject({ name, userName, profileImage, projTitle }) {
+    const [profile, setProfile] = useState(profileImage ? 'http://127.0.0.1:8081/' + profileImage : 'https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
+  
+    
+      
+  useEffect(() => {
+    
+    if (profileImage) {
+      setProfile('http://127.0.0.1:8081/' + profileImage);
+    }
+  }, [profileImage]);
     return (
         <>
             <li className="py-2">
                 <div className="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <img className="w-8 h-8 rounded-full" src={userImage} />
+                        <img className="w-8 h-8 rounded-full" src={profile} />
                     </div>
                     <div class="flex-1 min-w-0">
                         <h1 className='antialiased  hover:text-purple-700 md:text-[20px] 2xl:text-[20px]'><a href=''>{projTitle}</a></h1>

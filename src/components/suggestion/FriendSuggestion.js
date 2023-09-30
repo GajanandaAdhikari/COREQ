@@ -7,6 +7,7 @@ import axios from "axios";
 
 function FriendSuggestionList() {
   const [suggestedFriends, setSuggestedFriends] = useState([]);
+  
 
   useEffect(() => {
     const fetchSuggestedFriends = async () => {
@@ -41,6 +42,7 @@ function FriendSuggestionList() {
             userId={user._id}
             key={user._id}
             initialIsFollowing={checkFollowing({follow:user.following})}
+            profileImage={user.profilePic}
           />
       ))}
     </>
@@ -51,14 +53,24 @@ function checkFollowing({follow}) {
   console.log(follow);
 }
 
-function SuggestedFriend({ userFullName, userName, userImage, userId }) {
+function SuggestedFriend({ userFullName, userName, profileImage, userId }) {
+  const [profile, setProfile] = useState(profileImage ? 'http://127.0.0.1:8081/' + profileImage : 'https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
+  
+    
+      
+  useEffect(() => {
+    
+    if (profileImage) {
+      setProfile('http://127.0.0.1:8081/' + profileImage);
+    }
+  }, [profileImage]);
   return (
     <>
     
         <div className=" grid grid-cols-7 ">
         <div className=" flex col-span-5 items-left ">
           <div class="flex-shrink-0">
-            <img className="w-8 h-8 rounded-full" src={userImage} />
+            <img className="w-8 h-8 rounded-full" src={profile} />
           </div>
           <Link to={`/profile/${userId}`} key={userId}>
           <div class="flex-1 min-w-0">
