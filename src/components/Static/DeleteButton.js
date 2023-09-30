@@ -16,19 +16,19 @@ class DeleteButton extends Component {
     };
   }
 
-  handleUpVoteClick = async () => {
+  handleDeleteClick = async () => {
     const { postId } = this.props;
     const { voteStatus } = this.props;
 
     try {
-      const response = await axios.patch(
-        `http://localhost:8000/feature/${postId}/upVote`,
-        {
-          userId: Cookies.get('userId'),
-        },
+      const response = await axios.delete(
+        `http://localhost:8000/feature/${postId}/deletePost`,
         {
           headers: {
             Authorization: `Bearer ${Cookies.get('token')}`,
+          },
+          data: {
+            userId: Cookies.get('userId'),
           },
         }
       );
@@ -50,7 +50,7 @@ class DeleteButton extends Component {
     }
   };
   handleCombinedClick = async () => {
-    await this.handleUpVoteClick(); // Make sure to await the async function
+    await this.handleDeleteClick(); // Make sure to await the async function
     handleReloadComponent();
   };
 
