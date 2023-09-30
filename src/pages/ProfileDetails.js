@@ -19,6 +19,7 @@ import SideBar from '../components/Static/SideBar';
 function Profile({ userFullName, userBio, userFollowers, userFollowing, userProjects, userArticles, githubUserName, linkedinUserName, facebookUserName, instagramUserName, twitterUserName, userFaculty, userSemester, userBatch, userId, profileImage, profileCover }) {
      // Check if userId prop is equal to the value of Cookies.get('userId')
     const shouldShowEdit = userId === Cookies.get('userId');
+    const shouldFollow = userId !== Cookies.get('userId'); 
     console.log("profile : "+profileImage);
     console.log("cover : "+profileCover);
 
@@ -85,9 +86,11 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
                   <p className='ml-5'>
                     Batch <span className='font-bold text-blue-600'>{userBatch}</span>
                   </p>
+                  {shouldFollow && (
                   <div className='ml-10'>
                     <FollowButton followingId={userId}></FollowButton>
                   </div>
+                  )}
                   <span className='flex ml-20'>
                     {shouldShowEdit && (  
                     <Link to={'/edit'}>
