@@ -115,7 +115,7 @@ function FeedPostShow() {
         feedPosts.map(user => <PostShow
           key={user.id}
           name={user.userFullName}
-          profileImage={user.profileImage}
+          profileImage={user.profilePic}
           title={user.title}
           description={user.description}
           tag={user.tag}

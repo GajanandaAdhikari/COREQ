@@ -19,17 +19,18 @@ function CommentShow() {
 
 
 function PostShow({userId, name,pdfUrl, profileImage, title, description, votes, tag, postDate, author, team, keywords, postId,voteStatus }) {
-  const [profile, setProfile] = useState("");
+  const [profile, setProfile] = useState("https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais");
   
-      useEffect(() => {
+
+  useEffect(() => {
     
-        if(profileImage!=undefined){
-          setProfile('http://127.0.0.1:8081/'+profileImage);
-        }
-        else{
-          setProfile('https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
-    
-    }}, []); // Empty dependency array ensures this runs only once on component mount
+    if(profileImage!=undefined){
+      setProfile('http://127.0.0.1:8081/'+profileImage);
+    }
+    else{
+      setProfile('https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
+
+}}, []); // Empty dependency array ensures this runs only once on component mount
   return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
@@ -124,7 +125,7 @@ function ProjectShow() {
         <PostShow
           key={project.id}
           name={project.userFullName}
-          profileImage={project.profileImage}
+          profileImage={project.profilePic}
           title={project.title}
           description={project.description}
           tag={project.tag}
