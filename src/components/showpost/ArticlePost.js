@@ -33,7 +33,9 @@ function PostShow({userId, name,pdfUrl, profileImage, title, description, votes,
       setProfile('https://img.freepik.com/free-vector/robot-face-concept-illustration_114360-8207.jpg?size=626&ext=jpg&ga=GA1.2.600027373.1688413125&semt=ais');
 
 }}, []); // Empty dependency array ensures this runs only once on component mount
-  return (
+  
+console.log("article post show : "+pdfUrl);
+return (
     <>
       <div className=' max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px]  p-4 border border-gray-300 rounded-lg mt-5'>
         <div className='grid grid-rows-13 gap-4 '>
@@ -117,6 +119,7 @@ function ArticlePostShow() {
           };
         });
         setArticles(formattedArticles);
+        
         // console.log(formattedArticles);
         // console.log(formattedArticles[0].votes.length);
 
@@ -147,7 +150,7 @@ function ArticlePostShow() {
           userId={article.userId}
           postId={article._id}
           votes={VoteCount({ votes: article.votes})}
-          PdfUrl={article.articlePDFPath}
+          pdfUrl={article.articlePDFPath}
           savedStatus={SavedPostChecking({postID:article._id})}
         />
       ))}
