@@ -59,16 +59,8 @@ function PostShow({userId,refreshCount, name, profileImage, description, vote, t
             <PostBar userId={userId} postId={postId} voteStatus={voteStatus}/>
             </div>
           </div>
-          <div className="row-span-2  p-1 flex">
-            <Link to="/comment">
-              {" "}
-              <input
-                type="text"
-                id="comment"
-                placeholder="Comment Here"
-                class="flex items-start md:text-[20px] w-fit 2xl:h-[40px]  p-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </Link>
+          <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
+            <h1>Openion!! comming soon</h1>
             {/* <img class="h-9 w-9 rounded-full mr-10 max-sm:mr-4 max-sm:ml-4 max-sm:h-9 max-sm:w-9" src={profileImage} alt="" />
       <input type="text" id="large-input" placeholder="CLICK HERE TO CIRCULATE ...." class="flex items-start md:text-[24px] max-sm:w-[350px] max-md:w-[350px] lg:w-[600px] 2xl:w-[900px] 2xl:h-[60px]  p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
     */}
