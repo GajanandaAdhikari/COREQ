@@ -16,7 +16,7 @@ function CommentShow() {
 }
 
 
-function PostShow({userId, name, profileImage, description, votes, tag, postDate, postId,voteStatus }) {
+function PostShow({userId,title,author,keywords, name, profileImage, description, votes, tag, postDate, postId,voteStatus }) {
   const [profile, setProfile] = useState("");
   
       useEffect(() => {
@@ -43,10 +43,21 @@ function PostShow({userId, name, profileImage, description, votes, tag, postDate
             <div className='col-span-1 '>
               <h1 className='font-k2d text-sm 2xl:text-[20px] '>{postDate}</h1>
             </div>
+            
+          </div>
+          <div className='row-span-1 '>
+            <div className='flex font-bold 2xl:text-[20px]'>
+              <h1>{title}</h1>
+            </div>
           </div>
           <div className='row-span-5 flex-grow border-b border-gray-300 2xl:text-[20px] pb-7'>
             <p>{description}</p>
           </div>
+          <div className=' row-span-1 inline-flex md:text-sm font-k2d italic  max-sm:text-[10px] flex-grow border-b border-gray-300 2xl:text-[15px] pb-7'>
+
+          {tag === 'Query' ? null : <p>keywords: {keywords}</p>}
+
+</div>
           <div className='row-span-1 flex-grow border-b border-gray-300 grid grid-cols-5 pb-2'>
             <div className='col-span-1 oldstyle-nums font-bold md:text-md ml-5'>
             <h1 className='font-bold md:text-[25px] ml-5'>{votes}</h1>
@@ -55,6 +66,7 @@ function PostShow({userId, name, profileImage, description, votes, tag, postDate
             <PostBar userId={userId} postId={postId} voteStatus={voteStatus}/>
             </div>
           </div>
+
           <div className='row-span-2 border border-gray-300 rounded-lg p-1 flex'>
             <h1>Openion!! comming soon</h1>
             {/* <img class="h-9 w-9 rounded-full mr-10 max-sm:mr-4 max-sm:ml-4 max-sm:h-9 max-sm:w-9" src={profileImage} alt="" />
@@ -101,17 +113,22 @@ function FeedPostShow() {
     <>
       {
         feedPosts.map(user => <PostShow
+          key={user.id}
           name={user.userFullName}
-          userName={user.username}
-          profileImage={user.profilePic}
+          profileImage={user.profileImage}
           title={user.title}
           description={user.description}
-          votes={VoteCount({ votes: user.votes})}
-          voteStatus={VoteStatus({ votes: user.votes})}
           tag={user.tag}
           postDate={user.createdAt}
+          author={user.collabrators}
+          publicationYear={user.publicationYear}
+          team={user.team}
+          keywords={user.keywords}
           userId={user.userId}
           postId={user._id}
+          votes={VoteCount({ votes: user.votes})}
+          voteStatus={VoteStatus({ votes: user.votes})}
+          pdfUrl={user.projectPDFPath}
         ></PostShow>)
       }
     </>
