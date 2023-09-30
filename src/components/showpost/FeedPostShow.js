@@ -16,7 +16,7 @@ function CommentShow() {
 }
 
 
-function PostShow({userId,title,author,keywords, name, profileImage, description, votes, tag, postDate, postId,voteStatus }) {
+function PostShow({userId,publicationHouse,publicationYear,title,author,keywords, name, profileImage, description, votes, tag, postDate, postId,voteStatus }) {
   const [profile, setProfile] = useState("");
   
       useEffect(() => {
@@ -50,6 +50,12 @@ function PostShow({userId,title,author,keywords, name, profileImage, description
               <h1>{title}</h1>
             </div>
           </div>
+          {tag === 'Query' ? null :
+          <div className=' row-span-1 inline-flex md:text-sm font-k2d italic  max-sm:text-[10px] '>
+
+<p>author: {author}</p> 
+<p className='max-sm:pl-5  md:pl-10 '>- {publicationYear}, {publicationHouse}</p>
+</div>}
           <div className='row-span-5 flex-grow border-b border-gray-300 2xl:text-[20px] pb-7'>
             <p>{description}</p>
           </div>
@@ -122,7 +128,8 @@ function FeedPostShow() {
           postDate={user.createdAt}
           author={user.collabrators}
           publicationYear={user.publicationYear}
-          team={user.team}
+          publicationHouse={user.publicationHouse}
+          team={user.team} 
           keywords={user.keywords}
           userId={user.userId}
           postId={user._id}
