@@ -161,7 +161,7 @@ export default function EditProfile({ imagePreviewUrl }) {
   <option  disabled value="" selected>
     Faculty
   </option>
-  <option >BEIT</option>
+  <option >BE IT</option>
   <option >BCE</option>
   <option >BE Civil</option>
   <option >BE Elx</option>

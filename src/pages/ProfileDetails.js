@@ -66,25 +66,25 @@ function Profile({ userFullName, userBio, userFollowers, userFollowing, userProj
                 <h1 className='text-3xl font-bold'>{userFullName}</h1>
                 <div className='profilestats flex'>
                   <p>
-                    <span className='font-bold text-blue-600'>{userFollowers}</span> Followers
+                  Followers <br></br> <span className='font-bold text-blue-600'>{userFollowers}</span> 
                   </p>
                   <p className='ml-5'>
-                    <span className='font-bold'>{userFollowing}</span> Following
+                  Following <br></br> <span className='font-bold'>{userFollowing}</span> 
                   </p>
                   <p className='ml-5'>
-                    <span className='font-bold text-green-600'>{userProjects}</span> Projects
+                  Projects <br></br> <span className='font-bold text-green-600'>{userProjects}</span> 
                   </p>
                   <p className='ml-5'>
-                    <span className='font-bold text-yellow-400'>{userArticles}</span> Articles
+                  Articles <br></br> <span className='font-bold text-yellow-400'>{userArticles}</span> 
                   </p>
                   <p className='ml-5'>
-                    Faculty <span className='font-bold text-purple-700'>{userFaculty}</span>
+                    Faculty <br></br> <span className='font-bold text-purple-700'>{userFaculty}</span>
                   </p>
                   <p className='ml-5'>
-                    Semester <span className='font-bold text-red-600'>{userSemester}</span>
+                    Semester <br></br> <span className='font-bold text-red-600'>{userSemester}</span>
                   </p>
                   <p className='ml-5'>
-                    Batch <span className='font-bold text-blue-600'>{userBatch}</span>
+                    Batch <br></br> <span className='font-bold text-blue-600'>{userBatch}</span>
                   </p>
                   {shouldFollow && (
                   <div className='ml-10'>
