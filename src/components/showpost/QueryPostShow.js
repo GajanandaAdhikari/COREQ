@@ -82,7 +82,7 @@ function PostShow({userId,refreshCount, name, profileImage, description, vote, t
 
 function QueryPostShow({refreshCount}) {
   const [queries, setQueries] = useState([]);
-
+  refreshCount=refreshCount+1;
   const token = Cookies.get('token');
 
   useEffect(() => {

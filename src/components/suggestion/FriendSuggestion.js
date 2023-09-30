@@ -21,6 +21,7 @@ function FriendSuggestionList() {
         );
         
         setSuggestedFriends(response.data);
+     
 
       } catch (error) {
         console.log(error);
@@ -39,10 +40,15 @@ function FriendSuggestionList() {
             userImage={user.profilePic}
             userId={user._id}
             key={user._id}
+            initialIsFollowing={checkFollowing({follow:user.following})}
           />
       ))}
     </>
   );
+}
+
+function checkFollowing({follow}) {
+  console.log(follow);
 }
 
 function SuggestedFriend({ userFullName, userName, userImage, userId }) {

@@ -39,6 +39,8 @@ class FollowButton extends React.Component {
   render() {
     const { isFollowing } = this.state;
     const { userId } = this.props;
+    console.log(isFollowing);
+    const initialIsFollowing = isFollowing;
 
     // Check if userId prop is equal to the value of Cookies.get('userId')
     const shouldShowButton = userId !== Cookies.get('userId');
