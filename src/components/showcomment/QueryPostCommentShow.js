@@ -66,6 +66,7 @@ function PostShow({userId, name, profileImage, description, vote, tag, postDate 
 }
 
 function QueryPostCommentShow() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [queries, setQueries] = useState([]);
 
   const token = Cookies.get('token');
