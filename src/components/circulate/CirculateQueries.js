@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 function CirculateQueries({ onRefresh }) {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
 
   const token = Cookies.get("token");
@@ -27,7 +28,7 @@ function CirculateQueries({ onRefresh }) {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/query",
+        `${apiUrl}/query`,
         {
           title: title,
           description: description,

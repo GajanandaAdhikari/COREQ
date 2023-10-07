@@ -73,6 +73,7 @@ function PostShow({userId, name, profileImage, description, vote, tag, postDate,
 }
 
 function ProfileQueries() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [queries, setQueries] = useState([]);
 
   const token = Cookies.get('token');
@@ -81,7 +82,7 @@ function ProfileQueries() {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/query/user/${userId}`, {
+        const response = await axios.get(`${apiUrl}/query/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

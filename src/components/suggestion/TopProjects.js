@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 
 
 function TopProjectList() {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [recommendedProjects, setRecommendedProjects] = useState([]);
     const token = Cookies.get("token");
 
@@ -12,7 +13,7 @@ function TopProjectList() {
             try {
                 console.log(Cookies.get('userId'))
                 const response = await axios.get(
-                    'http://localhost:8000/feed/recommendedProjects',
+                    `${apiUrl}/feed/recommendedProjects`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

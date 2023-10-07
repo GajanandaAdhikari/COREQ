@@ -88,6 +88,7 @@ function PostShow({userId, name, profileImage, title, description, votes, tag, p
 }
 
 function ProfileProjects() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
 
   const token = Cookies.get('token');
@@ -96,7 +97,7 @@ function ProfileProjects() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/project/user/${userId}`, {
+        const response = await axios.get(`${apiUrl}/project/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

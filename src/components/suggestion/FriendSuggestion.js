@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 
 function FriendSuggestionList() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [suggestedFriends, setSuggestedFriends] = useState([]);
   
 
@@ -13,7 +14,7 @@ function FriendSuggestionList() {
     const fetchSuggestedFriends = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/feed/friendSuggestions/${Cookies.get('userId')}`,
+          `${apiUrl}/feed/friendSuggestions/${Cookies.get('userId')}`,
           {
             headers: {
               Authorization: `Bearer ${Cookies.get("token")}`,

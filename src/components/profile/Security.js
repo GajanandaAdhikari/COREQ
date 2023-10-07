@@ -7,6 +7,7 @@ import FailedAlert from "../Static/FailedAlert";
 import AlertInfo from "../Static/InfoAlert";
 
 export default function Security() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const token = Cookies.get("token");
   const userId = Cookies.get("userId");
 
@@ -37,7 +38,7 @@ export default function Security() {
 
     try {
       const response = await axios.patch(
-        `http://localhost:8000/user/editProfile/${userId}`,
+        `${apiUrl}/user/editProfile/${userId}`,
         {
           oldPassword: oldPassword,
           password: newPassword,

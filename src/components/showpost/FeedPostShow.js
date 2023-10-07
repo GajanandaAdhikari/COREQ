@@ -87,6 +87,7 @@ function PostShow({userId,publicationHouse,publicationYear,title,author,keywords
 
 
 function FeedPostShow() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [feedPosts, setfeedPosts] = useState([]);
 
   const token = Cookies.get('token');
@@ -94,7 +95,7 @@ function FeedPostShow() {
   useEffect(() => {
     const fetchFeedPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/feed/getFeed", {
+        const response = await axios.get(`${apiUrl}/feed/getFeed`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

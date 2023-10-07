@@ -15,6 +15,7 @@ import SucessAlert from "../Static/SucessAlert";
 import FailedAlert from "../Static/FailedAlert";
 
 export default function SocialLink() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const token = Cookies.get('token');
   const userId = Cookies.get('userId');
@@ -52,7 +53,7 @@ export default function SocialLink() {
 
     try {
       const response = await axios.patch(
-        `http://localhost:8000/user/editProfile/${userId}`,
+        `${apiUrl}/user/editProfile/${userId}`,
         {
           socialNames: {
             github: githubUserName,

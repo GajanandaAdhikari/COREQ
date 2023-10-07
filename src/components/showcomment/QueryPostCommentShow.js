@@ -73,7 +73,7 @@ function QueryPostCommentShow() {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/query", {
+        const response = await axios.get(`${apiUrl}/query`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

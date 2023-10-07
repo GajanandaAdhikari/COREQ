@@ -99,6 +99,7 @@ return (
 }
 
 function ArticlePostShow() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [articles, setArticles] = useState([]);
 
   const token = Cookies.get('token');
@@ -106,7 +107,7 @@ function ArticlePostShow() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/article", {
+        const response = await axios.get(`${apiUrl}/article`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

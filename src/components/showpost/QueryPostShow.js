@@ -78,6 +78,7 @@ function PostShow({userId,refreshCount,title, name, profileImage, description, v
 }
 
 function QueryPostShow({refreshCount}) {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [queries, setQueries] = useState([]);
   refreshCount=refreshCount+1;
   const token = Cookies.get('token');
@@ -85,7 +86,7 @@ function QueryPostShow({refreshCount}) {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/query", {
+        const response = await axios.get(`${apiUrl}/query`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

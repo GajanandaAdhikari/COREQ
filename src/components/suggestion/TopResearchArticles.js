@@ -3,6 +3,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 function TopResearchArticlesList() {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [recommendedArticles, setRecommendedArticles] = useState([]);
     const token = Cookies.get("token");
 
@@ -11,7 +12,7 @@ function TopResearchArticlesList() {
             try {
                 console.log(Cookies.get('userId'))
                 const response = await axios.get(
-                    'http://localhost:8000/feed/recommendedArticles',
+                    `${apiUrl}/feed/recommendedArticles`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

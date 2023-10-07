@@ -93,6 +93,7 @@ function PostShow({userId, name,pdfUrl, profileImage, title, description, votes,
 }
 
 function ProfileArticles() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [articles, setArticles] = useState([]);
 
   const token = Cookies.get('token');
@@ -101,7 +102,7 @@ function ProfileArticles() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/article/user/${userId}`, {
+        const response = await axios.get(`${apiUrl}/article/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }

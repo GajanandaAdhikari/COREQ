@@ -11,6 +11,7 @@ import SucessAlert from "../Static/SucessAlert";
 
 
 export default function EditProfile({ imagePreviewUrl }) {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
 
   const token = Cookies.get('token');
@@ -88,7 +89,7 @@ export default function EditProfile({ imagePreviewUrl }) {
 
     try {
       const response = await axios.patch(
-        `http://localhost:8000/user/editProfile/${userId}`,
+        `${apiUrl}/user/editProfile/${userId}`,
         formDataToSend,
         {
           headers: {

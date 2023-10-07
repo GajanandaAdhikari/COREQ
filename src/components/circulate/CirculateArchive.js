@@ -8,6 +8,7 @@ import FailedAlert from "../Static/FailedAlert";
 import SucessAlert from "../Static/SucessAlert";
 
 function CirculateArchive() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const year = new Date().getFullYear();
   const years = Array.from(new Array(20), (val, index) => year - index);
 
@@ -71,7 +72,7 @@ function CirculateArchive() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/archive/",
+        `${apiUrl}/archive/`,
         formDataToSend,
         {
           headers: {
