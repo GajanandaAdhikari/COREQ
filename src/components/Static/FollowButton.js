@@ -17,10 +17,11 @@ class FollowButton extends React.Component {
     }));
 
     const { followingId } = this.props;
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/user/follow/${Cookies.get('userId')}`,
+        `${apiUrl}/user/follow/${Cookies.get('userId')}`,
         {
           followingId: followingId,
         },

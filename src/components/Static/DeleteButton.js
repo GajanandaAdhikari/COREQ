@@ -17,12 +17,13 @@ class DeleteButton extends Component {
   }
 
   handleUpVoteClick = async () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const { postId } = this.props;
     const { voteStatus } = this.props;
 
     try {
       const response = await axios.delete(
-        `http://localhost:8000/feature/${postId}/deletePost`,
+        `${apiUrl}/feature/${postId}/deletePost`,
         {
           headers: {
             Authorization: `Bearer ${Cookies.get('token')}`,

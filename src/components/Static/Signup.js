@@ -11,6 +11,7 @@ let fieldsState = {};
 fields.forEach(field => fieldsState[field.id] = '');
 
 export default function Signup() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [signupState, setSignupState] = useState(fieldsState);
   const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ export default function Signup() {
   //handle Signup API Integration here
   const createAccount = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/auth/signup', signupState);
+      const response = await axios.post(`${apiUrl}/auth/signup`, signupState);
       console.log(response.data);
       // Handle the response or perform any necessary actions
       navigate('/login')

@@ -20,10 +20,11 @@ class UpvoteButton extends Component {
   handleUpVoteClick = async () => {
     const { postId } = this.props;
     const { voteStatus } = this.props;
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     try {
       const response = await axios.patch(
-        `http://localhost:8000/feature/${postId}/upVote`,
+        `${apiUrl}/feature/${postId}/upVote`,
         {
           userId: Cookies.get('userId'),
         },

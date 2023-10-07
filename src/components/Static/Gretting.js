@@ -41,6 +41,7 @@ function UserName({ name, userName, profileImage,savedPostDetails }) {
 }
 
 function Gretting() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [userDetails, setUserDetails] = useState([]);
   const [savedPost, setSavedPost] = useState([]);
 
@@ -48,7 +49,7 @@ function Gretting() {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/user/get/${Cookies.get("userId")}`,
+          `${apiUrl}/user/get/${Cookies.get("userId")}`,
           {
             headers: {
               Authorization: `Bearer ${Cookies.get('token')}`,

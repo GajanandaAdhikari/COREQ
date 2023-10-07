@@ -14,6 +14,7 @@ let fieldsState = {};
 fields.forEach(field => fieldsState[field.id] = '');
 
 export default function Login() {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [loginState, setLoginState] = useState(fieldsState);
     const navigate = useNavigate();
     const [alerts, setAlerts] = useState([]);
@@ -30,7 +31,7 @@ export default function Login() {
     //Handle Login API Integration here
     const authenticateUser = async () => {
         try {
-            const response = await axios.post('http://localhost:8000/auth/login', loginState);
+            const response = await axios.post(`${apiUrl}/auth/login`, loginState);
             console.log(response.data);
             const token = response.data.token;
             const userId = response.data.userId;

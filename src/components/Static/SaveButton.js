@@ -15,12 +15,13 @@ class SavePostButton extends Component {
 
   handleSaveClick = async () => {
     const { postId } = this.props;
+    const apiUrl = process.env.REACT_APP_API_URL;
  
     try {
       if (this.state.isSaved) {
         // If the post is already saved, unsave it
         await axios.patch(
-          `http://localhost:8000/user/savePost/${postId}`,
+          `${apiUrl}/user/savePost/${postId}`,
           {
             userId: Cookies.get('userId'),
           },
@@ -33,7 +34,7 @@ class SavePostButton extends Component {
       } else {
         // If the post is not saved, save it
         await axios.patch(
-          `http://localhost:8000/user/savePost/${postId}`,
+          `${apiUrl}/user/savePost/${postId}`,
           {
             userId: Cookies.get('userId'),
           },

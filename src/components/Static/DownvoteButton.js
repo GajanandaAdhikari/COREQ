@@ -19,12 +19,13 @@ class DownvoteButton extends Component {
   }
 
   handleDownVoteClick = async () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const { postId } = this.props;
     const { voteStatus } = this.props;
 
     try {
       const response = await axios.patch(
-        `http://localhost:8000/feature/${postId}/downVote`,
+        `${apiUrl}/feature/${postId}/downVote`,
         {
           userId: Cookies.get("userId"),
         },
